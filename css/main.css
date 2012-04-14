@@ -1,0 +1,59 @@
+/* 
+    Document   : main
+    Created on : 14-abr-2012, 22:20:35
+    Author     : Leonardo
+    Description:
+        Definir estilos de la plantilla Principal (main)
+*/
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+.title {
+    padding-top: 10px;
+    color: #FFF;
+}
+#container{
+
+}
+#header {
+    width: 1020px;
+    height: 100px;
+    margin: 0 auto;
+    padding: 12px 0 0 0;
+    background-color: gray;
+    color: #FFF;
+    border: 2px solid black;
+}
+#content {
+    width: 1020px;
+    margin: 0 auto;
+    background-color: gray;
+    color: #FFF;
+    border: 2px solid black;
+}
+#footer {
+    clear: both;
+    width: 1020px;
+    height: 60px;
+    margin: 0 auto;
+    background-color: gray;
+    font-size: small;
+    font-weight: bold;
+    color: #FFF;
+    border: 2px solid black;
+}
+#copy {
+    float: left;
+    padding: 20px 15px;
+}
+.error{
+    color: red;
+    font-size: 11px;
+}

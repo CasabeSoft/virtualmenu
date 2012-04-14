@@ -17,8 +17,8 @@ if (!defined('BASEPATH'))
   | path to your installation.
   |
  */
-//$config['base_url'] = '';
-$config['base_url'] = 'http://localhost/proyectos/virtualMenu/src/';
+//$config['base_url'] = ''; // LQ 20120414: Comentado
+$config['base_url'] = 'http://virtualmenu.dev'; // LQ 20120414: adicionado
 
 /*
   |--------------------------------------------------------------------------
@@ -73,8 +73,8 @@ $config['url_suffix'] = '';
   | than english.
   |
  */
-//$config['language']	= 'english';
-$config['language'] = 'es';
+//$config['language']	= 'english'; // LQ 20120414: Comentado
+$config['language'] = 'es'; // LQ 20120414: adicionado
 
 /*
   |--------------------------------------------------------------------------
