@@ -8,4 +8,5 @@
 ?>
          <div id="header">
             Cabecera
+            <a href="autenticar">Login</a>
          </div>

@@ -17,7 +17,7 @@ class Main extends CI_Controller {
     /**
      * Página por defecto del controlador.
      *
-     * Maps to the following URL
+     * Ej. como utilizar la URL:
      * 		http://virtualmenu.dev/
      * 	- or - 
      * 		http://virtualmenu.dev/main
@@ -25,9 +25,9 @@ class Main extends CI_Controller {
      * 		http://virtualmenu.dev/main/index
      */
     public function index() {
-        $datos['title'] = 'Menu Virtual - Inicio';
-        $datos['viewToLoad'] = 'inicio';
-        $this->load->view('comunes/main', $datos);
+        $data['title'] = 'Menu Virtual - Inicio';
+        $data['viewToLoad'] = 'inicio';
+        $this->load->view('comunes/main', $data);
     }
 
 }
