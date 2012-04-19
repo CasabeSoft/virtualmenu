@@ -21,34 +21,42 @@
  * @copyright	Copyright (c) 2008 - 2012, EllisLab, Inc. (http://ellislab.com/)
  * @license		http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  * @link		http://codeigniter.com
- * @since		Version 1.0
+ * @since		Version 3.0
  * @filesource
  */
 
 /**
- * Oracle Utility Class
+ * Interbase/Firebird Utility Class
  *
  * @category	Database
  * @author		EllisLab Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_oci8_utility extends CI_DB_utility {
+class CI_DB_interbase_utility extends CI_DB_utility {
 
-	protected $_list_databases	= 'SELECT username FROM dba_users'; // Schemas are actual usernames
+	protected $_list_databases	= FALSE;
 
 	/**
-	 * Oracle Export
+	 * Interbase/Firebird Export
 	 *
-	 * @param	array	Preferences
+	 * @param	string	$filename
 	 * @return	mixed
 	 */
-	protected function _backup($params = array())
+	protected function backup($filename)
 	{
-		// Currently unsupported
-		return $this->db->display_error('db_unsuported_feature');
+		if ($service = ibase_service_attach($this->db->hostname, $this->db->username, $this->db->password))
+		{
+			$res = ibase_backup($service, $this->db->database, $filename.'.fbk');
+
+			// Close the service connection
+			ibase_service_detach($service);
+			return $res;
+		}
+
+		return FALSE;
 	}
 
 }
 
-/* End of file oci8_utility.php */
-/* Location: ./system/database/drivers/oci8/oci8_utility.php */
+/* End of file interbase_utility.php */
+/* Location: ./system/database/drivers/interbase/interbase_utility.php */

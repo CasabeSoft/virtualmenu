@@ -9,9 +9,10 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Main extends CI_Controller {
-
+    
     function __construct() {
         parent::__construct();
+        $this->load->model('UsersModel');
     }
 
     /**
@@ -25,8 +26,12 @@ class Main extends CI_Controller {
      * 		http://virtualmenu.dev/main/index
      */
     public function index() {
+        //$db = new PDO('sqlite:C:\\Users\\carlos\\Documents\\Proyectos\\VirtualMenu\\src\\db\\virtualmenu.sqlite');
+        //$sql = 'SELECT email, name, password FROM users';
         $data['title'] = 'Menu Virtual - Inicio';
         $data['viewToLoad'] = 'inicio';
+        //$data['users'] = $db->query($sql);
+        $data['users'] = $this->UsersModel->get_users();
         $this->load->view('comunes/main', $data);
     }
 
