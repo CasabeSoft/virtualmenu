@@ -17,8 +17,8 @@ if (!defined('BASEPATH'))
   | path to your installation.
   |
  */
-//$config['base_url'] = ''; // LQ 20120414: Comentado
-$config['base_url'] = 'http://virtualmenu.dev'; // LQ 20120414: adicionado
+$config['base_url'] = ''; // LQ 20120414: Comentado
+//$config['base_url'] = 'http://virtualmenu.dev:8090'; // LQ 20120414: adicionado
 
 /*
   |--------------------------------------------------------------------------
