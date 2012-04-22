@@ -24,7 +24,7 @@ class User extends CI_Controller {
     public function index() {
         // Verifa si el usuario esta autenticado.
         if (!isLogged()) {
-            redirect('autenticar');
+            redirect('login');
             exit;
         }
         $data['title'] = 'Menu Virtual - Usuarios';
@@ -61,7 +61,7 @@ class User extends CI_Controller {
                   redirect($this->session->userdata('lastPageVisited'));
                   } else { */
                 //y si no existe pagina lo enviamos al index de cliente
-                redirect('cliente');
+                redirect('customer');
                 //}
             } else {
                 // Si no existe el usuario envio el mensaje de error.
@@ -95,7 +95,6 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('re_password', 'Confirmar contraseña', 'required|matches[password]');
 
         if ($this->form_validation->run() == FALSE) {
-            //$this->register();
             //Se muestra el formulario con los mensajes de error.
         } else {
             $fields = array(
@@ -107,7 +106,7 @@ class User extends CI_Controller {
                     //$activation_code = md5(microtime());
             );
             $insert = $this->UsersModel->insertRecord($fields);
-            redirect('autenticar');
+            redirect('login');
         }
         $data['title'] = 'Menu Virtual - Registrar';
         $data['viewToLoad'] = 'user/register';

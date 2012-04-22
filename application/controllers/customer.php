@@ -21,11 +21,11 @@ class Customer extends CI_Controller {
     public function index() {
         // Verifa si el usuario esta autenticado.
         if (!isLogged()) {
-            redirect('autenticar');
+            redirect('login');
             exit;
         }
         $data['title'] = 'Menu Virtual - Inicio cliente';
-        $data['viewToLoad'] = 'customer/inicio';
+        $data['viewToLoad'] = 'customer/home';
         $this->load->view('comunes/mainCustomer', $data);
     }
 

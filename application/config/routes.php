@@ -41,14 +41,14 @@
 $route['default_controller'] = "main";
 $route['404_override'] = '';
 
-$route["inicio"] = "main";
+$route["home"] = "main";
 
-$route["usuarios"] = "user";
-$route["autenticar"] = "user/login";
-$route["registrar"] = "user/register";
-$route["salir"] = "user/close";
+$route["users"] = "user";
+$route["login"] = "user/login";
+$route["register"] = "user/register";
+$route["exit"] = "user/close";
 
-$route["cliente"] = "customer";
+//$route["cliente"] = "customer";
 
 $route["menu/manage"] = "MenuOfTheDayController/index";
 

@@ -6,13 +6,11 @@
  * @author Leoanrdo Quintero
  */
 ?>
-
-            <div id="header">
+           
                 Cabecera <a href="<?php echo site_url('customer') ?>">Inicio</a>
                 <br>
-                <a href="<?php echo site_url('usuarios') ?>">Usuarios</a>
+                <a href="<?php echo site_url('users') ?>">Usuarios</a>
                 <br>
-                <a href="<?php echo site_url('salir') ?>">Salir</a>
+                <a href="<?php echo site_url('exit') ?>">Salir</a>
                 <!--br>
-                <a href="<?php //echo site_url('registrar') ?>">Registrar usuario</a-->
-            </div>
+                <a href="<?php //echo site_url('registrar') ?>">Registrar usuario</a-->            

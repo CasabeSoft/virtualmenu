@@ -29,7 +29,7 @@ class Main extends CI_Controller {
         //$db = new PDO('sqlite:C:\\Users\\carlos\\Documents\\Proyectos\\VirtualMenu\\src\\db\\virtualmenu.sqlite');
         //$sql = 'SELECT email, name, password FROM users';
         $data['title'] = 'Menu Virtual - Inicio';
-        $data['viewToLoad'] = 'inicio';
+        $data['viewToLoad'] = 'home';
         //$data['users'] = $db->query($sql);
         $data['users'] = $this->UsersModel->get_users();
         $this->load->view('comunes/main', $data);

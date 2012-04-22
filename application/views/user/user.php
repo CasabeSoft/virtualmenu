@@ -6,7 +6,6 @@
  */
 ?>
 
-            <div id="content">
                 <h1 class="title">Usuarios</h1>
                 <table border='1'>
                     <?php foreach ($users as $user): ?>
@@ -19,4 +18,3 @@
                     <?php endforeach ?>
                         
                 </table>            
-            </div>

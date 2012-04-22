@@ -7,10 +7,10 @@
  */
 ?>
 
-            <h1 class="title">Register</h1>
+            <h1 class="title">Registrar usuario</h1>
             <br>
             <div class="formulario">
-                <form action="<?php echo site_url('registrar') ?>" method="post" accept-charset="utf-8" class="form_register" id="form_register">
+                <form action="<?php echo site_url('register') ?>" method="post" accept-charset="utf-8" class="form_register" id="form_register">
                     <div class="texto_formulario"><label for="username">Nombre:</label></div>
                     <div class="type_formulario">                 
                         <input type="text" name="name" value="<?php echo set_value('name'); ?>" id="name" maxlength="50" size="50" style="width:50%"  />
@@ -41,7 +41,7 @@
 
                     <div class="texto_formulario"><label for="re_password">Repetir contraseña:</label></div>
                     <div class="type_formulario">                 
-                        <input type="re_password" name="re_password" value="" id="re_password" maxlength="50" size="50" style="width:50%"  />
+                        <input type="password" name="re_password" value="" id="re_password" maxlength="50" size="50" style="width:50%"  />
                     </div> 
                     <div class="error_formulario"><?php echo form_error('re_password'); ?></div>  
                     <div class="clear">&nbsp;</div>
@@ -49,7 +49,7 @@
                     <div class="type_formulario" style="padding-left: 180px;">
                         <input type="submit" name="submit" value="Aceptar"  />
                         <div>
-                            <?php //echo anchor('autenticar', 'Login'); ?>
+                            <?php //echo anchor('login', 'Login'); ?>
                         </div>
                         <div>
                             <?php //echo anchor('user/remenberPassword', 'Recordar contraseña'); ?>
