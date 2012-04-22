@@ -19,11 +19,15 @@
     </head>
     <body>
         <div id="container">
-            <?php $this->load->view('comunes/header') ?>
+            <div id="header">
+                <?php $this->load->view('comunes/header') ?>
+            </div>
             <div id="content">            
                 <?php $this->load->view($viewToLoad) ?>
             </div>
-            <?php $this->load->view('comunes/footer') ?>
+            <div id="footer">
+                <?php $this->load->view('comunes/footer') ?>
+            </div>
         </div>
     </body>
 </html>

@@ -21,7 +21,7 @@
                     <?php
                 }
                 ?>
-                <form action="<?php echo site_url('autenticar') ?>" method="post" accept-charset="utf-8" class="form_login" id="form_login">
+                <form action="<?php echo site_url('login') ?>" method="post" accept-charset="utf-8" class="form_login" id="form_login">
                     <!--div class="texto_formulario"><label for="username">Usuario:</label></div>
                     <div class="type_formulario">                 
                         <input type="text" name="username" value="<?php //echo set_value('username'); ?>" id="username" maxlength="50" size="50" style="width:50%"  />
@@ -31,7 +31,7 @@
 
                     <div class="texto_formulario"><label for="email">Correo:</label></div>
                     <div class="type_formulario">                 
-                        <input type="text" name="email" value="<?php echo set_value('email'); ?>" id="email" maxlength="50" size="50" style="width:50%"  />
+                        <input type="text" name="email" value="<?php echo set_value('email'); ?>" id="email" maxlength="100" size="50" style="width:50%"  />
                     </div>
                     <div class="error_formulario"><?php echo form_error('email'); ?></div>
                     <div class="clear">&nbsp;</div>
@@ -46,7 +46,7 @@
                     <div class="type_formulario" style="padding-left: 180px;">
                         <input type="submit" name="submit" value="Aceptar"  />
                         <div>
-                            <?php //echo anchor('registrar', 'Crear cuenta'); ?>
+                            <?php //echo anchor('register', 'Registrar usuario'); ?>
                         </div>
                     </div>
                     <div class="clear">&nbsp;</div>

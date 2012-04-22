@@ -35,7 +35,7 @@ class UsersModel extends CI_Model {
         $user = $this->db->select('email, name, phone')
                 ->where('email', $email)
                 ->where('password', $password)
-                ->get('users')
+                ->get(USERS)
                 ->row();
 
         return $user;
@@ -55,7 +55,7 @@ class UsersModel extends CI_Model {
     }
 
     /**
-     * Actualiza los  un registro en la tabla.
+     * Actualiza un registro en la tabla.
      * 
      * @author Leonardo
      * @param $fields (Arreglo con los campos y valores a modificar)
