@@ -17,7 +17,7 @@ h1, h2, h3 {
 }
 .title {
     padding-top: 10px;
-    color: #666;
+    color: #FFF;
 }
 #container{
 
@@ -34,14 +34,14 @@ h1, h2, h3 {
 #content {
     width: 1020px;
     margin: 0 auto;
-    /*background-color: gray;*/
-    color: #666;
+    background-color: gray;
+    color: #FFF;
     border: 2px solid black;
 }
 #footer {
     clear: both;
     width: 1020px;
-    height: 40px;
+    height: 60px;
     margin: 0 auto;
     background-color: gray;
     font-size: small;
@@ -51,64 +51,9 @@ h1, h2, h3 {
 }
 #copy {
     float: left;
-    /*padding: 5px 5px;*/
+    padding: 20px 15px;
 }
 .error{
     color: red;
-    font-size: 12px;
-}
-
-.formulario
-{
-    margin:0;
-    width:920px;
-    height:auto;	
-}
-.texto_formulario
-{
-    float:left;
-    margin:0 0 0 0;
-    padding:2px 0 0 0;
-    width:180px;
-    height:auto;
-    color:#555;
-    text-align:right;
-    font-weight:bold;
-    overflow:hidden;
-    /*border: 2px solid black;*/
-}
-.error_formulario
-{
-    float:left;
-    margin:0 0 0 0;
-    padding-left: 190px;
-    width:350px;
-    height:auto;
-    color:#555;
-    text-align:left;
-    font-weight:bold;
-    overflow:hidden;
-    /*border: 2px solid black;*/
-}
-.type_formulario
-{
-    float:left;
-    margin:0 0 0 10px;
-    padding:0;
-    width:700px;
-    height:auto;
-    font-weight:normal;
-    color:#555;
-    overflow:hidden;
-}
-.clear
-{
-    clear:both;
-    display:block;
-    margin:0 0 0 0;
-    padding:0;
-    width:700px;
-    height:20px;
-    line-height:10px;
-    overflow:hidden;
+    font-size: 11px;
 }

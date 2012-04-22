@@ -227,7 +227,7 @@ $config['cache_path'] = '';
   | MUST set an encryption key.  See the user guide for info.
   |
  */
-$config['encryption_key'] = 'sytaJgg5vsH1CKRG5wj63Qo4Vk80RkTN'; // LQ 200120421: Adicionado 'sytaJgg5vsH1CKRG5wj63Qo4Vk80RkTN'
+$config['encryption_key'] = '';
 
 /*
   |--------------------------------------------------------------------------

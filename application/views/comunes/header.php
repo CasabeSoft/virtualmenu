@@ -6,13 +6,7 @@
  * @author Leoanrdo Quintero
  */
 ?>
-
-            <div id="header">
-                Cabecera <a href="/">Inicio</a>
-                <br>
-                <a href="<?php echo site_url('cliente') ?>">Cliente</a>
-                <br>
-                <a href="<?php echo site_url('autenticar') ?>">Login</a>
-                <br>
-                <a href="<?php echo site_url('registrar') ?>">Registrar usuario</a>
-            </div>
+         <div id="header">
+            Cabecera
+            <a href="autenticar">Login</a>
+         </div>
