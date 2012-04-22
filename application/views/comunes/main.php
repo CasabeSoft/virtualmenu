@@ -12,6 +12,9 @@
         <title><?php echo $title; ?></title>
         <meta name="keywords" content="" />
         <meta name="description" content="" />
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/sunny/jquery-ui.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
         <link href="<?php echo base_url(); ?>css/main.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
