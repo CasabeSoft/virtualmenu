@@ -8,7 +8,7 @@
 ?>
 
             <div id="header">
-                Cabecera <a href="/">Inicio</a>
+                Cabecera <a href="<?php echo site_url('customer') ?>">Inicio</a>
                 <br>
                 <a href="<?php echo site_url('usuarios') ?>">Usuarios</a>
                 <br>

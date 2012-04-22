@@ -41,7 +41,16 @@
 $route['default_controller'] = "main";
 $route['404_override'] = '';
 
-$route["autenticar"] = "user/autenticar";
+$route["inicio"] = "main";
+
+$route["usuarios"] = "user";
+$route["autenticar"] = "user/login";
+$route["registrar"] = "user/register";
+$route["salir"] = "user/close";
+
+$route["cliente"] = "customer";
+
+$route["menu/manage"] = "MenuOfTheDayController/index";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
