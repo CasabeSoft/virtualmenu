@@ -17,9 +17,10 @@
     <body>
         <div id="container">
             <?php $this->load->view('comunes/header') ?>
+
             <?php $this->load->view($viewToLoad) ?>
+
             <?php $this->load->view('comunes/footer') ?>
-            
         </div>
     </body>
 </html>

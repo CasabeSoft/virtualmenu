@@ -1,11 +1,15 @@
 <?php
-/**
- * Pagina de inico.
- * 
- * @author Leoanrdo Quintero
- */
+
 ?>
 
-            <div id="content">
-                <h1 class="title">Inicio</h1>
-            </div>
+        <div id="content">
+            <table border='1'>
+        <?php foreach ($users as $user): ?>
+            <tr>
+                <td><?php echo $user['name'] ?></td>
+                <td><?php echo $user['email'] ?></td>
+                <td><?php echo $user['password'] ?></td>
+            </tr>
+        <?php endforeach ?>
+            </table>
+        </div>

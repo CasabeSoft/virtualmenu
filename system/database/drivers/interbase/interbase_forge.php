@@ -21,20 +21,57 @@
  * @copyright	Copyright (c) 2008 - 2012, EllisLab, Inc. (http://ellislab.com/)
  * @license		http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  * @link		http://codeigniter.com
- * @since		Version 1.0
+ * @since		Version 3.0
  * @filesource
  */
 
 /**
- * MS SQL Forge Class
+ * Interbase/Firebird Forge Class
  *
  * @category	Database
  * @author		EllisLab Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_mssql_forge extends CI_DB_forge {
+class CI_DB_interbase_forge extends CI_DB_forge {
 
 	protected $_drop_table	= 'DROP TABLE %s';
+
+	/**
+	 * Create database
+	 *
+	 * @param	string	the database name
+	 * @return	string
+	 */
+	public function create_database($db_name)
+	{
+		// Firebird databases are flat files, so a path is required
+
+		// Hostname is needed for remote access
+		empty($this->db->hostname) OR $db_name = $this->hostname.':'.$db_name;
+
+		return parent::create_database('"'.$db_name.'"');
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Drop database
+	 *
+	 * @param	string	the database name
+	 *		- not used in this driver, the current db is dropped
+	 * @return	bool
+	 */
+	public function drop_database($db_name = '')
+	{
+		if ( ! ibase_drop_db($this->conn_id))
+		{
+			return ($this->db->db_debug) ? $this->db->display_error('db_unable_to_drop') : FALSE;
+		}
+
+		return TRUE;
+	}
+
+	// --------------------------------------------------------------------
 
 	/**
 	 * Create Table
@@ -50,12 +87,7 @@ class CI_DB_mssql_forge extends CI_DB_forge {
 	{
 		$sql = 'CREATE TABLE ';
 
-		if ($if_not_exists === TRUE)
-		{
-			$sql .= 'IF NOT EXISTS ';
-		}
-
-		$sql .= $this->db->escape_identifiers($table).' (';
+		$sql .= $this->db->protect_identifiers($table)."(";
 		$current_field_count = 0;
 
 		foreach ($fields as $field => $attributes)
@@ -131,7 +163,7 @@ class CI_DB_mssql_forge extends CI_DB_forge {
 					$key = array($this->db->protect_identifiers($key));
 				}
 
-				$sql .= ",\n\tFOREIGN KEY (" . implode(', ', $key) . ")";
+				$sql .= ",\n\tUNIQUE (" . implode(', ', $key) . ")";
 			}
 		}
 
@@ -159,19 +191,13 @@ class CI_DB_mssql_forge extends CI_DB_forge {
 	 */
 	protected function _alter_table($alter_type, $table, $column_name, $column_definition = '', $default_value = '', $null = '', $after_field = '')
 	{
-		$sql = 'ALTER TABLE '.$this->db->protect_identifiers($table).' '.$alter_type.' '.$this->db->protect_identifiers($column_name);
+		$sql = 'ALTER TABLE '.$this->db->protect_identifiers($table)." $alter_type ".$this->db->protect_identifiers($column_name);
 
-		// DROP has everything it needs now.
-		if ($alter_type == 'DROP')
-		{
-			return $sql;
-		}
-
-		$sql .= " $column_definition";
+		$sql .= " {$column_definition}";
 
 		if ($default_value != '')
 		{
-			$sql .= " DEFAULT \"$default_value\"";
+			$sql .= " DEFAULT \"{$default_value}\"";
 		}
 
 		if ($null === NULL)
@@ -185,7 +211,7 @@ class CI_DB_mssql_forge extends CI_DB_forge {
 
 		if ($after_field != '')
 		{
-			return $sql.' AFTER '.$this->db->protect_identifiers($after_field);
+			$sql .= ' AFTER ' . $this->db->protect_identifiers($after_field);
 		}
 
 		return $sql;
@@ -194,5 +220,5 @@ class CI_DB_mssql_forge extends CI_DB_forge {
 
 }
 
-/* End of file mssql_forge.php */
-/* Location: ./system/database/drivers/mssql/mssql_forge.php */
+/* End of file interbase_forge.php */
+/* Location: ./system/database/drivers/interbase/interbase_forge.php */
