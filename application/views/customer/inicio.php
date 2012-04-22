@@ -1,11 +1,11 @@
 <?php
 /**
- * Pagina de inico.
+ * Pagina de inico para los clientes.
  * 
  * @author Leoanrdo Quintero
  */
 ?>
 
             <div id="content">
-                <h1 class="title">Inicio</h1>
+                <h1 class="title">Inicio Cliente</h1>
             </div>

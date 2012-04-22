@@ -1,6 +1,6 @@
 <?php
 /**
- * Plantilla principal.
+ * Plantilla Cliente principal.
  * 
  * @author Leonardo Quintero 
  */
@@ -16,9 +16,9 @@
     </head>
     <body>
         <div id="container">
-            <?php $this->load->view('comunes/header') ?>
+            <?php $this->load->view('comunes/headerCustomer') ?>
             <?php $this->load->view($viewToLoad) ?>
-            <?php $this->load->view('comunes/footer') ?>
+            <?php $this->load->view('comunes/footerCustomer') ?>
             
         </div>
     </body>
