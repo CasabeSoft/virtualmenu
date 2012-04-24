@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Pie de la plantilla principal.
+ * Pie de la plantilla para el Cliente.
  * 
  * @author Leoanrdo Quintero
  */

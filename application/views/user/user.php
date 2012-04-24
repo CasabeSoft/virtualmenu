@@ -7,6 +7,11 @@
 ?>
 
                 <h1 class="title">Usuarios</h1>
+                <div style='height:10px;'></div>  
+                <div>
+                    <?php echo $output; ?>
+                </div> 
+                <?php /*
                 <table border='1'>
                     <?php foreach ($users as $user): ?>
 
@@ -17,4 +22,4 @@
                         </tr>
                     <?php endforeach ?>
                         
-                </table>            
+                </table> */           

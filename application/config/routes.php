@@ -38,17 +38,22 @@
 |
 */
 
-$route['default_controller'] = "main";
+$route['default_controller'] = "mainController";
 $route['404_override'] = '';
 
-$route["home"] = "main";
+$route["home"] = "mainController";
 
-$route["users"] = "user";
-$route["login"] = "user/login";
-$route["register"] = "user/register";
-$route["exit"] = "user/close";
+$route["users"] = "administratorController/users";
+$route["login"] = "userController/login";
+$route["register"] = "userController/register";
+$route["exit"] = "userController/close";
 
-//$route["cliente"] = "customer";
+$route["customer"] = "customerController";
+
+$route["manager"] = "managerController";
+
+$route["administrator"] = "administratorController";
+$route["users1"] = "administratorController/users1";
 
 $route["menu/manage"] = "MenuOfTheDayController/index";
 
