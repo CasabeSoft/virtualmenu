@@ -1,6 +1,6 @@
 <?php
 /**
- * Plantilla Cliente principal.
+ * Plantilla principal para los Clientes.
  * 
  * @author Leonardo Quintero 
  */

@@ -68,29 +68,49 @@ class UsersModel extends CI_Model {
         return $this->db->affected_rows();
     }
 
+    /**
+     * Borra un registro en la tabla.
+     * 
+     * @author Leonardo
+     * @param $id (Campo id de la tabla)
+     */
     function deleteRecord($id) {
         $this->db->delete(USERS, array('id' => $id));
 
         return;
     }
-    
+
+    /**
+     * Valida si el usuario existe.
+     * 
+     * @author Leonardo
+     * @param $username 
+     * @return bool  (Si existe retorna FALSE )
+     */
     function checkUser($username) {
         $this->db->where('username', $username);
         $query = $this->db->get(USERS);
         if ($query->num_rows() > 0) {
-            return false;
+            return FALSE;
         } else {
-            return true;
+            return TRUE;
         }
     }
 
+    /**
+     * Valida si el email existe.
+     * 
+     * @author Leonardo
+     * @param $email (Correo del usuario)
+     * @return bool  (Si existe retorna FALSE )
+     */
     function checkEmail($email) {
         $this->db->where('email', $email);
         $query = $this->db->get(USERS);
         if ($query->num_rows() > 0) {
-            return false;
+            return FALSE;
         } else {
-            return true;
+            return TRUE;
         }
     }
 

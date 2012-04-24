@@ -1,16 +1,15 @@
 <?php
 
 /*
- * Cabecera de la plantilla principal.
+ * Cabecera de la plantilla para el Cliente.
  * 
  * @author Leoanrdo Quintero
  */
 ?>
            
-                Cabecera <a href="<?php echo site_url('customer') ?>">Inicio</a>
-                <br>
-                <a href="<?php echo site_url('users') ?>">Usuarios</a>
-                <br>
-                <a href="<?php echo site_url('exit') ?>">Salir</a>
-                <!--br>
-                <a href="<?php //echo site_url('registrar') ?>">Registrar usuario</a-->            
+                <h1>Cabecera para el cliente</h1>
+                <br><br>
+                <a href="/">Inicio</a> | 
+                <a href="<?php echo site_url('#') ?>">Opción1</a> |
+                <a href="<?php echo site_url('#') ?>">Opción2</a> |
+                <a href="<?php echo site_url('exit') ?>">Salir</a>            

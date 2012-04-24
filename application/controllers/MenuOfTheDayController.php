@@ -1,4 +1,5 @@
 <?php
+
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
@@ -8,13 +9,14 @@ if (!defined('BASEPATH'))
  * @author Carlos Bello
  */
 class MenuOfTheDayController extends CI_Controller {
+
     function __construct() {
         parent::__construct();
         $this->load->model('MenusOfTheDayModel');
     }
-    
-    public function index() { 
-        $data = array (
+
+    public function index() {
+        $data = array(
             'title' => 'Menu Virtual - Menú del día',
             'viewToLoad' => 'menu/types/menuOfTheDay',
             'menuType' => $this->MenusOfTheDayModel->getMenuTypeInfo(),
@@ -22,6 +24,7 @@ class MenuOfTheDayController extends CI_Controller {
         );
         $this->load->view('comunes/main', $data);
     }
+
 }
 
 /* End of file MenuOfTheDayController.php */
