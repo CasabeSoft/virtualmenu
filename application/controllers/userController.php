@@ -1,13 +1,13 @@
 <?php
 
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
+
 /**
  * Controlador para la gestión de usuarios.
  * 
  * @author Leoanrdo Quintero
  */
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
-
 class UserController extends CI_Controller {
 
     function __construct() {
@@ -30,7 +30,7 @@ class UserController extends CI_Controller {
         $data['title'] = 'Menu Virtual - Usuarios';
         $data['viewToLoad'] = 'user/user';
         $data['users'] = $this->UsersModel->get_users();
-        $this->load->view('comunes/mainCustomer', $data);
+        $this->load->view('comunes/main', $data);
     }
 
     /**

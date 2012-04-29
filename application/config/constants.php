@@ -47,8 +47,20 @@ define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
  */
 
 define('USERS', 'users');
-
-
+define('CUSTOMERS', 'customers');
+define('CUSTOMERS_BY_PROVIDER', 'customers_by_provider');
+define('GROUPS', 'groups');
+define('GROUP_TYPES', 'group_types');
+define('PROVIDERS', 'providers');
+define('MANAGERS', 'managers');
+define('MANAGERS_BY_PROVIDER', 'managers_by_provider');
+define('PRODUCTS', 'products');
+define('PRODUCTS_BY_MENU', 'products_by_menu');
+define('SECTIONS', 'sections');
+define('SECTION_TYPES', 'section_types');
+define('MENUS', 'menus');
+define('MENU_TYPES', 'menu_types');
+define('MENU_TYPES_BY_PROVIDER', 'menu_types_by_provider');
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

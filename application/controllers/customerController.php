@@ -1,13 +1,13 @@
 <?php
 
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
+
 /**
  * Controlador para los clientes.
  * 
  * @author Leoanrdo Quintero
  */
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
-
 class CustomerController extends CI_Controller {
 
     function __construct() {
