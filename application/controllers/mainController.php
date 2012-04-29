@@ -1,13 +1,13 @@
 <?php
 
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
+
 /**
  * Controlador principal.
  * 
  * @author Leoanrdo Quintero
  */
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
-
 class MainController extends CI_Controller {
     
     function __construct() {
