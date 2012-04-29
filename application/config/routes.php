@@ -44,6 +44,7 @@ $route['404_override'] = '';
 $route["home"] = "mainController";
 
 $route["users"] = "administratorController/users";
+$route["users/(:any)"] = "administratorController/users/$1";
 $route["login"] = "userController/login";
 $route["register"] = "userController/register";
 $route["exit"] = "userController/close";
@@ -54,6 +55,7 @@ $route["manager"] = "managerController";
 
 $route["administrator"] = "administratorController";
 $route["users1"] = "administratorController/users1";
+$route["users1/(:any)"] = "administratorController/users1/$1";
 
 $route["menu/manage"] = "MenuOfTheDayController/index";
 
