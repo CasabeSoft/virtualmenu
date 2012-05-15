@@ -187,7 +187,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `menus`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `menus` (
-  `id` INT(11) NOT NULL ,
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `id_type` INT(11) NOT NULL ,
   `name` VARCHAR(45) NOT NULL ,
   `start_date` DATE NULL DEFAULT NULL ,
@@ -237,7 +237,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `sections`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `sections` (
-  `id` INT(11) NOT NULL ,
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NULL DEFAULT NULL ,
   `order` SMALLINT(6) NULL DEFAULT NULL ,
   `id_section_type` INT(11) NOT NULL ,
