@@ -8,11 +8,10 @@ if (!defined('BASEPATH'))
  * 
  * @author Leoanrdo Quintero
  */
-class MainController extends CI_Controller {
-    
+class MainController extends MY_Controller {
+
     function __construct() {
         parent::__construct();
-        $this->load->model('UsersModel');
     }
 
     /**
@@ -26,12 +25,14 @@ class MainController extends CI_Controller {
      * 		http://virtualmenu.dev/main/index
      */
     public function index() {
-        //$db = new PDO('sqlite:C:\\Users\\carlos\\Documents\\Proyectos\\VirtualMenu\\src\\db\\virtualmenu.sqlite');
-        //$sql = 'SELECT email, name, password FROM users';
+
+        if ($this->providerUriName != DOMAIN_NAME) {
+            redirect('login');
+            exit();
+        }
+
         $data['title'] = 'Menu Virtual - Inicio';
         $data['viewToLoad'] = 'home';
-        //$data['users'] = $db->query($sql);
-        $data['users'] = $this->UsersModel->get_users();
         $this->load->view('comunes/main', $data);
     }
 

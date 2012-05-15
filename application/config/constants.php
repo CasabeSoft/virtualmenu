@@ -62,5 +62,37 @@ define('MENUS', 'menus');
 define('MENU_TYPES', 'menu_types');
 define('MENU_TYPES_BY_PROVIDER', 'menu_types_by_provider');
 
+/*
+  |--------------------------------------------------------------------------
+  | User administrator
+  |--------------------------------------------------------------------------
+  |
+ */
+
+define('EMAIL_ADMINISTRATOR', 'admin@admin.com');
+define('PASSWORD_ADMINISTRATOR', '202cb962ac59075b964b07152d234b70'); //123
+
+/*
+  |--------------------------------------------------------------------------
+  | User rol
+  |--------------------------------------------------------------------------
+  |
+ */
+
+define('ROL_ADMINISTRATOR', 1);
+define('ROL_MANAGER', 2);
+define('ROL_CUSTOMER', 3);
+
+
+/*
+  |--------------------------------------------------------------------------
+  | Domain data
+  |--------------------------------------------------------------------------
+  |
+ */
+
+define('DOMAIN_NAME', 'virtualmenu');
+define('DOMAIN_URL', 'http://virtualmenu.dev');
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

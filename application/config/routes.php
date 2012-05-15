@@ -49,13 +49,18 @@ $route["home"] = "mainController";
 $route["users"] = "userController";
 $route["login"] = "userController/login";
 $route["register"] = "userController/register";
+$route["rememberPassword"] = "userController/rememberPassword";
+$route["changePassword"] = "userController/changePassword";
+$route["contact"] = "userController/contact";
+$route["profile"] = "userController/profile";
+$route["denied"] = "userController/denied";
 $route["exit"] = "userController/close";
 
 $route["customer"] = "customerController";
 
 $route["manager"] = "managerController";
 
-$route["administrator"] = "administratorController/index";
+$route["administrator"] = "administratorController";
 
 $route["administrator/users1"] = "administratorController/users1";
 $route["administrator/users1/:any"] = "administratorController/users1/$1";
@@ -92,6 +97,9 @@ $route["administrator/sections/:any"] = "administratorController/sections/$1";
 
 $route["administrator/section_types"] = "administratorController/sectionTypes";
 $route["administrator/section_types/:any"] = "administratorController/sectionTypes/$1";
+
+$route["manager/products"] = "managerController/products";
+$route["manager/products/:any"] = "managerController/products/$1";
 
 $route["menu/manage"] = "MenuOfTheDayController/index";
 
