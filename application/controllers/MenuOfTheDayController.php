@@ -8,7 +8,7 @@ if (!defined('BASEPATH'))
  *
  * @author Carlos Bello
  */
-class MenuOfTheDayController extends CI_Controller {
+class MenuOfTheDayController extends MY_Controller {
 
     function __construct() {
         parent::__construct();

@@ -24,7 +24,7 @@ class UsersModel extends CI_Model {
     }
 
     /**
-     * Obtener un usuario segun sus datos de autenticacion.
+     * Obtener un usuario según sus datos de autenticación.
      * 
      * @author Leonardo
      * @param $email (Correo del usuario)
@@ -32,13 +32,63 @@ class UsersModel extends CI_Model {
      * @return array  
      */
     public function verifyLogin($email, $password) {
-        $user = $this->db->select('email, name, phone')
+
+        $result = $this->db->select('id, email, name, phone')
                 ->where('email', $email)
                 ->where('password', $password)
+                ->limit(1)
                 ->get(USERS)
                 ->row();
+        return $result;
+    }
 
-        return $user;
+    /**
+     * Obtener si el usuario es un Cliente.
+     * 
+     * @author Leonardo
+     * @param $user_id (Id del usuario)
+     * @return bool  
+     */
+    function IsUserCustomer($user_id) {
+
+        $query = $this->db->select_sum('id')
+                ->where('id', $user_id)
+                ->get(CUSTOMERS);
+
+        if ($query->num_rows() > 0)
+            return ($query->row()->id != 0) ? TRUE : FALSE;
+        return FALSE;
+    }
+
+    /**
+     * Obtener si el usuario es un Gestor.
+     * 
+     * @author Leonardo
+     * @param $user_id (Id del usuario)
+     * @return bool  
+     */
+    function IsUserManager($user_id) {
+
+        $query = $this->db->select_sum('id')
+                ->where('id', $user_id)
+                ->get(MANAGERS);
+
+        if ($query->num_rows() > 0)
+            return ($query->row()->id != 0) ? TRUE : FALSE;
+        return FALSE;
+    }
+
+    /**
+     * Obtener si el usuario es un Administrador.
+     * 
+     * @author Leonardo
+     * @param $mail
+     * @param $password
+     * @return bool  
+     */
+    function IsUserAdministrator($mail, $password) {
+
+        return (EMAIL_ADMINISTRATOR === $mail) and (PASSWORD_ADMINISTRATOR === $password) ? TRUE : FALSE;
     }
 
     /**
@@ -52,6 +102,57 @@ class UsersModel extends CI_Model {
         $this->db->insert(USERS, $fields);
 
         return $this->db->insert_id();
+    }
+
+    /**
+     * Insertar un registro en la tabla.
+     *  
+     * @author Leonardo
+     * @param $fields (Arreglo con los campos a insertar)
+     * @return int (Id del registro insertado)  
+     */
+    function insertUserCustomer($fields) {
+
+        //$this->db->trans_off();
+        $this->db->trans_start();
+
+        try {
+            $fieldsUser = array(
+                'name' => $fields['name'],
+                'phone' => $fields['phone'],
+                'email' => $fields['email'],
+                'password' => $fields['password']
+            );
+            $this->db->insert(USERS, $fieldsUser);
+
+            $idUser = $this->db->insert_id();
+
+            $fieldsCustomer = array(
+                'id' => $idUser,
+                'address' => $fields['address'],
+                'group' => $fields['group']
+            );
+
+            $this->db->insert(CUSTOMERS, $fieldsCustomer);
+
+            $fieldsCustomerProvider = array(
+                'id_customer' => $idUser,
+                'id_provider' => $fields['id_provider'],
+                'since' => $fields['since']
+            );
+
+            $this->db->insert(CUSTOMERS_BY_PROVIDER, $fieldsCustomerProvider);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE) {
+            return FALSE;
+        } else {
+            return $idUser;
+        }
     }
 
     /**
@@ -114,21 +215,37 @@ class UsersModel extends CI_Model {
         }
     }
 
-    /*
-      public function set_news() {
-      $this->load->helper('url');
-
-      $slug = url_title($this->input->post('title'), 'dash', TRUE);
-
-      $data = array(
-      'title' => $this->input->post('title'),
-      'slug' => $slug,
-      'text' => $this->input->post('text')
-      );
-
-      return $this->db->insert('news', $data);
-      }
+    /**
+     * Cambia la contraseña del usuario.
+     * 
+     * @author Leonardo
+     * @param $email
+     * @param $oldPassword
+     * @param $newPassword
+     * @return bool
      */
+    function changePassword($email, $oldPassword, $newPassword) {
+
+        $query = $this->db->select('password')
+                ->where('email', $email)
+                ->limit(1)
+                ->get(USERS);
+
+        $result = $query->row();
+
+        $db_password = $result->password;
+
+        if ($db_password === $oldPassword) {
+
+            $this->db->where('email', $email)
+                    ->update(USERS, array('password' => $newPassword));
+
+            return $this->db->affected_rows() == 1;
+        }
+
+        return FALSE;
+    }
+
 }
 
 ?>
