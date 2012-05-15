@@ -1,0 +1,19 @@
+/* 
+    Document   : main
+    Created on : 14-abr-2012, 22:20:35
+    Author     : Leonardo
+    Description:
+        Definir estilos de la plantilla Principal (main)
+*/
+
+/* sobreescribir ~/css/main.css */
+
+#header {
+    background-color: #99B3FF;
+}
+
+#footer {
+    background-color: #99B3FF;
+}
+
+

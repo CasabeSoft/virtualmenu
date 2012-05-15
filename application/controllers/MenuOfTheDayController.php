@@ -8,7 +8,7 @@ if (!defined('BASEPATH'))
  *
  * @author Carlos Bello
  */
-class MenuOfTheDayController extends CI_Controller {
+class MenuOfTheDayController extends MY_Controller {
 
     function __construct() {
         parent::__construct();
@@ -22,7 +22,7 @@ class MenuOfTheDayController extends CI_Controller {
             'menuTypes' => $this->MenusOfTheDayModel->getMenuTypesInfo(),
             'sections' => $this->MenusOfTheDayModel->getSections(1),
         );
-        $this->load->view('comunes/main', $data);
+        $this->load->view('comunes/mainManager', $data);
     }
 
     public function getProducts() {
