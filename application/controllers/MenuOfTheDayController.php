@@ -19,12 +19,34 @@ class MenuOfTheDayController extends CI_Controller {
         $data = array(
             'title' => 'Menu Virtual - Menú del día',
             'viewToLoad' => 'menu/types/menuOfTheDay',
-            'menuType' => $this->MenusOfTheDayModel->getMenuTypeInfo(),
-            'sections' => $this->MenusOfTheDayModel->getMenuSections()
+            'menuTypes' => $this->MenusOfTheDayModel->getMenuTypesInfo(),
+            'sections' => $this->MenusOfTheDayModel->getSections(1),
         );
         $this->load->view('comunes/main', $data);
     }
 
+    public function getProducts() {
+        echo json_encode($this->MenusOfTheDayModel->getProductsLike($_GET["term"], "id, name AS label, base_price"));
+    }
+    
+    public function getMenusForDate($date) {
+        $menus = $this->MenusOfTheDayModel->getMenusForDate($date);
+        $content = count($menus) > 0
+                ? $this->MenusOfTheDayModel->getMenuContent($menus[0]["id"])
+                : array();
+        echo json_encode(array("date" => $date, "menus" => $menus, "firstMenuContent" => $content));
+    }
+    
+    public function getMenuContent($id) {
+        echo json_encode($this->MenusOfTheDayModel->getMenuContent($id));
+    }
+    
+    public function saveMenuForDate($date) {
+        $menu = $this->input->post("menu");
+        $this->MenusOfTheDayModel->setMenuForDate($date, $menu);
+        echo json_encode($menu);
+    }
+    
 }
 
 /* End of file MenuOfTheDayController.php */
