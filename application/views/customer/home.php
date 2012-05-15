@@ -6,4 +6,4 @@
  */
 ?>
 
-<h1 class="title">Inicio Cliente</h1>
+                <h1 class="title">Inicio Cliente</h1>

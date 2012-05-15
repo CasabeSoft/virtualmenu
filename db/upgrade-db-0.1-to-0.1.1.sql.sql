@@ -6,6 +6,7 @@ ALTER TABLE `customers` MODIFY `address` VARCHAR(255);
 ALTER TABLE `groups` MODIFY `address` VARCHAR(255);
 ALTER TABLE `users` MODIFY `email` VARCHAR(255) NOT NULL;
 ALTER TABLE `providers` MODIFY `email` VARCHAR(255);
+ALTER TABLE `providers` ADD `name_uri` VARCHAR(50) NOT NULL AFTER `web`;
 ALTER TABLE `virtualmenu`.`products` ADD COLUMN `id_provider` INT NOT NULL  AFTER `base_price`;
 ALTER TABLE `virtualmenu`.`products` 
   ADD CONSTRAINT `products_id_provider`

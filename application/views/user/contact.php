@@ -1,6 +1,6 @@
 <?php
 /**
- * Formulario para registrar un usuario nuevo.
+ * Formulario para contactar con el gestor.
  * 
  * @author Leoanrdo Quintero
  */
@@ -22,7 +22,7 @@
                     });
                 </script>
 
-                <h1 class="formTitle">Crear cuenta</h1>
+                <h1 class="formTitle">Contacto</h1>
                 <br>
                 <div class="form">
                     <?php
