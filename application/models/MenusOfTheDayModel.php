@@ -19,6 +19,17 @@ class MenusOfTheDayModel extends MenuModel {
         }
         return $menuTypesInfo;
     }
+    
+    public function getSectionsByMenuType() {
+        $sections = array();
+        foreach ($this->menuTypesId as $menuTypeId) {
+            $sections[$menuTypeId] = $this->getSectionsForMenuType($menuTypeId);
+            for ($i = 0; $i < count($sections[$menuTypeId]); $i++) {
+                $sections[$menuTypeId][$i]['products'] = array();
+            }
+        }
+        return $sections;
+    }
 }
 
 /* End of file MenusOfTheDayModel.php */

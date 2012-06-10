@@ -16,13 +16,31 @@ class MenuOfTheDayController extends MY_Controller {
     }
 
     public function index() {
+        manage();
+    }
+    
+    public function manage() {
         $data = array(
-            'title' => 'Menu Virtual - Menú del día',
-            'viewToLoad' => 'menu/types/menuOfTheDay',
+            'title' => 'Menu Virtual > Menú del día > Gestión',
+            'viewToLoad' => 'menu/types/menuOfTheDayManage',
             'menuTypes' => $this->MenusOfTheDayModel->getMenuTypesInfo(),
-            'sections' => $this->MenusOfTheDayModel->getSections(1),
+            'sectionsByMenuType' => $this->MenusOfTheDayModel->getSectionsByMenuType(),            
         );
         $this->load->view('comunes/mainManager', $data);
+    }
+    
+    public function order() {
+        $data = array(
+            'title' => 'Menu Virtual > Menú del día > Pedidos',
+            'viewToLoad' => 'menu/types/menuOfTheDayOrder',
+            'menuTypes' => $this->MenusOfTheDayModel->getMenuTypesInfo(),
+            'sectionsByMenuType' => $this->MenusOfTheDayModel->getSectionsByMenuType(),            
+        );
+        $this->load->view('comunes/mainManager', $data);
+    }
+    
+    public function getSections() {
+        echo json_encode($this->MenusOfTheDayModel->getSectionsByMenuType());
     }
 
     public function getProducts() {
@@ -31,10 +49,7 @@ class MenuOfTheDayController extends MY_Controller {
     
     public function getMenusForDate($date) {
         $menus = $this->MenusOfTheDayModel->getMenusForDate($date);
-        $content = count($menus) > 0
-                ? $this->MenusOfTheDayModel->getMenuContent($menus[0]["id"])
-                : array();
-        echo json_encode(array("date" => $date, "menus" => $menus, "firstMenuContent" => $content));
+        echo json_encode(array("date" => $date, "menus" => $menus));
     }
     
     public function getMenuContent($id) {
@@ -43,8 +58,13 @@ class MenuOfTheDayController extends MY_Controller {
     
     public function saveMenuForDate($date) {
         $menu = $this->input->post("menu");
-        $this->MenusOfTheDayModel->setMenuForDate($date, $menu);
-        echo json_encode($menu);
+        $menu["id_provider"] =  $this->session->userdata("providerId");
+        $id = $this->MenusOfTheDayModel->setMenuForDate($date, $menu);
+        echo json_encode($id);
+    }
+    
+    public function removeMenu($id) {
+        $this->MenusOfTheDayModel->removeMenu($id);
     }
     
 }
