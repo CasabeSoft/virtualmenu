@@ -46,7 +46,7 @@ class AdministratorController extends MY_Controller {
         $crud = new grocery_CRUD();
 
         //$crud->set_language("french"); 
-        $crud->set_theme('datatables');
+        $crud->set_theme($this->config->item('grocery_crud_theme', 'virtualmenu'));
         $crud->set_table(USERS);
         $crud->set_subject('Usuario');
         $crud->columns('name', 'phone', 'email');
@@ -76,7 +76,7 @@ class AdministratorController extends MY_Controller {
     public function groupTypes() {
         $crud = new grocery_CRUD();
 
-        $crud->set_theme('datatables');
+        $crud->set_theme($this->config->item('grocery_crud_theme', 'virtualmenu'));
         $crud->set_table(GROUP_TYPES);
         $crud->columns('id', 'name', 'description');
         $crud->display_as('id', 'Código')
@@ -95,7 +95,7 @@ class AdministratorController extends MY_Controller {
     public function groups() {
         $crud = new grocery_CRUD();
 
-        $crud->set_theme('datatables');
+        $crud->set_theme($this->config->item('grocery_crud_theme', 'virtualmenu'));
         $crud->set_table(GROUPS);
         $crud->columns('id', 'name', 'address', 'id_type');
         $crud->display_as('id', 'Código')
@@ -116,7 +116,7 @@ class AdministratorController extends MY_Controller {
     public function customers() {
         $crud = new grocery_CRUD();
 
-        $crud->set_theme('datatables');
+        $crud->set_theme($this->config->item('grocery_crud_theme', 'virtualmenu'));
         $crud->set_table(CUSTOMERS);
         $crud->columns('id', 'address', 'group', 'provider');
         $crud->display_as('id', 'Usuario')
@@ -139,7 +139,7 @@ class AdministratorController extends MY_Controller {
     public function managers() {
         $crud = new grocery_CRUD();
 
-        $crud->set_theme('datatables');
+        $crud->set_theme($this->config->item('grocery_crud_theme', 'virtualmenu'));
         $crud->set_table(MANAGERS);
         $crud->columns('id', 'providers');
         $crud->display_as('id', 'Usuario')
@@ -159,7 +159,7 @@ class AdministratorController extends MY_Controller {
     public function providers() {
         $crud = new grocery_CRUD();
 
-        $crud->set_theme('datatables');
+        $crud->set_theme($this->config->item('grocery_crud_theme', 'virtualmenu'));
         $crud->set_table(PROVIDERS);
         $crud->columns('id', 'name', 'email', 'address', 'phone', 'web', 'administrator');
         $crud->display_as('id', 'Código')
@@ -183,7 +183,7 @@ class AdministratorController extends MY_Controller {
     public function products() {
         $crud = new grocery_CRUD();
 
-        $crud->set_theme('datatables');
+        $crud->set_theme($this->config->item('grocery_crud_theme', 'virtualmenu'));
         $crud->set_table(PRODUCTS);
         $crud->columns('id', 'name', 'base_price', 'id_provider');
         $crud->display_as('id', 'Código')
@@ -205,7 +205,7 @@ class AdministratorController extends MY_Controller {
     public function menus() {
         $crud = new grocery_CRUD();
 
-        $crud->set_theme('datatables');
+        $crud->set_theme($this->config->item('grocery_crud_theme', 'virtualmenu'));
         $crud->set_table(MENUS);
         $crud->columns('id', 'id_type', 'name', 'start_date', 'end_date', 'base_price', 'id_provider');
         $crud->display_as('id', 'Código')
@@ -230,7 +230,7 @@ class AdministratorController extends MY_Controller {
     public function menuTypes() {
         $crud = new grocery_CRUD();
 
-        $crud->set_theme('datatables');
+        $crud->set_theme($this->config->item('grocery_crud_theme', 'virtualmenu'));
         $crud->set_table(MENU_TYPES);
         $crud->columns('id', 'name', 'description', 'provider');
         $crud->display_as('id', 'Código')
@@ -251,7 +251,7 @@ class AdministratorController extends MY_Controller {
     public function sections() {
         $crud = new grocery_CRUD();
 
-        $crud->set_theme('datatables');
+        $crud->set_theme($this->config->item('grocery_crud_theme', 'virtualmenu'));
         $crud->set_table(SECTIONS);
         $crud->columns('id', 'name', 'order', 'id_section_type', 'id_menu_type');
         $crud->display_as('id', 'Código')
@@ -274,7 +274,7 @@ class AdministratorController extends MY_Controller {
     public function sectionTypes() {
         $crud = new grocery_CRUD();
 
-        $crud->set_theme('datatables');
+        $crud->set_theme($this->config->item('grocery_crud_theme', 'virtualmenu'));
         $crud->set_table(SECTION_TYPES);
         $crud->columns('id', 'name', 'description');
         $crud->display_as('id', 'Código')

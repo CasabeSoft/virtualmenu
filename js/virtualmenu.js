@@ -16,31 +16,37 @@ $.fn.showTooltip = function(text, /*opt*/ autoDestroy, /*opt*/ showTime) {
     var element = this[0];
     $(element).addClass("qtipAdded");
     $(element).qtip({
-            content: text,
-            style: { 
-                tip: 'leftMiddle',
-                name: 'cream',
-                border: {radius: 5}
-            },
-            position: {
-                corner: {
-                    target: 'rightMiggle',
-                    tooltip: 'leftMiggle'
-                }
-            },
-            show: {ready: true},
-            hide: {
-                event: false,
-                effect: function(api) {
-                    $(this).stop(0, 1).fadeOut(400).queue(function() {
-                        if (autoDestroy)
-                            $(this).qtip("destroy");
-                    })
-                }
+        content: text,
+        style: { 
+            tip: 'leftMiddle',
+            name: 'cream',
+            border: {
+                radius: 5
             }
+        },
+        position: {
+            corner: {
+                target: 'rightMiggle',
+                tooltip: 'leftMiggle'
+            }
+        },
+        show: {
+            ready: true
+        },
+        hide: {
+            event: false,
+            effect: function(api) {
+                $(this).stop(0, 1).fadeOut(400).queue(function() {
+                    if (autoDestroy)
+                        $(this).qtip("destroy");
+                })
+            }
+        }
     });
     if (showTime)
-        setTimeout(function () { $(element).qtip("hide")}, showTime);
+        setTimeout(function () {
+            $(element).qtip("hide")
+        }, showTime);
 }
 
 /**
@@ -48,14 +54,14 @@ $.fn.showTooltip = function(text, /*opt*/ autoDestroy, /*opt*/ showTime) {
  * @description  Inicializa todos los datepicker con los textos en español.
  */ 
 $.datepicker.setDefaults({
-        dateFormat: "yy-mm-dd",
-        dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
-        dayNamesShort: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
-        dayNames: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
-        monthNamesShort: ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
-        monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
-        nextText: "Mes siguiente",
-        prevText: "Mes anterior"
+    dateFormat: "yy-mm-dd",
+    dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+    dayNamesShort: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+    dayNames: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+    monthNamesShort: ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
+    monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
+    nextText: "Mes siguiente",
+    prevText: "Mes anterior"
 });
 
 function Section(id, name, type, order, products, idMenu) {
@@ -82,3 +88,13 @@ function Menu(id, idType, name, basePrice, description, sections) {
     this.sections = sections;    
 }
 
+$(function() {
+    $(".button").button();
+    $("#btnUserArrow").button({
+        text: false,
+        icons: {
+            primary: "ui-icon-triangle-1-s"
+        }
+    });
+    $("#userButton").buttonset();
+});

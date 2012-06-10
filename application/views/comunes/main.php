@@ -13,9 +13,10 @@
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <base href="<?php echo base_url(); ?>" />
-        <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" />
+        <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/cupertino/jquery-ui.css" />
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/virtualmenu.js"></script>
         <link href="css/main.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo $this->theme ?>/css/provider.css" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="<?php echo $this->theme ?>/images/favicon.ico" type="image/x-icon" />

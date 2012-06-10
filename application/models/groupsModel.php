@@ -22,7 +22,7 @@ class GroupsModel extends CI_Model {
                 ->select("id as value, name as label")
                 ->get(GROUPS);
         return $query->result_array();
-    }    
+    }
 
     /**
      * Obtener un registro a partir del id.
@@ -31,8 +31,9 @@ class GroupsModel extends CI_Model {
      * @return array 
      */
     public function getById($id) {
-        $query = $this->db->get_where(GROUPS, array('id' => $id));
-        return $query->result_array();
+        $query = $this->db->limit(1)
+                ->get_where(GROUPS, array('id' => $id));
+        return $query->row();
     }
 
     /**
