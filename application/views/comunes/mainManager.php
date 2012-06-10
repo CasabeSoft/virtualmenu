@@ -4,6 +4,7 @@
  * 
  * @author Leonardo Quintero 
  */
+//1.8.18
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,8 +17,6 @@
         <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" />
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
-        <link href="css/main.css" rel="stylesheet" type="text/css" />
-        <link href="<?php echo $this->theme ?>/css/provider.css" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="<?php echo $this->theme ?>/images/favicon.ico" type="image/x-icon" />
         <?php
         if (isset($css_files)) {
@@ -37,26 +36,9 @@
             endforeach;
         }
         ?>
-        <script type="text/javascript">
-            $(function() {
-                $(".button").button();
-                $("#btnUserArrow").button({
-                    text: false,
-                    icons: {
-                        primary: "ui-icon-triangle-1-s"
-                    }
-                });
-                $("#buttonUser").buttonset();
-
-            });
-        </script>
-        <style>
-            #userMenu { display: none; width: 300px; font-size: 1.2em }
-            #userMenu img { width: 100px; height: 100px; margin: 10px; }
-            #userOptions { float: right; width: 300px;}
-            #buttonUser  { float: right;}
-            #userOptions:hover #userMenu { display: block; position: absolute; }
-        </style>                
+        <script type="text/javascript" src="js/virtualmenu.js"></script>
+        <link href="css/main.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $this->theme ?>/css/provider.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <div id="container">
@@ -76,41 +58,46 @@
                     <?php
                     if (($this->providerUriName != DOMAIN_NAME)) {
                         ?>
-                        <br>
                         <div id="userOptions">
-                            <div id="buttonUser">
+                            <div id="userButton">
                                 <button id="btnUserText"><?php echo $this->session->userdata('email'); ?></button><button id="btnUserArrow">Perfil</button>
                             </div>
                             <div style="clear: both; "></div>
                             <div id="userMenu" class="last ui-widget ui-widget-content ui-corner-all">
                                 <img src="" alt="Foto del usuario"  align="left" />
                                 <p id="userName"><?php echo $this->session->userdata('name'); ?></p>
-                                <p id="email"><?php echo $this->session->userdata('email'); ?></p>
-                                <a href="<?php echo site_url('profile') ?>">Configurar cuenta</a>
+                                <p id="userEmail"><?php echo $this->session->userdata('email'); ?></p>
+                                <a class="button" href="<?php echo site_url('profile') ?>">Configurar cuenta</a>
                                 <dir style="clear: both"></dir>
-                                <div style="background-color: #ddd; height: 60px">
-                                    <br>
-                                    &nbsp;&nbsp;
-                                    <a href="<?php echo site_url('exit') ?>"><input type="button" class="button" value="Cerrar sesión"/></a>
+                                <div id="userMore">
+                                    <a class="button" href="<?php echo site_url('exit') ?>">Cerrar sesión</a>
                                 </div>
                             </div>
                         </div>
                         <dir style="clear: both"></dir>
-                    <?php } ?>
-
-                    <br>
-                    <a href="<?php echo site_url('menu/manage') ?>">Menús</a> |
-                    <a href="<?php echo site_url('manager/products') ?>">Productos</a> |
-                    <a href="<?php echo site_url('#') ?>">Opción1</a> |
-                    <a href="<?php echo site_url('#') ?>">Opción2</a>
+<?php } ?>
+                    <div id="appMenu">
+                        <a class="button" href="<?php echo site_url('menu/manage') ?>">Menús</a>
+                        <a class="button" href="<?php echo site_url('manager/products') ?>">Productos</a>
+                        <a class="button" href="<?php echo site_url('managerController/report1') ?>">Reporte1</a>
+                        <a class="button" href="<?php echo site_url('managerController/report2') ?>">Reporte2</a>
+                        <a class="button" href="<?php echo site_url('managerController/report3') ?>">Reporte3</a>
+                        <a class="button" href="<?php echo site_url('managerController/report4') ?>">Reporte4</a>
+                        <a class="button" href="<?php echo site_url('managerController/report5') ?>">Reporte5</a>
+                        <a class="button" href="<?php echo site_url('managerController/report6') ?>">Reporte6</a>
+                        <a class="button" href="<?php echo site_url('managerController/report7') ?>">Reporte7</a>
+                        <a class="button" href="<?php echo site_url('managerController/report8') ?>">Reporte8</a>
+                        <a class="button" href="<?php echo site_url('managerController/report9') ?>">Reporte9</a>
+                    </div>
                 </div>
             </div>
-            <div id="content">
-                <?php $this->load->view($viewToLoad) ?>
-            </div>
-            <div id="footer">
-                <p id="copy">&copy;2012 Vertul Menu.</p>
-            </div>
         </div>
-    </body>
+        <div id="content">
+<?php $this->load->view($viewToLoad) ?>
+        </div>
+        <div id="footer">
+            <p id="copy">&copy;2012 Vertul Menu.</p>
+        </div>
+    </div>
+</body>
 </html>

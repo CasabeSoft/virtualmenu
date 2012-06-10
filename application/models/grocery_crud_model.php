@@ -32,6 +32,7 @@ class grocery_CRUD_Model extends CI_Model {
     protected $primary_key = null;
     protected $table_name = null;
     protected $relation = array();
+    protected $relation_n_n = array();
 
     function __construct() {
         parent::__construct();
@@ -45,9 +46,10 @@ class grocery_CRUD_Model extends CI_Model {
         if ($this->table_name === null)
             return false;
 
-        $select = "{$this->table_name}.*";
+        $select = "`{$this->table_name}`.*";
 
-        if (!empty($this->relation))
+        //set_relation special queries 
+        if (!empty($this->relation)) {
             foreach ($this->relation as $relation) {
                 list($field_name, $related_table, $related_field_title) = $relation;
                 $unique_join_name = $this->_unique_join_name($field_name);
@@ -56,17 +58,40 @@ class grocery_CRUD_Model extends CI_Model {
                 if (strstr($related_field_title, '{'))
                     $select .= ", CONCAT('" . str_replace(array('{', '}'), array("',COALESCE({$unique_join_name}.", ", ''),'"), str_replace("'", "\\'", $related_field_title)) . "') as $unique_field_name";
                 else
-                    $select .= ", $unique_join_name.$related_field_title as $unique_field_name";
+                    $select .= ", $unique_join_name.$related_field_title AS $unique_field_name";
 
                 if ($this->field_exists($related_field_title))
-                    $select .= ", {$this->table_name}.$related_field_title as '{$this->table_name}.$related_field_title'";
+                    $select .= ", `{$this->table_name}`.$related_field_title AS '`{$this->table_name}`.$related_field_title'";
             }
+        }
+
+        //set_relation_n_n special queries. We prefer sub queries from a simple join for the relation_n_n as it is faster and more stable on big tables.
+        if (!empty($this->relation_n_n)) {
+            $select = $this->relation_n_n_queries($select);
+        }
 
         $this->db->select($select, false);
 
         $results = $this->db->get($this->table_name)->result();
 
         return $results;
+    }
+
+    private function relation_n_n_queries($select) {
+        $this_table_primary_key = $this->get_primary_key();
+        foreach ($this->relation_n_n as $relation_n_n) {
+            list($field_name, $relation_table, $selection_table, $primary_key_alias_to_this_table,
+                    $primary_key_alias_to_selection_table, $title_field_selection_table, $priority_field_relation_table) = array_values((array) $relation_n_n);
+
+            $primary_key_selection_table = $this->get_primary_key($selection_table);
+
+            //Sorry Codeigniter but you cannot help me with the subquery!
+            $select .= ", (SELECT GROUP_CONCAT(DISTINCT $selection_table.$title_field_selection_table) FROM $selection_table "
+                    . "LEFT JOIN $relation_table ON $relation_table.$primary_key_alias_to_selection_table = $selection_table.$primary_key_selection_table "
+                    . "WHERE $relation_table.$primary_key_alias_to_this_table = `{$this->table_name}`.$this_table_primary_key GROUP BY $relation_table.$primary_key_alias_to_this_table) AS $field_name";
+        }
+
+        return $select;
     }
 
     function order_by($order_by, $direction) {
@@ -79,6 +104,14 @@ class grocery_CRUD_Model extends CI_Model {
 
     function or_where($key, $value = NULL, $escape = TRUE) {
         $this->db->or_where($key, $value, $escape);
+    }
+
+    function having($key, $value = NULL, $escape = TRUE) {
+        $this->db->having($key, $value, $escape);
+    }
+
+    function or_having($key, $value = NULL, $escape = TRUE) {
+        $this->db->or_having($key, $value, $escape);
     }
 
     function like($field, $match = '', $side = 'both') {
@@ -94,8 +127,17 @@ class grocery_CRUD_Model extends CI_Model {
     }
 
     function get_total_results() {
-        $this->db->from($this->table_name);
-        return $this->db->count_all_results();
+        //set_relation_n_n special queries. We prefer sub queries from a simple join for the relation_n_n as it is faster and more stable on big tables.
+        if (!empty($this->relation_n_n)) {
+            $select = "{$this->table_name}.*";
+            $select = $this->relation_n_n_queries($select);
+
+            $this->db->select($select, false);
+            return $this->db->get($this->table_name)->num_rows();
+        } else {
+            $this->db->from($this->table_name);
+            return $this->db->get()->num_rows();
+        }
     }
 
     function set_basic_table($table_name = null) {
@@ -127,6 +169,10 @@ class grocery_CRUD_Model extends CI_Model {
         }
 
         return false;
+    }
+
+    function set_relation_n_n_field($field_info) {
+        $this->relation_n_n[$field_info->field_name] = $field_info;
     }
 
     protected function _unique_join_name($field_name) {
@@ -260,7 +306,7 @@ class grocery_CRUD_Model extends CI_Model {
 
     function get_field_types_basic_table() {
         $db_field_types = array();
-        foreach ($this->db->query("SHOW COLUMNS FROM {$this->table_name}")->result() as $db_field_type) {
+        foreach ($this->db->query("SHOW COLUMNS FROM `{$this->table_name}`")->result() as $db_field_type) {
             $type = explode("(", $db_field_type->Type);
             $db_type = $type[0];
 
@@ -358,6 +404,10 @@ class grocery_CRUD_Model extends CI_Model {
 
             return false;
         }
+    }
+
+    function escape_str($value) {
+        return $this->db->escape_str($value);
     }
 
 }

@@ -46,11 +46,26 @@
 	$lang['alert_edit_form']		= 'I dati modificati non possono essere salvati.\\nSei sicuro di voler ritornare alla lista?';
 	$lang['alert_delete']			= 'Sei sicuro di voler eliminare questo record?';
 	
-	$lang['insert_error']			= 'Un errore si � verifica in fase di Inserimento.';
-	$lang['update_error']			= 'Un errore si � verificato in fase di Salvataggio.';
+	$lang['insert_error']			= 'Un errore si e\' verificato in fase di Inserimento.';
+	$lang['update_error']			= 'Un errore si e\' verificato in fase di Salvataggio.';
 	
 	/* Added in version 1.2.1 */
-	$lang['set_relation_title']		= 'Select {field_display_as}';	
+	$lang['set_relation_title']		= 'Scegli {field_display_as}';	
 	$lang['list_record']			= 'Record';
-	$lang['form_inactive']			= 'inactive';
-	$lang['form_active']			= 'active';
+	$lang['form_inactive']			= 'inattivo';
+	$lang['form_active']			= 'attivo';
+	
+	/* Added in version 1.2.2 */
+	$lang['form_save_and_go_back']	= 'Salva e ritorna alla lista';
+	$lang['form_update_and_go_back']= 'Aggiorna e ritorna alla lista';
+
+	/* Upload functionality */
+	$lang['string_delete_file'] 	= "Elimina file";
+	$lang['string_progress'] 		= "Avanzamento: ";
+	$lang['error_on_uploading'] 	= "Si e\' verificato un errore nell\'upload.";
+	$lang['message_promt_delete_file'] 	= "Sei sicuro di voler eliminare questo file?";
+	
+	$lang['error_max_number_of_files'] 	= "Puoi solo caricare un file per volta.";
+	$lang['error_accept_file_types'] 	= "Non hai il permesso per caricare questo tipo di estensione.";
+	$lang['error_max_file_size'] 		= "Il file caricato supera il {max_file_size} che e\' stato specificato.";
+	$lang['error_min_file_size'] 		= "Non puoi caricare un file vuoto.";

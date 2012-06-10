@@ -37,7 +37,7 @@ class UserController extends MY_Controller {
         }
         $data['title'] = 'Menu Virtual - Usuarios';
         $data['viewToLoad'] = 'user/user';
-        $data['users'] = $this->UsersModel->get_users();
+        $data['users'] = $this->UsersModel->getAll();
         $this->load->view('comunes/main', $data);
     }
 
@@ -46,7 +46,6 @@ class UserController extends MY_Controller {
      */
     function login() {
 
-        //$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         //$this->form_validation->set_rules('username', 'Usuario', 'trim|required');
         $this->form_validation->set_rules('email', 'Correo', 'trim|required');
         $this->form_validation->set_rules('password', 'Contreseña', 'required|md5');
@@ -68,6 +67,7 @@ class UserController extends MY_Controller {
                         'id' => 0,
                         'email' => $email,
                         'name' => 'Administrator',
+                        'phone' => 'sn',
                         'providerName' => $this->providerName,
                         'providerId' => $this->providerId,
                         'rol' => '1'
@@ -77,6 +77,7 @@ class UserController extends MY_Controller {
                         'id' => $result->id,
                         'email' => $result->email,
                         'name' => $result->name,
+                        'phone' => $result->phone,
                         'providerName' => $this->providerName,
                         'providerId' => $this->providerId
                     );
@@ -114,8 +115,11 @@ class UserController extends MY_Controller {
                 //}
             } else {
                 // Si no existe el usuario envio el mensaje de error.
-                $data['error'] = 1;
+                $data['error'] = 'Revise los campos por favor. El nombre de usuario o contraseña no son correctos.';
             }
+        }
+        if ($this->session->flashdata('message')) {
+            $data['message'] = $this->session->flashdata('message');
         }
         $data['title'] = 'Menu Virtual - Autenticar';
         $data['viewToLoad'] = 'user/login';
@@ -148,10 +152,11 @@ class UserController extends MY_Controller {
 
         $data['groups'] = json_encode($result);
 
-        //$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-
         $this->form_validation->set_rules('name', 'Nombre', 'trim|required');
-        //$this->form_validation->set_rules('phone', 'Teléfono', 'trim|required');
+        $this->form_validation->set_rules('phone', 'Teléfono', 'trim');
+        $this->form_validation->set_rules('address', 'Dirección', 'trim');
+        $this->form_validation->set_rules('group', 'Grupo', 'trim');
+        $this->form_validation->set_rules('groupName', 'Grupo', 'trim');
         //$this->form_validation->set_rules('username', 'Usuario', 'trim|required|callback__checkUser');
         $this->form_validation->set_rules('email', 'Correo', 'trim|required|valid_email|callback__checkEmail');
         $this->form_validation->set_rules('password', 'Contreseña', 'required|min_length[2]|max_length[20]|md5');
@@ -218,7 +223,7 @@ class UserController extends MY_Controller {
                 // Lo enviamos a la página del cliente.
                 redirect('customer');
             } else {
-                $data['error'] = 1;
+                $data['error'] = 'No se pudo crear la cuenta.';
             }
         }
         $data['title'] = 'Menu Virtual - Registrar';
@@ -238,33 +243,6 @@ class UserController extends MY_Controller {
      */
     function _checkEmail($email) {
         return $this->UsersModel->checkEmail($email);
-    }
-
-    /**
-     * Recordar al usuario su contraseña.
-     */
-    function rememberPassword() {
-
-        //$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-
-        $this->form_validation->set_rules('email', 'Correo', 'required');
-
-        if ($this->form_validation->run() == TRUE) {
-
-            //$email = $this->session->userdata('email');
-
-            $change = $this->UsersModel->changePassword($email, $this->input->post('old_password'), $this->input->post('new_password'));
-
-            if ($change) { //Si la contraseña fue cambiada
-                $data['error'] = 2;
-            } else {
-                $data['error'] = 1;
-            }
-        }
-
-        $data['title'] = 'Menu Virtual - Recordar contraseña';
-        $data['viewToLoad'] = 'user/rememberPassword';
-        $this->load->view('comunes/main', $data);
     }
 
     /**
@@ -288,26 +266,26 @@ class UserController extends MY_Controller {
 
             $change = $this->UsersModel->changePassword($email, $this->input->post('old_password'), $this->input->post('new_password'));
 
-            if ($change) { //Si la contraseña fue cambiada
-                $data['error'] = 2;
+            if ($change) { //Si la contraseña fue cambiada .
+                $data['message'] = 'Contraseña modificada.';
             } else {
-                $data['error'] = 1;
+                $data['error'] = 'No se pudo cambiar la contraseña.';
             }
         }
-        
+
         $rol = $this->session->userdata('rol');
         switch ($rol) {
             case 1:
-                $template =  'comunes/mainAdministrator';
+                $template = 'comunes/mainAdministrator';
                 break;
             case 2:
-                $template =  'comunes/mainManager';
+                $template = 'comunes/mainManager';
                 break;
             case 3:
-                $template =  'comunes/mainCustomer';
+                $template = 'comunes/mainCustomer';
                 break;
             default:
-                $template =  'comunes/main';
+                $template = 'comunes/main';
                 break;
         }
 
@@ -317,26 +295,277 @@ class UserController extends MY_Controller {
     }
 
     function profile() {
-        
+
+        $id = $this->session->userdata('id');       
         $rol = $this->session->userdata('rol');
         switch ($rol) {
             case 1:
-                $template =  'comunes/mainAdministrator';
+                $template = 'comunes/mainAdministrator';
                 break;
             case 2:
-                $template =  'comunes/mainManager';
+                $template = 'comunes/mainManager';
                 break;
             case 3:
-                $template =  'comunes/mainCustomer';
+                $template = 'comunes/mainCustomer';
+                $result = $this->GroupsModel->getAll();
                 break;
             default:
-                $template =  'comunes/main';
+                $template = 'comunes/main';
                 break;
         }
 
+        $this->form_validation->set_rules('name', 'Nombre', 'trim|required');
+        $this->form_validation->set_rules('phone', 'Teléfono', 'trim');
+        if ($rol == ROL_CUSTOMER) {
+            $this->form_validation->set_rules('address', 'Dirección', 'trim');
+            $this->form_validation->set_rules('group', 'Grupo', 'trim');
+            $this->form_validation->set_rules('groupName', 'Grupo', 'trim');
+        }
+        //$this->form_validation->set_rules('username', 'Usuario', 'trim|required|callback__checkUser');
+
+        if ($this->form_validation->run() == TRUE) {
+
+            if ($rol == ROL_CUSTOMER) {
+
+                $fields = array(
+                    // Campos de la tabla USERS
+                    'name' => $this->input->post('name'),
+                    'phone' => $this->input->post('phone'),
+                    //'email' => $this->input->post('email'),
+                    //'password' => $this->input->post('password'),
+                    // Campos del la tabla CUSTOMERS
+                    'address' => $this->input->post('address'),
+                    'group' => $this->input->post('group'),
+                        // Campos de la tabla CUSTOMERS_BY_PROVIDER
+                        //'id_provider' => $this->providerId,
+                        //'since' => date('Y-m-d')
+                );
+
+                $change = $this->UsersModel->updateUserCustomer($fields, array('id' => $id));
+            } else {
+                $fields = array(
+                    // Campos de la tabla USERS
+                    'name' => $this->input->post('name'),
+                    'phone' => $this->input->post('phone'),
+                );
+
+                $change = $this->UsersModel->updateRecord($fields, array('id' => $id));
+            }
+
+            if ($change) {
+                $user = array(
+                    'name' => $this->input->post('name')
+                );
+
+                //..lo guardamos en sesion
+                $this->session->set_userdata($user);
+
+                $data['message'] = 'Datos modificados.';
+            } else {
+                $data['error'] = 'No se pudo modificar los datos.';
+            }
+        }
+
+        $user = $this->UsersModel->getUserCustomerById($id);
+        if ($rol == ROL_CUSTOMER) {            
+            $group = $this->GroupsModel->getById($user->group);
+
+            $data['groupName'] = $group->name;
+            $data['groups'] = json_encode($result);
+        }
         $data['title'] = 'Menu Virtual - Configurar cuenta';
         $data['viewToLoad'] = 'user/profile';
+        $data['user'] = $user;
         $this->load->view($template, $data);
+    }
+
+    /**
+     * Para que el cliente envie correo para contactar con el gestor.
+     */
+    function contact() {
+
+        //$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+        //$this->form_validation->set_rules('email', 'Correo', 'required');
+        $this->form_validation->set_rules('message', 'Mensaje', 'required');
+
+        if ($this->form_validation->run() == TRUE) {
+
+            $this->load->library('email');
+
+            $config = $this->config->item('email', 'virtualmenu');
+
+            $this->email->clear();
+            $this->email->initialize($config);
+            $this->email->set_newline("\r\n");
+
+            $emailFrom = $this->session->userdata('email');
+            $nameFrom = $this->session->userdata('name');
+            $providerId = $this->providerId;
+            $provider = $this->ProvidersModel->getById($providerId);
+            $emailTo = $provider->email;
+            $data = array(
+                'userName' => $nameFrom,
+                'userEmail' => $emailFrom,
+                'userPhone' => $this->session->userdata('phone'),
+                'userMessage' => $this->input->post('message')
+            );
+            $message = $this->load->view('email/contactToManeger', $data, true);
+            //$message = $this->input->post('message');
+
+            $this->email->from($emailFrom, $nameFrom);
+            $this->email->to($emailTo);
+            $this->email->subject('Formulario de contacto de Menu Virtual');
+            $this->email->message($message);
+
+            if ($this->email->send()) {
+                $data['message'] = 'Se ha enviado el correo.';
+            } else {
+                $data['error'] = 'No se ha podido enviar el correo.';
+            }
+
+            //echo $this->email->print_debugger();
+        }
+
+        $data['title'] = 'Menu Virtual - Contactar';
+        $data['viewToLoad'] = 'user/contact';
+        $this->load->view('comunes/mainCustomer', $data);
+    }
+
+    /**
+     * Recordar al usuario su contraseña.
+     */
+    function rememberPassword() {
+
+        $this->form_validation->set_rules('email', 'Correo', 'required');
+
+        if ($this->form_validation->run() == TRUE) {
+
+            $emailTo = $this->input->post('email');
+
+            $user = $this->UsersModel->getUserByEmail($emailTo);
+
+            if (!is_object($user)) {
+                //$this->set_error('password_change_unsuccessful');
+                return FALSE;
+            }
+
+            $newCode = $this->UsersModel->resetPassword($user->email);
+
+            if ($newCode) {
+
+                $this->load->library('email');
+
+                $config = $this->config->item('email', 'virtualmenu');
+
+                $providerId = $this->providerId;
+                $provider = $this->ProvidersModel->getById($providerId);
+
+                $data = array(
+                    'userName' => $user->name,
+                    'passwordCode' => $newCode
+                );
+
+                $message = $this->load->view('email/rememberPassword', $data, true);
+
+                $this->email->clear();
+                $this->email->initialize($config);
+                $this->email->set_newline("\r\n");
+                $this->email->from($provider->email, site_url());
+                $this->email->to($emailTo);
+                $this->email->subject(site_url() . ' - Restablecer contraseña');
+                $this->email->message($message);
+
+                if ($this->email->send()) {
+                    $data['message'] = 'Se ha enviado un correo para restablecer su contraseña.';
+                } else {
+                    $data['error'] = 'No se ha podido enviar el correo.';
+                }
+
+                //echo $this->email->print_debugger();
+            }
+        }
+        if ($this->session->flashdata('error')) {
+            $data['error'] = $this->session->flashdata('error');
+        }
+
+        $data['title'] = 'Menu Virtual - Recordar contraseña';
+        $data['viewToLoad'] = 'user/rememberPassword';
+        $this->load->view('comunes/main', $data);
+    }
+
+    /**
+     * Restablecer la contraseña del usuario.
+     * 
+     * @author Leonardo
+     * @param $code
+     * @return void
+     */
+    function resetPassword() {
+
+        $code = $this->uri->segment(2);
+        //echo 'code: ' . $code . $this->uri->segment(2);
+        //exit();
+        $reset = $this->resetPasswordComplete($code);
+
+        if ($reset) {
+            $this->session->set_flashdata('message', 'Nueva contraseña enviada a su cuenta de correo');
+            redirect('login', 'refresh');
+        } else {
+            $this->session->set_flashdata('error', 'No se ha podido crear la nueva contraseña.');
+            redirect('rememberPassword', 'refresh');
+        }
+    }
+
+    /**
+     * Enviar correo con el codogo para restablecer la contraseña 
+     *
+     * @author Leonardo
+     * @param $code
+     * @return void
+     * */
+    public function resetPasswordComplete($code) {
+
+        $user = $this->UsersModel->getUserByCode($code);
+
+        if (!is_object($user)) {
+            return FALSE;
+        }
+
+        $newPassword = $this->UsersModel->resetPasswordComplete($code);
+
+        if ($newPassword) {
+
+            $this->load->library('email');
+
+            $providerId = $this->providerId;
+            $provider = $this->ProvidersModel->getById($providerId);
+
+            $data = array(
+                'userName' => $user->name,
+                'newPassword' => $newPassword
+            );
+
+            $message = $this->load->view('email/newPassword', $data, true);
+
+            $config = $this->config->item('email', 'virtualmenu');
+
+            $this->email->clear();
+            $this->email->initialize($config);
+            $this->email->set_newline("\r\n");
+            $this->email->from($provider->email, site_url());
+            $this->email->to($user->email);
+            $this->email->subject(site_url() . ' - Nueva contraseña');
+            $this->email->message($message);
+
+            //echo $this->email->print_debugger();
+
+            if ($this->email->send()) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        }
+        return FALSE;
     }
 
 }
