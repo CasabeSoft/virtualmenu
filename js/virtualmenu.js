@@ -64,10 +64,10 @@ $.datepicker.setDefaults({
     prevText: "Mes anterior"
 });
 
-function Section(id, name, type, order, products, idMenu) {
+function Section(id, name, idType, order, products, idMenu) {
     this.id = id;
     this.name = name;
-    this.type = type;
+    this.id_type = idType;
     this.order = order;
     this.products = products;
     this.id_menu = idMenu;
@@ -85,7 +85,16 @@ function Menu(id, idType, name, basePrice, description, sections) {
     this.name = name;
     this.base_price = basePrice;
     this.description = description;
-    this.sections = sections;    
+    this.sections = sections;
+    
+    this.clone = function (deep) {
+        deep = deep || false;
+        return $.extend(deep, {}, this)
+    }
+}
+
+Menu.EMPTY = function () {
+    return new Menu(0, null, "", "", "", []);    
 }
 
 $(function() {

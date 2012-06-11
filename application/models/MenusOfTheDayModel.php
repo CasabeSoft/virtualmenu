@@ -6,7 +6,7 @@ require_once 'MenuModel.php';
  * @author carlos
  */
 class MenusOfTheDayModel extends MenuModel {
-    var $menuTypesId = array(1, 2);     // TODO: Leer desde la tabla en la BBDD
+    var $menuTypesId = array(1, 3);     // TODO: Leer desde la tabla en la BBDD
     
     public function __construct() {
         parent::__construct();
@@ -18,6 +18,17 @@ class MenusOfTheDayModel extends MenuModel {
             $menuTypesInfo[] = $this->getMenuTypeInfo($menuTypeId);
         }
         return $menuTypesInfo;
+    }
+    
+    public function getSectionsByMenuType() {
+        $sections = array();
+        foreach ($this->menuTypesId as $menuTypeId) {
+            $sections[$menuTypeId] = $this->getSectionsForMenuType($menuTypeId);
+            for ($i = 0; $i < count($sections[$menuTypeId]); $i++) {
+                $sections[$menuTypeId][$i]['products'] = array();
+            }
+        }
+        return $sections;
     }
 }
 

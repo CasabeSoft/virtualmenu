@@ -102,7 +102,8 @@ $route["administrator/section_types/:any"] = "administratorController/sectionTyp
 $route["manager/products"] = "managerController/products";
 $route["manager/products/:any"] = "managerController/products/$1";
 
-$route["menu/manage"] = "MenuOfTheDayController/index";
+$route["menu/manage"] = "MenuOfTheDayController/manage";
+$route["menu/order"] = "MenuOfTheDayController/order";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
