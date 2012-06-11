@@ -79,15 +79,8 @@
                     <div id="appMenu">
                         <a class="button" href="<?php echo site_url('menu/manage') ?>">Menús</a>
                         <a class="button" href="<?php echo site_url('manager/products') ?>">Productos</a>
-                        <a class="button" href="<?php echo site_url('managerController/report1') ?>">Reporte1</a>
-                        <a class="button" href="<?php echo site_url('managerController/report2') ?>">Reporte2</a>
-                        <a class="button" href="<?php echo site_url('managerController/report3') ?>">Reporte3</a>
-                        <a class="button" href="<?php echo site_url('managerController/report4') ?>">Reporte4</a>
-                        <a class="button" href="<?php echo site_url('managerController/report5') ?>">Reporte5</a>
-                        <a class="button" href="<?php echo site_url('managerController/report6') ?>">Reporte6</a>
-                        <a class="button" href="<?php echo site_url('managerController/report7') ?>">Reporte7</a>
-                        <a class="button" href="<?php echo site_url('managerController/report8') ?>">Reporte8</a>
-                        <a class="button" href="<?php echo site_url('managerController/report9') ?>">Reporte9</a>
+                        <a class="button" href="<?php echo site_url('#') ?>">Opción 1</a>
+                        <a class="button" href="<?php echo site_url('#') ?>">Opción 2</a>
                     </div>
                 </div>
             </div>
