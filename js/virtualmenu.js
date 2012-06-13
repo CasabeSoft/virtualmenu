@@ -90,3 +90,11 @@ function Menu(id, idType, name, basePrice, description, sections) {
 Menu.EMPTY = function () {
     return new Menu(0, null, "", "", "", []);    
 }
+
+function Order(id, idMenu, cost, comments, products) {
+  this.id = id;
+  this.id_menu = idMenu;
+  this.cost = cost;
+  this.comments = comments;
+  this.products = products; 
+}
