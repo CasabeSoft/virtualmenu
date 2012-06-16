@@ -75,5 +75,12 @@
                 <p class="alt prepend-1 prepend-top">&copy;2012 Vertul Menu.</p>
             </div>
         </div>
-    </body>
+        <div id="content">
+<?php $this->load->view($viewToLoad) ?>
+        </div>
+        <div id="footer">
+            <p id="copy">&copy;2012 Vertul Menu.</p>
+        </div>
+    </div>
+</body>
 </html>
