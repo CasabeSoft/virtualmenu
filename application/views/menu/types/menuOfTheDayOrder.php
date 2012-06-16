@@ -21,6 +21,7 @@
     var menuTypes = <?php echo json_encode($menuTypes) ?>;
     var sectionsByMenuType = <?php echo json_encode($sectionsByMenuType) ?>;
     var menus = [];
+    var orders = [];
     var selectedMenuIndex = 0;
     var currentMenu = Menu.EMPTY();
     
@@ -104,8 +105,11 @@
         $.link.menuListTemplate(menus, "#lMenus");
         if (menus.length > 0) {
             $("#lMenus input:first").click();
-        } else
+            $("#sNoMenuMessage").hide();
+        } else {
             initMenu(Menu.EMPTY());
+            $("#sNoMenuMessage").show();
+        }
         /*
         menus = newMenus;
         $("#lMenus").html($("#menuListTemplate" ).render(menus));
@@ -312,13 +316,9 @@
     });
 </script>
 <style type="text/css">
-    .description { font-size: 1.2em; padding: 10pt}
-    #menu { position: relative; }
-    #configPannel { float: left; width: 20%}
-    #menuPreview { float: left; margin-left: 50px; width: 50%; margin-top: 10px;}
-    #menuActions { float: left; margin-left: 50px; width: 20%; }
+    .description { padding: 10pt}
     .products, #lMenus { list-style-type: none; margin: 0; padding: 0;  }
-    #menuPreview .products li, #lMenus li { margin: 0 3px 3px 3px; padding: 0.4em; font-size: 1.4em; height: 18px; position: relative; }
+    #menuPreview .products li, #lMenus li { margin: 0 3px 3px 3px; padding: 0.4em; height: 18px; position: relative; }
     #menuPreview .products li.selected, #lMenus li.selected { background-color: #edf3f3; }
     .newProductName { width: 70%}
     .newProductPrice { width: 10%}
@@ -332,10 +332,10 @@
     #configPannel textarea { min-height: 60px; max-width: 100%; }
     .sectionType1 .addZone .newProductPrice { visibility: hidden }
     #menuListTemplate, #menuListTemplate, #sectionProductsTemplate, #previewSectionsTemplate, #previewProductsTemplate { display: none }
-    #tMenuDescription { width: 100% }
+    #menu label { font-weight: normal; }
 </style>
-<div id="menu">
-    <div id="configPannel">
+<div id="menu" class="prepend-0_1 prepend-top">
+    <div id="configPannel" class="span-6 colborder">
         <div id="calendar"></div>
         <ul id="lMenus">
         </ul>
@@ -357,8 +357,8 @@
             <textarea id="tMenuDescription" title="Descripción del menú" data-link="description" readonly ></textarea>
         </div>
     </div>
-    <div id="menuPreview">
-        <h1 id="hMenuName"><span data-link="name"/></h1>
+    <h1 id="hMenuName" class="span-16 last"><span data-link="name"/></h1>
+    <div id="menuPreview" class="span-8 colborder">
         <span id="sNoMenuMessage">No hay ningún menú planificado para este día.</span>
         <div id="previewSections"></div>
         <script id="previewSectionsTemplate" type="text/x-jsrender">
@@ -375,7 +375,7 @@
             </li>
         </script>
     </div>
-    <div id="menuActions" class="ui-widget">
+    <div id="menuActions" class="ui-widget span-7 last">
         <fieldset>
             <legend>Reserva</legend>
             <label for="finalPrice">Precio</label>

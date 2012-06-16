@@ -16,7 +16,7 @@ class MenuOfTheDayController extends MY_Controller {
     }
 
     public function index() {
-        manage();
+        $this->manage();
     }
     
     public function manage() {

@@ -15,12 +15,21 @@
                 <h1 class="formTitle">Iniciar sesión</h1>
                 <br>
                 <div class="form">
-
                     <?php
-                    if (isset($error) && $error == 1) {
+                    if (isset($error)) {
                         ?>   
                         <div class="formError">
-                            Revise los campos por favor. El nombre de usuario o contraseña no son correctos.
+                            <?php echo $error; ?>            
+                        </div>
+                        <div class="formClear">&nbsp;</div>
+                        <?php
+                    }
+                    ?>
+                    <?php
+                    if (isset($message)) {
+                        ?>   
+                        <div class="formMessagge">
+                            <?php echo $message; ?>
                         </div>
                         <div class="formClear">&nbsp;</div>
                         <?php
@@ -29,21 +38,21 @@
                     <form action="<?php echo site_url('login') ?>" method="post" accept-charset="utf-8" class="formLogin" id="formLogin">
                         <!--div class="formLabel"><label for="username">Usuario:</label></div>
                         <div class="formData">                 
-                            <input type="text" name="username" value="<?php //echo set_value('username');   ?>" id="username" maxlength="50" size="50" style="width:50%"  />
+                            <input type="text" name="username" value="<?php //echo set_value('username');      ?>" id="username" maxlength="50" style="width:50%"  />
                         </div>
-                        <div class="formError"><?php //echo form_error('username');   ?></div>
+                        <div class="formError"><?php //echo form_error('username');      ?></div>
                         <div class="formClear">&nbsp;</div-->
 
                         <div class="formLabel"><label for="email">Correo:</label></div>
                         <div class="formData">                 
-                            <input type="text" name="email" value="<?php echo set_value('email'); ?>" id="email" maxlength="100" size="50" style="width:50%"  />
+                            <input type="text" name="email" value="<?php echo set_value('email'); ?>" id="email" maxlength="255" style="width:50%"  />
                         </div>
                         <div class="formError"><?php echo form_error('email'); ?></div>
                         <div class="formClear">&nbsp;</div>
 
                         <div class="formLabel"><label for="password">Contraseña:</label></div>
                         <div class="formData">                 
-                            <input type="password" name="password" value="" id="password" maxlength="50" size="50" style="width:50%"  />
+                            <input type="password" name="password" value="" id="password" maxlength="32" style="width:50%"  />
                         </div> 
                         <div class="formError"><?php echo form_error('password'); ?></div>  
                         <div class="formClear">&nbsp;</div>

@@ -16,20 +16,20 @@
                 <br>
                 <div class="form">
                     <?php
-                    if (isset($error) && $error == 1) {
+                    if (isset($error)) {
                         ?>   
                         <div class="formError">
-                            No se pudo cambiar la contraseña. Por favor intenta nuevamente, si el error continúa debe contactar con el servicio técnico.
+                            <?php echo $error ?>
                         </div>
                         <div class="formClear">&nbsp;</div>
                         <?php
                     }
                     ?>
                     <?php
-                    if (isset($error) && $error == 2) {
+                    if (isset($message)) {
                         ?>   
                         <div class="formMessagge">
-                            Contraseña modificada.
+                            <?php echo $message ?>
                         </div>
                         <div class="formClear">&nbsp;</div>
                         <?php
@@ -39,21 +39,21 @@
 
                         <div class="formLabel"><label for="old_password">Contraseña actual:</label></div>
                         <div class="formData">                 
-                            <input type="password" name="old_password" value="" id="old_password" maxlength="50" size="50" style="width:50%"  />
+                            <input type="password" name="old_password" value="" id="old_password" maxlength="32" style="width:50%"  />
                         </div>
                         <div class="formError"><?php echo form_error('old_password'); ?></div>
                         <div class="formClear">&nbsp;</div>
 
                         <div class="formLabel"><label for="new_password">Nueva contraseña:</label></div>
                         <div class="formData">                 
-                            <input type="password" name="new_password" value="" id="new_password" maxlength="50" size="50" style="width:50%"  />
+                            <input type="password" name="new_password" value="" id="new_password" maxlength="32" style="width:50%"  />
                         </div> 
                         <div class="formError"><?php echo form_error('new_password'); ?></div>  
                         <div class="formClear">&nbsp;</div>
 
                         <div class="formLabel"><label for="new_confirm">Repetir nueva contraseña:</label></div>
                         <div class="formData">                 
-                            <input type="password" name="new_confirm" value="" id="new_confirm" maxlength="50" size="50" style="width:50%"  />
+                            <input type="password" name="new_confirm" value="" id="new_confirm" maxlength="32" style="width:50%"  />
                         </div> 
                         <div class="formError"><?php echo form_error('new_confirm'); ?></div>  
                         <div class="formClear">&nbsp;</div>
