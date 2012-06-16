@@ -6,6 +6,5 @@
  * @author Leoanrdo Quintero
  */
 ?>
-            
-                <p id="copy">&copy;2012 Vertul Menu.</p>
-            
+           
+<p class="alt prepend-1 prepend-top" >&copy;2012 Vertul Menu.</p>                        

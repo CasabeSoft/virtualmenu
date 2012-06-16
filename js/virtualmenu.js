@@ -3,47 +3,6 @@
  */
 
 /**
- * @description Extensión a jQuery que asocia a la derecha de un elemento un  
- * tooltip que podría autoocultarse y autodestrirse
- * @param text Texto a mostrar en el tooltip
- * @param autoDestroy Booleano (opcional) que inidca si el tooltipo se 
- *        autodestruirá, una vez se haya ocultado.
- * @param showTime Tiempo (opcional) que deberá mostrarse el tooltip antes de 
- *        ocultarse automáticamente. Si este parámetro no se especifica el 
- *        tooltip no se ocultará automáticamente.
- */
-$.fn.showTooltip = function(text, /*opt*/ autoDestroy, /*opt*/ showTime) {
-    var element = this[0];
-    $(element).addClass("qtipAdded");
-    $(element).qtip({
-            content: text,
-            style: { 
-                tip: 'leftMiddle',
-                name: 'cream',
-                border: {radius: 5}
-            },
-            position: {
-                corner: {
-                    target: 'rightMiggle',
-                    tooltip: 'leftMiggle'
-                }
-            },
-            show: {ready: true},
-            hide: {
-                event: false,
-                effect: function(api) {
-                    $(this).stop(0, 1).fadeOut(400).queue(function() {
-                        if (autoDestroy)
-                            $(this).qtip("destroy");
-                    })
-                }
-            }
-    });
-    if (showTime)
-        setTimeout(function () {$(element).qtip("hide")}, showTime);
-}
-
-/**
  *
  * @description  Inicializa todos los datepicker con los textos en español.
  */ 
@@ -56,6 +15,18 @@ $.datepicker.setDefaults({
         monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
         nextText: "Mes siguiente",
         prevText: "Mes anterior"
+});
+
+$(function(){
+    $("ul.dropdown li").hover(function(){    
+        $(this).addClass("hover");
+        $('ul:first',this).css('visibility', 'visible');
+    
+    }, function(){    
+        $(this).removeClass("hover");
+        $('ul:first',this).css('visibility', 'hidden');    
+    });    
+    $("ul.dropdown li ul li:has(ul)").find("a:first").append(" &raquo; ");
 });
 
 function Section(id, name, idType, order, products, idMenu) {
@@ -91,10 +62,21 @@ Menu.EMPTY = function () {
     return new Menu(0, null, "", "", "", []);    
 }
 
-function Order(id, idMenu, cost, comments, products) {
+function Order(id, menu, comments, products) {
   this.id = id;
-  this.id_menu = idMenu;
-  this.cost = cost;
+  this.menu = menu;
   this.comments = comments;
   this.products = products; 
+
+  this.getFinalPrice() = function () {
+      var extras = 0;
+      $.each(products, function (index, item) {
+          extras += item.price;
+    });
+      return menu.base_price + extras;      
+  };
 }
+
+$(function() {
+    $(".button").button();
+});

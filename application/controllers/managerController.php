@@ -28,18 +28,18 @@ class ManagerController extends MY_Controller {
     public function index() {
         redirect('menu/manage');
         exit();
-            
+
         $data['title'] = 'Menu Virtual - Inicio Gestor';
         $data['viewToLoad'] = 'manager/home';
         $this->load->view('comunes/mainManager', $data);
     }
-    
+
     public function products() {
         $this->load->library('grocery_CRUD');
-        
+
         $crud = new grocery_CRUD();
 
-        $crud->set_theme('datatables');
+        $crud->set_theme($this->config->item('grocery_crud_theme', 'virtualmenu'));
         $crud->set_table(PRODUCTS);
         $crud->columns('id', 'name', 'base_price');
         $crud->display_as('id', 'Código')
@@ -47,7 +47,7 @@ class ManagerController extends MY_Controller {
                 ->display_as('base_price', 'Precio Base');
         $crud->set_subject('Producto');
         $crud->fields('name', 'base_price', 'id_provider');
-        $crud->change_field_type('id_provider','invisible');
+        $crud->change_field_type('id_provider', 'invisible');
         $crud->callback_before_insert(array($this, 'provider_callback'));
         $crud->required_fields('name');
         $data = $crud->render();
@@ -57,13 +57,13 @@ class ManagerController extends MY_Controller {
         $data->viewToLoad = 'manager/main';
         $this->load->view('comunes/mainManager', $data);
     }
-    
+
     function provider_callback($post_array) {
         $post_array['id_provider'] = $this->providerId;
 
         return $post_array;
     }
-    
+
 }
 
 /* End of file main.php */

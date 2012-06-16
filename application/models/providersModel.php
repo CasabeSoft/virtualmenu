@@ -27,8 +27,9 @@ class ProvidersModel extends CI_Model {
      * @return array 
      */
     public function getById($id) {
-        $query = $this->db->get_where(PROVIDERS, array('id' => $id));
-        return $query->result_array();
+        $query = $this->db->limit(1)
+                ->get_where(PROVIDERS, array('id' => $id));
+        return $query->row();
     }
 
     /**
@@ -38,7 +39,8 @@ class ProvidersModel extends CI_Model {
      * @return int  
      */
     public function getByUriName($nameUri) {
-        $query = $this->db->get_where(PROVIDERS, array('name_uri' => $nameUri))
+        $query = $this->db->limit(1)
+                ->get_where(PROVIDERS, array('name_uri' => $nameUri))
                 ->row();
 
         return $query;

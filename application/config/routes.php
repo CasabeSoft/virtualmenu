@@ -51,6 +51,7 @@ $route["login"] = "userController/login";
 $route["register"] = "userController/register";
 $route["rememberPassword"] = "userController/rememberPassword";
 $route["changePassword"] = "userController/changePassword";
+$route["resetPassword/:any"] = "userController/resetPassword/$1";
 $route["contact"] = "userController/contact";
 $route["profile"] = "userController/profile";
 $route["denied"] = "userController/denied";

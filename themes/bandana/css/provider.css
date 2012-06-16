@@ -8,12 +8,64 @@
 
 /* sobreescribir ~/css/main.css */
 
+
+body { background-color: black; background-image: url('../images/background.jpg'); background-repeat: repeat; background-position: top center; background-attachment: scroll; }
+.container { background-color: white }
+
 #header {
-    background-color: #99B3FF;
+    background-image: url('../images/header.jpg'); background-repeat: no-repeat; background-position: top center; background-attachment: scroll;
+    background-color: #6CA6D1;
 }
 
 #footer {
-    background-color: #99B3FF;
+    background-image: url('../images/header.jpg'); background-repeat: no-repeat; background-position: bottom center; background-attachment: scroll;
+    background-color: #6CA6D1;
 }
 
+/*
+ * Colores para el Grocery Crud tema 'datatables'
+*/
 
+/* filas */
+tr.odd {
+    background-color: #f7f7f7;
+}
+
+tr.even {
+    background-color: #fff;
+}
+
+/* Columna ordenada */
+tr.odd td.sorting_1 {
+    background-color: #e3e3e3;
+}
+
+tr.even td.sorting_1 {
+    background-color: #f3f3f3;
+}
+
+/*
+ * Colores para el Grocery Crud tema 'flexigrid'
+*/
+.flexigrid div.bDiv {
+    background: #fff;
+}
+
+.flexigrid tr td.sorted {
+    background: #f3f3f3;
+    border-right:1px solid #ddd;
+    border-bottom:1px solid #f3f3f3;
+}
+.flexigrid tr.erow td {
+    background: #f7f7f7;
+    border-bottom:1px solid #f7f7f7;
+}
+.flexigrid tr.erow td.sorted {
+    background: #e3e3e3;
+    border-bottom:1px solid #e3e3e3;
+}
+.flexigrid div.bDiv tr:hover td,.flexigrid div.bDiv tr:hover td.sorted,.flexigrid div.bDiv tr.trOver td.sorted,.flexigrid div.bDiv tr.trOver td {
+    background: #d9ebf5;
+    border-left:1px solid #eef8ff;
+    border-bottom:1px dotted #a8d8eb;
+}

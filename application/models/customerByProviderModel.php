@@ -29,8 +29,10 @@ class CustomerByProviderModel extends CI_Model {
      * @return array 
      */
     public function getById($id) {
-        $query = $this->db->get_where(CUSTOMERS_BY_PROVIDER, array('id' => $id));
-        return $query->result_array();
+        $query = $this->db->limit(1)
+                ->get_where(CUSTOMERS_BY_PROVIDER, array('id' => $id))
+                ->row();
+        return $query;
     }
     
     /* SELECT *

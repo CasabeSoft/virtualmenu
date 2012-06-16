@@ -4,8 +4,8 @@
 	$this->set_css('assets/grocery_crud/themes/datatables/css/datatables.css');
 	$this->set_js('assets/grocery_crud/themes/flexigrid/js/jquery.form.js');	
 	$this->set_js('assets/grocery_crud/themes/datatables/js/datatables-edit.js');
-	$this->set_css('assets/grocery_crud/css/ui/simple/jquery-ui-1.8.10.custom.css');
-	$this->set_js('assets/grocery_crud/js/jquery_plugins/jquery-ui-1.8.10.custom.min.js');	
+	//$this->set_css('assets/grocery_crud/css/ui/simple/jquery-ui-1.8.10.custom.css');
+	//$this->set_js('assets/grocery_crud/js/jquery_plugins/jquery-ui-1.8.10.custom.min.js');	
 ?>
 <script type='text/javascript'>
 	var base_url = '<?php echo base_url();?>';
