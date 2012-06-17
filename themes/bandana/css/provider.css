@@ -9,8 +9,15 @@
 /* sobreescribir ~/css/main.css */
 
 
-body { background-color: black; background-image: url('../images/background.jpg'); background-repeat: repeat; background-position: top center; background-attachment: scroll; }
-.container { background-color: white }
+body { 
+    background-color: black; background-image: url('../images/background.jpg'); 
+    background-repeat: repeat; 
+    background-position: top center; 
+    background-attachment: scroll; 
+}
+.container { 
+    background-color: white 
+}
 
 #header {
     background-image: url('../images/header.jpg'); background-repeat: no-repeat; background-position: top center; background-attachment: scroll;
@@ -20,6 +27,10 @@ body { background-color: black; background-image: url('../images/background.jpg'
 #footer {
     background-image: url('../images/header.jpg'); background-repeat: no-repeat; background-position: bottom center; background-attachment: scroll;
     background-color: #6CA6D1;
+}
+
+#footer p {
+    color: #000;
 }
 
 /*
@@ -69,3 +80,295 @@ tr.even td.sorting_1 {
     border-left:1px solid #eef8ff;
     border-bottom:1px dotted #a8d8eb;
 }
+
+
+/* LQ 20120617: Menu styles */
+/* begin Menu */
+/* menu structure */
+
+ul.hmenu a, ul.hmenu a:link, ul.hmenu a:visited, ul.hmenu a:hover 
+{
+   outline: none;
+   position: relative;
+   z-index: 11;
+}
+
+ul.hmenu, ul.hmenu ul
+{
+   display: block;
+   margin: 0;
+   padding: 0;
+   border: 0;
+   list-style-type: none;
+}
+
+ul.hmenu li
+{
+   margin: 0;
+   padding: 0;
+   border: 0;
+   display: block;
+   float: left;
+   position: relative;
+   z-index: 5;
+   background: none;
+}
+
+ul.hmenu li:hover{
+   z-index: 10000;
+   white-space: normal;
+}
+ul.hmenu li li{
+   float: none;
+   width: auto;
+}
+ul.hmenu li:hover>ul {
+   visibility: visible;
+   top: 100%;
+}
+ul.hmenu li li:hover>ul {
+   top: 0;
+   left: 100%;
+}
+ul.hmenu:after, ul.hmenu ul:after
+{
+   content: ".";
+   height: 0;
+   display: block;
+   visibility: hidden;
+   overflow: hidden;
+   clear: both;
+}
+ul.hmenu, ul.hmenu ul {
+   min-height: 0;
+}
+
+ul.hmenu ul
+{
+   visibility: hidden;
+   position: absolute;
+   z-index: 10;
+   left: 0;
+   top: 0;
+   background-image: url('../images/spacer.gif');
+   padding: 10px 30px 30px 30px;
+   margin: -10px 0 0 -30px;
+}
+
+ul.hmenu ul.hmenu-left-to-right {
+   right: auto;
+   left: 0;
+   margin: -10px 0 0 -30px;
+}
+ul.hmenu ul.hmenu-right-to-left {
+   left: auto;
+   right: 0;
+   margin: -10px -30px 0 0;
+}
+
+ul.hmenu ul ul
+{
+   padding: 30px 30px 30px 10px;
+   margin: -30px 0 0 -10px;
+   margin-left: -11px;
+   z-index: -1;
+}
+
+ul.hmenu ul ul.hmenu-left-to-right
+{
+   right: auto;
+   left: 0;
+   padding: 30px 30px 30px 10px;
+   margin: -30px 0 0 -10px;
+   margin-left: -11px;
+}
+
+ul.hmenu ul ul.hmenu-right-to-left
+{
+   left: auto;
+   right: 0;
+   padding: 30px 10px 30px 30px;
+   margin: -30px -10px 0 0;
+   margin-right: -11px;
+}
+
+ul.hmenu li li:hover>ul.hmenu-left-to-right {
+   right: auto;
+   left: 100%;
+}
+ul.hmenu li li:hover>ul.hmenu-right-to-left {
+   left: auto;
+   right: 100%;
+}
+
+ul.hmenu{
+   position:relative;
+   padding: 0 0 0 0;
+   float: left;
+}
+
+/* end menu structure */
+
+/* menu bar */
+
+.nav
+{
+   margin:0 auto;
+   min-height: 38px;
+   z-index: 100;
+   margin-top: 0;
+   margin-bottom: 0;
+   /*background-image: url('../images/nav.png');*/
+   background-color: #000;
+}
+
+.nav:before, .nav:after{
+   /*background-image: url('../images/nav.png');*/
+}
+.nav:before{
+   right: 5px;
+}
+.nav:after{
+   width: 5px;
+}
+/* end menu bar */
+.nav-outer{
+   position:absolute;
+   width:100%;
+}
+
+/* end Menu */
+
+/* begin MenuItem */
+ul.hmenu>li>a
+{
+   position: relative;
+   display: block;
+   height: 38px;
+   cursor: pointer;
+   text-decoration: none;
+   color: #BFBFBF;
+   padding: 0 24px;
+   line-height: 38px;
+   text-align: center;
+}
+
+ul.hmenu>li>a:before, ul.hmenu>li>a:after
+{
+   position: absolute;
+   display: block;
+   content:' ';
+   top: 0;
+   bottom:0;
+   z-index: -1;
+   background-image: url('../images/menuitem.png');
+}
+
+ul.hmenu>li>a:before
+{
+   left: 0;
+   right: 0;
+   background-position: top left;
+}
+
+ul.hmenu>li>a:after
+{
+   width: 0;
+   right: 0;
+   background-position: top right;
+}
+
+.hmenu a, .hmenu a:link, .hmenu a:visited, .hmenu a:hover
+{
+   text-align: left;
+   text-decoration: none;
+}
+
+ul.hmenu>li>a:hover:before, ul.hmenu>li:hover>a:before {
+   background-position: center left;
+}
+ul.hmenu>li>a:hover:after, ul.hmenu>li:hover>a:after {
+   background-position: center right;
+}
+ul.hmenu>li>a:hover, ul.hmenu>li:hover>a{
+   color: #404040;
+}
+
+/* end MenuItem */
+
+/* begin MenuSeparator */
+
+ul.hmenu>li {
+   margin-left:0;
+}
+ul.hmenu>li:first-child {
+   margin-left:0;
+}
+
+/* end MenuSeparator */
+
+/* begin MenuSubItem */
+.hmenu ul a
+{
+   display: block;
+   white-space: nowrap;
+   height: 24px;
+   background-image: url('../images/subitem.png');
+   background-position: left top;
+   background-repeat: repeat-x;
+   border-width: 1px;
+   border-style: solid;
+   border-top-width: 0;
+   border-color: #636363;
+   min-width: 7em;
+   text-align: left;
+   text-decoration: none;
+   line-height: 24px;
+   color: #404040;
+   margin:0;
+   padding: 0 8px;
+}
+
+.hmenu ul>li:first-child>a
+{
+   border-top-width: 1px;
+}
+
+.hmenu ul a:link, .hmenu ul a:visited, .hmenu ul a:hover, .hmenu ul a:active
+{
+   text-align: left;
+   text-decoration: none;
+   line-height: 24px;
+   color: #404040;
+   margin:0;
+   padding: 0 8px;
+}
+
+ul.hmenu>li>a.active {
+   color: #CCC;
+   /*background-color: #fff;*/
+   font-weight: bold;
+}
+
+.hmenu ul li a:hover
+{
+   color: #DEDEDE;
+   background-position: left bottom;
+   border-color: #636363;
+   border-top-width: 1px !important;
+}
+
+.hmenu ul li a.hmenu-before-hovered
+{
+   border-bottom-width: 0 !important;
+}
+
+.hmenu ul li:hover>a
+{
+   color: #DEDEDE;
+   background-position: left bottom;
+   border-color: #636363;
+   border-top-width: 1px !important;
+}
+
+/* end MenuSubItem */

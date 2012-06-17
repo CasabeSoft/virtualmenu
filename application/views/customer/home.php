@@ -6,4 +6,6 @@
  */
 ?>
 
-                <h1 class="title">Inicio Cliente</h1>
+                <div class="prepend-0_1 prepend-top span-23">
+                    <h1 class="title">Inicio Cliente</h1>
+                </div>

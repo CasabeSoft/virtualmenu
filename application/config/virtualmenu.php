@@ -23,7 +23,7 @@ $config['email']['wordwrap'] = FALSE; // TRUE, FALSE
  * Temas para el grocery crud
  * Value: datatables, flexigrid
  */
-$config['grocery_crud_theme'] = 'datatables';
+$config['grocery_crud_theme'] = 'flexigrid';
 
 /* End of file virtualmenu.php */
 /* Location: ./system/application/config/virtualmenu.php */

@@ -36,7 +36,7 @@ class MenuOfTheDayController extends MY_Controller {
             'menuTypes' => $this->MenusOfTheDayModel->getMenuTypesInfo(),
             'sectionsByMenuType' => $this->MenusOfTheDayModel->getSectionsByMenuType(),            
         );
-        $this->load->view('comunes/mainManager', $data);
+        $this->load->view('comunes/mainCustomer', $data);
     }
     
     public function getSections() {
