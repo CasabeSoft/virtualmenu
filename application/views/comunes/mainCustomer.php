@@ -30,7 +30,7 @@
     </head>
     <body>
         <div class="container">
-           <div id="header" class="clearfix">
+            <div id="header" class="clearfix">
                 <div class="prepend-0_1 span-3">
                     <a href="<?php echo $this->providerWeb; ?>" target="_blank"><img alt="Logo" src="<?php echo $this->theme; ?>/images/logo.png" /></a>    
                 </div>
@@ -38,11 +38,28 @@
                 <h2 class="span-11">Menú Virtual</h2> 
 
                 <div class="span-9 last">
-                    <ul class="dropdown">
-                        <li class="ui-corner-tl"><a href="<?php echo site_url('menu/order') ?>">Ordenar</a></li>
-                        <li><a href="<?php echo site_url('#') ?>">Opción1</a></li>
-                        <li class="ui-corner-tr"><a href="<?php echo site_url('#') ?>">Opción1</a></li>
-                    </ul>
+                    <div class="bar nav">
+                        <div class="nav-outer">
+                            <div class="nav-wrapper">
+                                <div class="nav-inner">
+                                    <ul class="hmenu">
+                                        <li>
+                                            <a href="<?php echo site_url('menu/order') ?>" <?php echo ($this->uri->segment(2) == "order") ? 'class="active"' : '' ?>>Ordenar</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo site_url('#') ?>" <?php echo ($this->uri->segment(1) == "#") ? 'class="active"' : '' ?>>Opcion 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo site_url('profile') ?>" <?php echo ($this->uri->segment(1) == "profile") ? 'class="active"' : '' ?>>Opciones</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo site_url('exit') ?>" <?php echo ($this->uri->segment(1) == "exit") ? 'class="active"' : '' ?>>Salir</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="content">

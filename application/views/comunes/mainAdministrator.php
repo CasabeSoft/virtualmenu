@@ -53,26 +53,85 @@
                     <a href="<?php echo $this->providerWeb; ?>" target="_blank"><img alt="Logo" src="<?php echo $this->theme; ?>/images/logo.png" /></a>    
                 </div>
                 <h1 class="span-20 last"><?php echo $this->providerName; ?></h1> 
-                <h2 class="span-5">Menú Virtual</h2> 
-                <div class="span-15 last">
-                    <ul class="dropdown">
-                        <li><a href="<?php echo site_url('home') ?>">Inicio</a> </li> 
-                        <li><a href="<?php echo site_url('administrator') ?>">Inicio Administrador</a> </li>
-                        <li><a href="<?php echo site_url('manager') ?>">Inicio Gestor</a> </li>
-                        <li><a href="<?php echo site_url('customer') ?>">Inicio Cliente</a> </li>
-                        <li><a href="<?php echo site_url('exit') ?>">Salir</a> </li>
-                        <li><a href="<?php echo site_url('administrator/users') ?>">Usuarios</a> </li>               
-                        <li><a href="<?php echo site_url('administrator/group_types') ?>">Tipos de grupos</a> </li>
-                        <li><a href="<?php echo site_url('administrator/groups') ?>">Grupos</a> </li>
-                        <li><a href="<?php echo site_url('administrator/customers') ?>">Clientes</a> </li>
-                        <li><a href="<?php echo site_url('administrator/managers') ?>">Gestores</a> </li>
-                        <li><a href="<?php echo site_url('administrator/providers') ?>">Proveedores</a> </li>
-                        <li><a href="<?php echo site_url('administrator/products') ?>">Productos</a> </li>
-                        <li><a href="<?php echo site_url('administrator/section_types') ?>">Tipos de sección</a> </li>
-                        <li><a href="<?php echo site_url('administrator/sections') ?>">Secciones</a> </li>
-                        <li><a href="<?php echo site_url('administrator/menu_types') ?>">Tipos de menú</a> </li>
-                        <li><a href="<?php echo site_url('administrator/menus') ?>">Menus</a></li>
-                    </ul>
+                <h2 class="span-7">Menú Virtual</h2> 
+                <div class="span-13 last">
+                    <div class="bar nav">
+                        <div class="nav-outer">
+                            <div class="nav-wrapper">
+                                <div class="nav-inner">
+                                    <ul class="hmenu">
+                                        <li>
+                                            <a href="<?php echo site_url('manager') ?>" <?php echo ($this->uri->segment(1) == "manager") ? 'class="active"' : '' ?>>Inicio Gestor</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo site_url('customer') ?>" <?php echo ($this->uri->segment(1) == "customer") ? 'class="active"' : '' ?>>Inicio Cliente</a>
+                                        </li>
+
+
+                                        <li>
+                                            <a href="<?php echo site_url('administrator') ?>" <?php echo ($this->uri->segment(1) == "administrator") ? 'class="active"' : '' ?>>Catálogos</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="<?php echo site_url('administrator/users') ?>" <?php echo ($this->uri->segment(2) == "users") ? 'class="active"' : '' ?>>Usuarios</a>
+                                                    <!--ul>
+                                                        <li>
+                                                            <a href="#">Menú Subitem 1.1</a>
+
+                                                        </li>
+                                                                        <li>
+                                                            <a href="#">Menú Subitem 1.2</a>
+
+                                                        </li>
+                                                                        <li>
+                                                            <a href="#">Menú Subitem 1.3</a>
+
+                                                        </li>
+                                                    </ul-->
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo site_url('administrator/group_types') ?>" <?php echo ($this->uri->segment(2) == "group_types") ? 'class="active"' : '' ?>>Tipos de grupos</a>
+
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo site_url('administrator/groups') ?>" <?php echo ($this->uri->segment(2) == "groups") ? 'class="active"' : '' ?>>Grupos</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo site_url('administrator/customers') ?>" <?php echo ($this->uri->segment(2) == "customers") ? 'class="active"' : '' ?>>Clientes</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo site_url('administrator/managers') ?>" <?php echo ($this->uri->segment(2) == "managers") ? 'class="active"' : '' ?>>Gestores</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo site_url('administrator/providers') ?>" <?php echo ($this->uri->segment(2) == "providers") ? 'class="active"' : '' ?>>Proveedores</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo site_url('administrator/products') ?>" <?php echo ($this->uri->segment(2) == "products") ? 'class="active"' : '' ?>>Productos</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo site_url('administrator/section_types') ?>" <?php echo ($this->uri->segment(2) == "section_types") ? 'class="active"' : '' ?>>Tipos de sección</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo site_url('administrator/sections') ?>" <?php echo ($this->uri->segment(2) == "sections") ? 'class="active"' : '' ?>>Secciones</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo site_url('administrator/menu_types') ?>" <?php echo ($this->uri->segment(2) == "menu_types") ? 'class="active"' : '' ?>>Tipos de menú</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo site_url('administrator/menus') ?>" <?php echo ($this->uri->segment(2) == "menus") ? 'class="active"' : '' ?>>Menus</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo site_url('administrator') ?>" <?php echo ($this->uri->segment(1) == "#") ? 'class="active"' : '' ?>>Informes</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo site_url('exit') ?>" <?php echo ($this->uri->segment(1) == "exit") ? 'class="active"' : '' ?>>Salir</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="content">

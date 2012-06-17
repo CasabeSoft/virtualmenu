@@ -55,16 +55,67 @@
                     <a href="<?php echo $this->providerWeb; ?>" target="_blank"><img alt="Logo" src="<?php echo $this->theme; ?>/images/logo.png" /></a>    
                 </div>
                 <h1 class="span-20 last"><?php echo $this->providerName; ?></h1> 
-                <h2 class="span-11">Menú Virtual</h2> 
-                <div class="span-9 last">
-                    <ul class="dropdown">
-                        <li class="ui-corner-tl"><a href="<?php echo site_url('menu/manage') ?>">Menús</a></li>
-                        <li><a href="<?php echo site_url('manager/products') ?>">Productos</a></li>
-                        <li><a href="<?php echo site_url('manager/reports') ?>">Informes</a></li>
-                        <li><a href="<?php echo site_url('profile') ?>">Opciones</a></li>
-                        <li class="ui-corner-tr"><a href="<?php echo site_url('exit') ?>">Salir</a></li>
-                        </li>
-                    </ul>
+                <h2 class="span-8">Menú Virtual</h2> 
+                <div class="span-12 last">
+                    <div class="bar nav">
+                        <div class="nav-outer">
+                            <div class="nav-wrapper">
+                                <div class="nav-inner">
+                                    <ul class="hmenu">
+                                        <li>
+                                            <a href="<?php echo site_url('menu/manage') ?>" <?php echo ($this->uri->segment(2) == "manage") ? 'class="active"' : '' ?>>Menús</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo site_url('manager/products') ?>" <?php echo ($this->uri->segment(2) == "products") ? 'class="active"' : '' ?>>Productos</a>
+                                        </li>
+
+
+                                        <li>
+                                            <a href="<?php echo site_url('manager/reports') ?>" <?php echo ($this->uri->segment(2) == "reports") ? 'class="active"' : '' ?>>Informes</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="<?php echo site_url('manager/reports/dayresume') ?>" <?php echo ($this->uri->segment(3) == "dayresume") ? 'class="active"' : '' ?>>Resumen de pedidos del día</a>
+                                                    <!--ul>
+                                                        <li>
+                                                            <a href="#">Menú Subitem 1.1</a>
+
+                                                        </li>
+                                                                        <li>
+                                                            <a href="#">Menú Subitem 1.2</a>
+
+                                                        </li>
+                                                                        <li>
+                                                            <a href="#">Menú Subitem 1.3</a>
+
+                                                        </li>
+                                                    </ul-->
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo site_url('manager/reports/weekresume') ?>" <?php echo ($this->uri->segment(3) == "weekresume") ? 'class="active"' : '' ?>>Resumen de pedidos de la semana</a>
+
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo site_url('manager/reports/monthresume') ?>" <?php echo ($this->uri->segment(3) == "monthresume") ? 'class="active"' : '' ?>>Resumen de pedidos del mes</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo site_url('manager/reports/daydetail') ?>" <?php echo ($this->uri->segment(3) == "daydetail") ? 'class="active"' : '' ?>>Detalle de pedidos del día</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo site_url('manager/reports/clients') ?>" <?php echo ($this->uri->segment(3) == "clients") ? 'class="active"' : '' ?>>Listado de clientes</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo site_url('profile') ?>" <?php echo ($this->uri->segment(1) == "profile") ? 'class="active"' : '' ?>>Opciones</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo site_url('exit') ?>" <?php echo ($this->uri->segment(1) == "exit") ? 'class="active"' : '' ?>>&ensp;Salir&ensp;</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="content">
@@ -75,12 +126,5 @@
                 <p class="alt prepend-1 prepend-top">&copy;2012 Vertul Menu.</p>
             </div>
         </div>
-        <div id="content">
-<?php $this->load->view($viewToLoad) ?>
-        </div>
-        <div id="footer">
-            <p id="copy">&copy;2012 Vertul Menu.</p>
-        </div>
-    </div>
-</body>
+    </body>
 </html>
