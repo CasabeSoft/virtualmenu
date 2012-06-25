@@ -147,7 +147,7 @@ class UsersModel extends CI_Model {
      */
     function getUserCustomerById($id) {
 
-        $result = $this->db->select(USERS . '.*, ' . CUSTOMERS . '.address, ' . CUSTOMERS . '.group')//,'. CUSTOMERS_BY_PROVIDER . '.since')
+        $result = $this->db->select(USERS . '.*, ' . CUSTOMERS . '.group')//,'. CUSTOMERS_BY_PROVIDER . '.since')
                 ->from(USERS, CUSTOMERS) //, CUSTOMERS_BY_PROVIDER)
                 ->join(CUSTOMERS, USERS . '.id = ' . CUSTOMERS . '.id', 'LEFT')
                 //->join(CUSTOMERS_BY_PROVIDER, USERS . '.id = ' . CUSTOMERS_BY_PROVIDER . '.id_customer')
@@ -175,7 +175,8 @@ class UsersModel extends CI_Model {
                 'name' => $fields['name'],
                 'phone' => $fields['phone'],
                 'email' => $fields['email'],
-                'password' => $fields['password']
+                'password' => $fields['password'],
+                'address' => $fields['address']
             );
             $this->db->insert(USERS, $fieldsUser);
 
@@ -183,10 +184,8 @@ class UsersModel extends CI_Model {
 
             $fieldsCustomer = array(
                 'id' => $idUser,
-                'address' => $fields['address'],
                 'group' => $fields['group']
             );
-
             $this->db->insert(CUSTOMERS, $fieldsCustomer);
 
             $fieldsCustomerProvider = array(
@@ -225,13 +224,13 @@ class UsersModel extends CI_Model {
             $fieldsUser = array(
                 'name' => $fields['name'],
                 'phone' => $fields['phone'],
+                'address' => $fields['address'],
                     //'email' => $fields['email'],
                     //'password' => $fields['password']
             );
             $this->db->update(USERS, $fieldsUser, $where);
 
             $fieldsCustomer = array(
-                'address' => $fields['address'],
                 'group' => $fields['group']
             );
 
