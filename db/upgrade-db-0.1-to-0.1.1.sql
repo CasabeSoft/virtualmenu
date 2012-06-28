@@ -42,3 +42,7 @@ INSERT INTO section_types (id, `name`, description)
 	VALUES (2, 'Selección múltiple', 'Puede escojer uno o varios productos (o ninguno). El precio final variará, según el precio de los productos escogidos.');
 INSERT INTO section_types (id, `name`, description) 
 	VALUES (3, 'Selección simple, precio variable', 'Puede escojer un producto de la lista, cambiando el precio final, según el producto que escoja.');
+
+ALTER TABLE `users` ADD `password_code` VARCHAR( 50 ) NULL AFTER `phone`;
+ALTER TABLE  `users` ADD  `active` TINYINT NOT NULL DEFAULT  '1' AFTER  `password_code`;
+ 
