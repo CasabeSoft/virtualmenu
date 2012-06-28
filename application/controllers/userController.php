@@ -172,8 +172,8 @@ class UserController extends MY_Controller {
                 'phone' => $this->input->post('phone'),
                 'email' => $this->input->post('email'),
                 'password' => $this->input->post('password'),
-                // Campos del la tabla CUSTOMERS
                 'address' => $this->input->post('address'),
+                // Campos del la tabla CUSTOMERS
                 'group' => $this->input->post('group'),
                 // Campos de la tabla CUSTOMERS_BY_PROVIDER
                 'id_provider' => $this->providerId,
@@ -331,10 +331,10 @@ class UserController extends MY_Controller {
                     // Campos de la tabla USERS
                     'name' => $this->input->post('name'),
                     'phone' => $this->input->post('phone'),
+                    'address' => $this->input->post('address'),
                     //'email' => $this->input->post('email'),
                     //'password' => $this->input->post('password'),
                     // Campos del la tabla CUSTOMERS
-                    'address' => $this->input->post('address'),
                     'group' => $this->input->post('group'),
                         // Campos de la tabla CUSTOMERS_BY_PROVIDER
                         //'id_provider' => $this->providerId,
