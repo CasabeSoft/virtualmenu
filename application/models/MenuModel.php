@@ -14,7 +14,6 @@ class MenuModel extends CI_Model {
    
     public function __construct() {
         parent::__construct();
-        //$this->load->database();
     }
     
     public function getMenuTypeInfo($menuType) {
@@ -43,6 +42,7 @@ class MenuModel extends CI_Model {
     }
     
     public function getMenusForDate($date) {
+        // TODO: Recuperar solo los menús del proveedor actual.
         $query = $this->db->query("SELECT menus.*, description FROM menus INNER JOIN menu_types ON menus.id_type = menu_types.id WHERE '".$date."' BETWEEN start_date AND end_date");   // TODO: pasar a ActiveRecorsd
         return $query->result_array();
     }

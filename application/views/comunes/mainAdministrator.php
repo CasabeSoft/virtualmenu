@@ -45,6 +45,11 @@
         }
         ?>
         <script type="text/javascript" src="js/virtualmenu.js"></script>
+        <script type="text/javascript" >        
+            $(function() {
+                $(".button").button();
+            }); 
+        </script>
     </head>
     <body>
         <div class="container">
