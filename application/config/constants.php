@@ -56,11 +56,13 @@ define('MANAGERS', 'managers');
 define('MANAGERS_BY_PROVIDER', 'managers_by_provider');
 define('PRODUCTS', 'products');
 define('PRODUCTS_BY_MENU', 'products_by_menu');
+define('PRODUCTS_BY_ORDER', 'products_by_order');
 define('SECTIONS', 'sections');
 define('SECTION_TYPES', 'section_types');
 define('MENUS', 'menus');
 define('MENU_TYPES', 'menu_types');
 define('MENU_TYPES_BY_PROVIDER', 'menu_types_by_provider');
+define('ORDERS', 'orders');
 
 /*
   |--------------------------------------------------------------------------
