@@ -49,16 +49,17 @@ class AdministratorController extends MY_Controller {
         $crud->set_theme($this->config->item('grocery_crud_theme', 'virtualmenu'));
         $crud->set_table(USERS);
         $crud->set_subject('Usuario');
-        $crud->columns('name', 'phone', 'email');
+        $crud->columns('name', 'phone', 'email', 'address');
         $crud->display_as('name', 'Nombre')
                 ->display_as('phone', 'Teléfono')
                 ->display_as('email', 'Correo')
+                ->display_as('address', 'Dirección')
                 ->display_as('password', 'Contraseña');
         $crud->change_field_type('password', 'password');
         $crud->callback_before_insert(array($this, 'encrypt_password_callback'));
-        $crud->add_fields('name', 'phone', 'email', 'password');
-        $crud->edit_fields('name', 'phone', 'email');
-        $crud->required_fields('name', 'email', 'password');
+        $crud->add_fields('name', 'phone', 'email', 'password', 'address');
+        $crud->edit_fields('name', 'phone', 'email', 'address');
+        $crud->required_fields('name', 'email', 'password', 'address');
         $data = $crud->render();
 
         $data->title = 'Menu Virtual - Usuarios';
@@ -118,9 +119,8 @@ class AdministratorController extends MY_Controller {
 
         $crud->set_theme($this->config->item('grocery_crud_theme', 'virtualmenu'));
         $crud->set_table(CUSTOMERS);
-        $crud->columns('id', 'address', 'group', 'provider');
+        $crud->columns('id', 'group', 'provider');
         $crud->display_as('id', 'Usuario')
-                ->display_as('address', 'Dirección')
                 ->display_as('group', 'Grupo')
                 ->display_as('provider', 'Proveedor');
         $crud->set_subject('Cliente');
