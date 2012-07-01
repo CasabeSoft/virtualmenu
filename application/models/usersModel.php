@@ -404,7 +404,7 @@ class UsersModel extends CI_Model {
             return FALSE;
         }
 
-       $this->db->where('password_code', $code);
+        $this->db->where('password_code', $code);
 
         if ($this->db->count_all_results(USERS) > 0) {
             $password = $this->salt();

@@ -52,9 +52,6 @@
                                             <a href="<?php echo site_url('menu/order') ?>" <?php echo ($this->uri->segment(2) == "order") ? 'class="active"' : '' ?>>Ordenar</a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo site_url('#') ?>" <?php echo ($this->uri->segment(1) == "#") ? 'class="active"' : '' ?>>Opcion 1</a>
-                                        </li>
-                                        <li>
                                             <a href="<?php echo site_url('profile') ?>" <?php echo ($this->uri->segment(1) == "profile") ? 'class="active"' : '' ?>>Opciones</a>
                                         </li>
                                         <li>
