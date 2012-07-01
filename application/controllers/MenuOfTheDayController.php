@@ -13,6 +13,8 @@ class MenuOfTheDayController extends MY_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('MenusOfTheDayModel');
+        $this->load->model('BillModel');
+        $this->grantAccessToRols(array(ROL_CUSTOMER, ROL_MANAGER));
     }
 
     public function index() {
@@ -34,9 +36,16 @@ class MenuOfTheDayController extends MY_Controller {
             'title' => 'Menu Virtual > Menú del día > Pedidos',
             'viewToLoad' => 'menu/types/menuOfTheDayOrder',
             'menuTypes' => $this->MenusOfTheDayModel->getMenuTypesInfo(),
+            'address' =>$this->session->userdata("address"),
             'sectionsByMenuType' => $this->MenusOfTheDayModel->getSectionsByMenuType(),            
         );
-        $this->load->view('comunes/mainCustomer', $data);
+        $view = userHasPermition(ROL_MANAGER) ? 'comunes/mainManager' : 'comunes/mainCustomer';
+        $this->load->view($view, $data);
+    }
+    
+    public function rol() {
+        echo userHasPermition(ROL_MANAGER);
+        echo $this->session->userdata('rol');
     }
     
     public function getSections() {
@@ -58,7 +67,7 @@ class MenuOfTheDayController extends MY_Controller {
     
     public function saveMenuForDate($date) {
         $menu = $this->input->post("menu");
-        $menu["id_provider"] =  $this->session->userdata("providerId");
+        $menu["id_provider"] = $this->session->userdata("providerId");
         $id = $this->MenusOfTheDayModel->setMenuForDate($date, $menu);
         echo json_encode($id);
     }
@@ -67,6 +76,29 @@ class MenuOfTheDayController extends MY_Controller {
         $this->MenusOfTheDayModel->removeMenu($id);
     }
     
+    public function getMenusAndBillsForDate($date) {
+        $menus = $this->MenusOfTheDayModel->getMenusForDate($date);
+        $bills = $this->BillModel->getBillsForDate($date, 
+                $this->session->userdata("providerId"), 
+                $this->session->userdata("id"));
+        echo json_encode(array(
+            "date" => $date,
+            "menus" => $menus,
+            "bills" => $bills
+        ));
+    }
+    
+    public function confirmOrder() {
+        $bill = $this->input->post("bill");
+        $bill["id_user"] = $this->session->userdata("id");
+        $bill["id_provider"] = $this->session->userdata("providerId");
+        $id = $this->BillModel->setConfirmedOrder($bill);
+        echo json_encode($id);
+    }
+    
+    public function removeBill($id) {
+        echo json_encode($this->BillModel->remove($id));
+    }
 }
 
 /* End of file MenuOfTheDayController.php */
