@@ -27,6 +27,11 @@
         <link href="css/main.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo $this->theme ?>/css/provider.css" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="<?php echo $this->theme ?>/images/favicon.ico" type="image/x-icon" />        
+        <script type="text/javascript" >        
+            $(function() {
+                $(".button").button();
+            }); 
+        </script>
     </head>
     <body>
         <div class="container">

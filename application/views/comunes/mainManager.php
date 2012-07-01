@@ -47,6 +47,11 @@
         }
         ?>
         <script type="text/javascript" src="js/virtualmenu.js"></script>
+        <script type="text/javascript" >        
+            $(function() {
+                $(".button").button();
+            }); 
+        </script>
     </head>
     <body>
         <div class="container">
@@ -64,6 +69,10 @@
                                     <ul class="hmenu">
                                         <li>
                                             <a href="<?php echo site_url('menu/manage') ?>" <?php echo ($this->uri->segment(2) == "manage") ? 'class="active"' : '' ?>>Menús</a>
+                                            <ul>
+                                                <li><a href="<?php echo site_url('menu/manage') ?>">Crear</a></li>
+                                                <li><a href="<?php echo site_url('menu/order') ?>">Pedir</a></li>
+                                            </ul>
                                         </li>
                                         <li>
                                             <a href="<?php echo site_url('manager/products') ?>" <?php echo ($this->uri->segment(2) == "products") ? 'class="active"' : '' ?>>Productos</a>
