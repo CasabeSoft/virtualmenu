@@ -82,18 +82,23 @@ class OrdersModel extends CI_Model {
      * @return array 
      */
     public function productOrderdByDate($id_provider, $first_date, $last_date) {
-        $sql = "SELECT po.id_product, p.`name`, count(po.id_product) as cuantity ";
-        $sql .= " FROM orders o INNER JOIN products_by_order po ON o.id = po.id_order ";
-        $sql .= "   INNER JOIN products p ON po.id_product = p.id ";
-        $sql .= " WHERE p.id_provider = $id_provider ";
-        $sql .= "   AND date(o.delivery_date) BETWEEN '$first_date' AND '$last_date' ";
-        $sql .= " GROUP BY po.id_menu, p.`name`; ";
-
-        $query = $this->db->query($sql);
+       
+        $qProducts = <<<EOD
+SELECT po.id_product, p.`name`, count(po.id_product) as cuantity
+FROM products_by_order po INNER JOIN products p on po.id_product = p.id
+    INNER JOIN orders o on po.id_order = o.id
+    INNER JOIN menus m on o.id_menu = m.id
+    INNER JOIN products_by_menu pm on o.id_menu = pm.id_menu and po.id_product = pm.id_product
+    INNER JOIN bills b on o.id_bill = b.id
+WHERE b.id_provider = $id_provider
+    AND date(m.end_date) BETWEEN '$first_date' AND '$last_date' -- TODO: Cambiar a order.for_date
+GROUP BY po.id_product, p.`name`;
+EOD;
+        $query = $this->db->query($qProducts);
 
         return $query->result_array();
     }
-    
+
     /**
      * Detalles de pedidos para un rango de fechas.
      * 
@@ -101,22 +106,25 @@ class OrdersModel extends CI_Model {
      * @return array 
      */
     public function detailsOfOrdersByDate($id_provider, $first_date, $last_date) {
-        $sql = "SELECT o.id, o.id_user, u.`name` user_name, u.address, u.phone, ";
-        $sql .= "   o.comments, o.payment, po.id_product, p.`name` product_name ";
-        $sql .= " FROM orders o INNER JOIN users u ON o.id_user = u.id ";
-        $sql .= "   INNER JOIN products_by_order po ON o.id = po.id_order ";
-        $sql .= "   INNER JOIN products p ON po.id_product = p.id ";
-        $sql .= " WHERE p.id_provider = $id_provider  ";
-        $sql .= "   AND date(o.delivery_date) BETWEEN '$first_date' AND '$last_date' ";
-        $sql .= " ORDER BY o.id, po.id_product ";
+        $qProducts = <<<EOD
+SELECT o.id id_order, o.comments order_comments, m.`name` menu_name, p.`name` product_name, 
+    u.`name` user_name, u.phone, u.address
+FROM bills b INNER JOIN orders o ON b.id = o.id_bill
+    INNER JOIN menus m ON o.id_menu = m.id
+    INNER JOIN products_by_order po ON o.id = po.id_order
+    INNER JOIN products p ON po.id_product = p.id
+    INNER JOIN users u ON b.id_user = u.id
+WHERE m.id_provider = $id_provider
+    AND date(m.end_date) BETWEEN '$first_date' AND '$last_date' -- TODO: Cambiar a order.for_date;
+ORDER BY id_order;
+EOD;
 
-
-        $query = $this->db->query($sql);
+        $query = $this->db->query($qProducts);
 
         return $query->result_array();
         //cast(horae as date)
     }
-    
+
 }
 
 ?>

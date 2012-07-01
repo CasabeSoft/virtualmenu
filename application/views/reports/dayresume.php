@@ -16,6 +16,7 @@ if ($this->uri->segment(4) === FALSE) {
 <style>
     #btnShow {
         font-size: 11px;
+        font-weight: bold;
     }
 </style>
 <script>
@@ -49,9 +50,11 @@ if ($this->uri->segment(4) === FALSE) {
 
 <h3>Resumen de pedidos del día <?php //echo date("d-m-Y\n"); ?> <input type="text" id="datepicker" value="<?php echo $datepickernow ?>"><button class="button" id="btnShow" onclick="showByDate();">Mostrar</button></h3>
 <input type="hidden" id="actualDate" value="<?php echo $datenow ?>">
-<!--button class="button" id="btnShow" onclick="showReport('pdf');">Mostrar en PDF</button>
+<!--
+<button class="button" id="btnShow" onclick="showReport('pdf');">Mostrar en PDF</button>
 <button class="button" id="btnShow" onclick="showReport('excel');">Mostrar en Excel</button>
-<button class="button" id="btnShow" onclick="showReport('html');">Mostrar en Html</button-->
+<button class="button" id="btnShow" onclick="showReport('html');">Mostrar en Html</button>
+-->
 <div>
 
     <h2>Productos pedidos</h2>

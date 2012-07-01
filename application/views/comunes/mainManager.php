@@ -84,34 +84,20 @@
                                             <ul>
                                                 <li>
                                                     <a href="<?php echo site_url('manager/reports/dayresume') ?>" <?php echo ($this->uri->segment(3) == "dayresume") ? 'class="active"' : '' ?>>Resumen de pedidos del día</a>
-                                                    <!--ul>
-                                                        <li>
-                                                            <a href="#">Menú Subitem 1.1</a>
-
-                                                        </li>
-                                                                        <li>
-                                                            <a href="#">Menú Subitem 1.2</a>
-
-                                                        </li>
-                                                                        <li>
-                                                            <a href="#">Menú Subitem 1.3</a>
-
-                                                        </li>
-                                                    </ul-->
                                                 </li>
-                                                <li>
-                                                    <a href="<?php echo site_url('manager/reports/weekresume') ?>" <?php echo ($this->uri->segment(3) == "weekresume") ? 'class="active"' : '' ?>>Resumen de pedidos de la semana</a>
+                                                <!--li>
+                                                    <a href="<?php //echo site_url('manager/reports/weekresume') ?>" <?php echo ($this->uri->segment(3) == "weekresume") ? 'class="active"' : '' ?>>Resumen de pedidos de la semana</a>
 
                                                 </li>
                                                 <li>
-                                                    <a href="<?php echo site_url('manager/reports/monthresume') ?>" <?php echo ($this->uri->segment(3) == "monthresume") ? 'class="active"' : '' ?>>Resumen de pedidos del mes</a>
-                                                </li>
+                                                    <a href="<?php //echo site_url('manager/reports/monthresume') ?>" <?php echo ($this->uri->segment(3) == "monthresume") ? 'class="active"' : '' ?>>Resumen de pedidos del mes</a>
+                                                </li-->
                                                 <li>
                                                     <a href="<?php echo site_url('manager/reports/daydetail') ?>" <?php echo ($this->uri->segment(3) == "daydetail") ? 'class="active"' : '' ?>>Detalle de pedidos del día</a>
                                                 </li>
-                                                <li>
-                                                    <a href="<?php echo site_url('manager/reports/clients') ?>" <?php echo ($this->uri->segment(3) == "clients") ? 'class="active"' : '' ?>>Listado de clientes</a>
-                                                </li>
+                                                <!--li>
+                                                    <a href="<?php //echo site_url('manager/reports/clients') ?>" <?php echo ($this->uri->segment(3) == "clients") ? 'class="active"' : '' ?>>Listado de clientes</a>
+                                                </li-->
                                             </ul>
                                         </li>
                                         <li>
