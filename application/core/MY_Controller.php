@@ -50,7 +50,20 @@ class MY_Controller extends CI_Controller {
         }
     }
 
+    function grantAccessToRols($rols) {   // CB 20120624: Adicionado
+        $userBelogsToOneOrMoreRoles = FALSE;
+        if (!isLogged()) {
+            redirect('login');
+        } else {
+            foreach ($rols as $rol) {
+                $userBelogsToOneOrMoreRoles |= userHasPermition($rol);
+            }
+            if (! $userBelogsToOneOrMoreRoles) {
+                redirect('denied');
+            }
+        }
+    }
 }
 
-/* End of file MY_Controller.php */
-/* Location: ./application/libraries/MY_Controller.php */
+    /* End of file MY_Controller.php */
+    /* Location: ./application/libraries/MY_Controller.php */

@@ -33,4 +33,4 @@ class MenusOfTheDayModel extends MenuModel {
 }
 
 /* End of file MenusOfTheDayModel.php */
-/* Location: ./application/controllers/MenusOfTheDayModel.php */
+/* Location: ./application/models/MenusOfTheDayModel.php */

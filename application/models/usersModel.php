@@ -67,7 +67,7 @@ class UsersModel extends CI_Model {
      */
     public function verifyLogin($email, $password) {
 
-        $result = $this->db->select('id, email, name, phone')
+        $result = $this->db->select('id, email, name, phone, address')  // CB 20120626: Adicionado 'address'
                 ->where('email', $email)
                 ->where('password', $password)
                 ->limit(1)

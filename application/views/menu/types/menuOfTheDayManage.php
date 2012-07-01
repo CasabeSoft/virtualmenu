@@ -80,7 +80,7 @@
             });
             $.link.sectionProductsTemplate(section.products, "#sectionId" + section.id + " ul.products");
             $.link.previewProductsTemplate(section.products, "#preview_sectionId" + section.id + " ul.products");
-            $("#sectionId" + section.id + " button.btnRemoveProduct").button({ 
+            $("#sectionId" + section.id + " button.removeItem").button({ 
                 icons: {primary: 'ui-icon-minus'},
                 text: false,
                 disabled: readOnlyMenu
@@ -131,19 +131,16 @@
         alert("error: " + exception);
     }
     
-    function getMenusForDate(date, onGetMenusForDateFinished) {
+    function getMenusForDate(date) {
         changeEditMenuState(new Date(date) < today());
         $.ajax({
             url: BASE_URL + "MenuOfTheDayController/getMenusForDate/" + date,
             dataType: 'json',
             success: function (data) { 
-                showMenus(data.menus);  
-                if ($.isFunction(onGetMenusForDateFinished))
-                    onGetMenusForDateFinished();
+                showMenus(data.menus);                  
             },
             error: errorRetreavingAjax   // TODO: Procesar errores
-        });
-        
+        });      
     }
     
     function getSelectedDate() {
@@ -175,7 +172,7 @@
         $(newProductId).val("");
         $(newProductName).val("");
         $(price).val("");
-        $("#sectionId" + sectionId + " button.btnRemoveProduct").button({ 
+        $("#sectionId" + sectionId + " button.removeItem").button({ 
                 icons: {primary: 'ui-icon-minus'},
                 text: false,
                 disabled: readOnlyMenu
@@ -394,7 +391,7 @@
             <li id="productId{{:id}}">
                 <span class="productName">{{:name}}</span>
                 <span class="productPrice" data-link="css-visibility{:~shouldBeHidden(price)}">(+ {{:price}})</span>
-                <button class="btnRemoveProduct" onclick="removeProduct(this, 'productId{{:id}}')">Eliminar</button>
+                <button class="removeItem" onclick="removeProduct(this, 'productId{{:id}}')">Eliminar</button>
             </li>
         </script>
     </div>
@@ -411,7 +408,7 @@
         <script id="previewProductsTemplate" type="text/x-jsrender">
             <li>
                 <input type="{{:input_type}}" name="{{:id_section}}" id="preview_productId{{:id}}" onclick="higlightSelection(this)" />
-                <label for="preview_productId{{:id}}">{{:name}}</lable>
+                <label for="preview_productId{{:id}}">{{:name}}</label>
             </li>
         </script>
     </div>

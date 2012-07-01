@@ -44,6 +44,7 @@ function Product(id, name, order, price, idSection) {
     this.price = price;
     this.id_section = idSection;
 }
+
 function Menu(id, idType, name, basePrice, description, sections) {
     this.id = id;
     this.id_type = idType;
@@ -62,21 +63,96 @@ Menu.EMPTY = function () {
     return new Menu(0, null, "", "", "", []);    
 }
 
-function Order(id, menu, comments, products) {
-  this.id = id;
-  this.menu = menu;
-  this.comments = comments;
-  this.products = products; 
-
-  this.getFinalPrice() = function () {
-      var extras = 0;
-      $.each(products, function (index, item) {
-          extras += item.price;
+Bill.cloneOrders = function (orders) {
+    var newOrders = [];
+    $.each(orders, function (index, order) {
+        newOrders.push(order.clone(true));
     });
-      return menu.base_price + extras;      
-  };
+    return newOrders;
 }
 
-$(function() {
-    $(".button").button();
-});
+Bill.calcAmount = function (orders) {
+    var amount = 0;
+    $.each(orders, function (index, order) {
+        amount += order.getFinalPrice();
+    });
+    return amount;
+}
+
+Bill.EMPTY = function () {
+    return new Bill(0, [], "");
+}
+
+Bill.PAYMENT_NAMES = {
+    "1": "Efectivo",
+    "2": "Tarjeta",
+    "3": "PayPal",
+    "4": "Google Walet"
+}
+
+function Bill(id, orders, comments, payment, amount, generated, paid) {
+    this.updateAmount = function () {
+        this.amount = Bill.calcAmount(orders);
+        return this.amount;
+    }
+    
+    this.id = id;
+    this.comments = comments;
+    this.orders = Bill.cloneOrders(orders);
+    this.payment = payment;
+    this.amount = amount ? amount : this.updateAmount();
+    this.generated = generated;
+    this.paid = paid;    
+}
+
+Bill.buildFrom = function (data) {
+    var newOrders = [];
+    $.each(data.orders, function (index, order) {
+       newOrders.push(Order.buildFrom(order));
+    });
+    return new Bill(
+        data.id,
+        newOrders,
+        data.comments,
+        data.payment,
+        data.amount,
+        data.generated,
+        data.paid
+    );
+}
+
+function Order(id, menu, comments, products, bill) {
+    this.id = id;
+    this.menu = menu;
+    this.comments = comments;
+    this.products = products;
+    this.bill = bill;
+
+    this.getFinalPrice = function () {
+        var extras = 0;
+        $.each(products, function (index, item) {
+            extras += item.price;
+        });
+        return menu.base_price + extras;      
+    };
+    
+    this.clone = function (deep) {
+        deep = deep || false;
+        return $.extend(deep, {}, this)
+    }
+}
+
+Order.EMPTY = function () {
+    return new Order(0, Menu.EMPTY(), "", []);
+}
+
+Order.buildFrom = function (data) {
+    return new Order(
+        data.id,
+        data.menu,
+        data.comments,
+        data.products,
+        data.bill
+    );
+}
+

@@ -79,7 +79,8 @@ class UserController extends MY_Controller {
                         'name' => $result->name,
                         'phone' => $result->phone,
                         'providerName' => $this->providerName,
-                        'providerId' => $this->providerId
+                        'providerId' => $this->providerId,
+                        'address' => $result->address,
                     );
 
                     // Validamos si es un usuario Cliente o Gestor para asignar el rol
