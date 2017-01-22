@@ -24,7 +24,8 @@ class MY_Controller extends CI_Controller {
 
         $url = base_url();
 
-        $this->providerUriName = substr($url, 7, strpos($url, '.') - 7);
+        $dotIndex = strpos($url, '.');
+        $this->providerUriName = substr($url, 7, $dotIndex ? $dotIndex - 7 : -1);
 
         if ($this->providerUriName === DOMAIN_NAME) {
             $this->providerId = 0;

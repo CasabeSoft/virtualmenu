@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 /**
  * Controlador para el administrador.
- * 
+ *
  * @author Leoanrdo Quintero
  */
 class AdministratorController extends MY_Controller {
@@ -24,10 +24,11 @@ class AdministratorController extends MY_Controller {
     }
 
     public function index() {
-
-        $data->title = 'Menu Virtual - Inicio administrador';
-        $data->viewToLoad = 'administrator/home';
-        $this->load->view('comunes/mainAdministrator', $data);
+        $data = array(
+          'title' => 'Menu Virtual - Inicio administrador',
+          'viewToLoad' => 'administrator/home',
+        );
+        $this->load->view('comunes/mainadministrator', $data);
     }
 
     public function users1() {
@@ -38,14 +39,14 @@ class AdministratorController extends MY_Controller {
         $data->title = 'Menu Virtual - Usuarios';
         $data->titleMain = 'Usuarios';
         $data->viewToLoad = 'administrator/main';
-        $this->load->view('comunes/mainAdministrator', $data);
+        $this->load->view('comunes/mainadministrator', $data);
     }
 
     public function users() {
 
         $crud = new grocery_CRUD();
 
-        //$crud->set_language("french"); 
+        //$crud->set_language("french");
         $crud->set_theme($this->config->item('grocery_crud_theme', 'virtualmenu'));
         $crud->set_table(USERS);
         $crud->set_subject('Usuario');
@@ -65,7 +66,7 @@ class AdministratorController extends MY_Controller {
         $data->title = 'Menu Virtual - Usuarios';
         $data->titleMain = 'Usuarios';
         $data->viewToLoad = 'administrator/main';
-        $this->load->view('comunes/mainAdministrator', $data);
+        $this->load->view('comunes/mainadministrator', $data);
     }
 
     function encrypt_password_callback($post_array) {
@@ -90,7 +91,7 @@ class AdministratorController extends MY_Controller {
         $data->title = 'Menu Virtual - Tipos de grupos';
         $data->titleMain = 'Tipos de grupos';
         $data->viewToLoad = 'administrator/main';
-        $this->load->view('comunes/mainAdministrator', $data);
+        $this->load->view('comunes/mainadministrator', $data);
     }
 
     public function groups() {
@@ -111,7 +112,7 @@ class AdministratorController extends MY_Controller {
         $data->title = 'Menu Virtual - Grupos';
         $data->titleMain = 'Grupos';
         $data->viewToLoad = 'administrator/main';
-        $this->load->view('comunes/mainAdministrator', $data);
+        $this->load->view('comunes/mainadministrator', $data);
     }
 
     public function customers() {
@@ -133,7 +134,7 @@ class AdministratorController extends MY_Controller {
         $data->title = 'Menu Virtual - Clientes';
         $data->titleMain = 'Clientes';
         $data->viewToLoad = 'administrator/main';
-        $this->load->view('comunes/mainAdministrator', $data);
+        $this->load->view('comunes/mainadministrator', $data);
     }
 
     public function managers() {
@@ -153,7 +154,7 @@ class AdministratorController extends MY_Controller {
         $data->title = 'Menu Virtual - Gestores';
         $data->titleMain = 'Gestores';
         $data->viewToLoad = 'administrator/main';
-        $this->load->view('comunes/mainAdministrator', $data);
+        $this->load->view('comunes/mainadministrator', $data);
     }
 
     public function providers() {
@@ -177,7 +178,7 @@ class AdministratorController extends MY_Controller {
         $data->title = 'Menu Virtual - Proveedores';
         $data->titleMain = 'Proveedores';
         $data->viewToLoad = 'administrator/main';
-        $this->load->view('comunes/mainAdministrator', $data);
+        $this->load->view('comunes/mainadministrator', $data);
     }
 
     public function products() {
@@ -199,7 +200,7 @@ class AdministratorController extends MY_Controller {
         $data->title = 'Menu Virtual - Productos';
         $data->titleMain = 'Productos';
         $data->viewToLoad = 'administrator/main';
-        $this->load->view('comunes/mainAdministrator', $data);
+        $this->load->view('comunes/mainadministrator', $data);
     }
 
     public function menus() {
@@ -224,7 +225,7 @@ class AdministratorController extends MY_Controller {
         $data->title = 'Menu Virtual - Menus';
         $data->titleMain = 'Menus';
         $data->viewToLoad = 'administrator/main';
-        $this->load->view('comunes/mainAdministrator', $data);
+        $this->load->view('comunes/mainadministrator', $data);
     }
 
     public function menuTypes() {
@@ -245,7 +246,7 @@ class AdministratorController extends MY_Controller {
         $data->title = 'Menu Virtual - Tipos de Menú';
         $data->titleMain = 'Tipos de Menú';
         $data->viewToLoad = 'administrator/main';
-        $this->load->view('comunes/mainAdministrator', $data);
+        $this->load->view('comunes/mainadministrator', $data);
     }
 
     public function sections() {
@@ -268,7 +269,7 @@ class AdministratorController extends MY_Controller {
         $data->title = 'Menu Virtual - Secciones';
         $data->titleMain = 'Secciones';
         $data->viewToLoad = 'administrator/main';
-        $this->load->view('comunes/mainAdministrator', $data);
+        $this->load->view('comunes/mainadministrator', $data);
     }
 
     public function sectionTypes() {
@@ -287,7 +288,7 @@ class AdministratorController extends MY_Controller {
         $data->title = 'Menu Virtual - Tipos de Sección';
         $data->titleMain = 'Tipos de Sección';
         $data->viewToLoad = 'administrator/main';
-        $this->load->view('comunes/mainAdministrator', $data);
+        $this->load->view('comunes/mainadministrator', $data);
     }
 
 }

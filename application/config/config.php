@@ -73,7 +73,7 @@ $config['url_suffix'] = '';
   | than english.
   |
  */
-$config['language'] = 'es'; // LQ 20120414: adicionado
+//$config['language'] = 'es'; // LQ 20120414: adicionado
 
 /*
   |--------------------------------------------------------------------------

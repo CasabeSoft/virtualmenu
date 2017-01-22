@@ -41,70 +41,70 @@ if (!defined('BASEPATH'))
   |
  */
 
-$route['default_controller'] = "mainController";
+$route['default_controller'] = "maincontroller";
 $route['404_override'] = '';
 
-$route["home"] = "mainController";
+$route["home"] = "maincontroller";
 
-$route["users"] = "userController";
-$route["login"] = "userController/login";
-$route["register"] = "userController/register";
-$route["rememberPassword"] = "userController/rememberPassword";
-$route["changePassword"] = "userController/changePassword";
-$route["resetPassword/:any"] = "userController/resetPassword/$1";
-$route["contact"] = "userController/contact";
-$route["profile"] = "userController/profile";
-$route["denied"] = "userController/denied";
-$route["exit"] = "userController/close";
+$route["users"] = "usercontroller";
+$route["login"] = "usercontroller/login";
+$route["register"] = "usercontroller/register";
+$route["rememberPassword"] = "usercontroller/rememberPassword";
+$route["changePassword"] = "usercontroller/changePassword";
+$route["resetPassword/:any"] = "usercontroller/resetPassword/$1";
+$route["contact"] = "usercontroller/contact";
+$route["profile"] = "usercontroller/profile";
+$route["denied"] = "usercontroller/denied";
+$route["exit"] = "usercontroller/close";
 
-$route["customer"] = "customerController";
+$route["customer"] = "customercontroller";
 
-$route["manager"] = "managerController";
+$route["manager"] = "managercontroller";
 
-$route["administrator"] = "administratorController";
+$route["administrator"] = "administratorcontroller";
 
-$route["administrator/users1"] = "administratorController/users1";
-$route["administrator/users1/:any"] = "administratorController/users1/$1";
+$route["administrator/users1"] = "administratorcontroller/users1";
+$route["administrator/users1/:any"] = "administratorcontroller/users1/$1";
 
-$route["administrator/users"] = "administratorController/users";
-$route["administrator/users/:any"] = "administratorController/users/$1";
+$route["administrator/users"] = "administratorcontroller/users";
+$route["administrator/users/:any"] = "administratorcontroller/users/$1";
 
-$route["administrator/group_types"] = "administratorController/groupTypes";
-$route["administrator/group_types/:any"] = "administratorController/groupTypes/$1";
+$route["administrator/group_types"] = "administratorcontroller/groupTypes";
+$route["administrator/group_types/:any"] = "administratorcontroller/groupTypes/$1";
 
-$route["administrator/groups"] = "administratorController/groups";
-$route["administrator/groups/:any"] = "administratorController/groups/$1";
+$route["administrator/groups"] = "administratorcontroller/groups";
+$route["administrator/groups/:any"] = "administratorcontroller/groups/$1";
 
-$route["administrator/customers"] = "administratorController/customers";
-$route["administrator/customers/:any"] = "administratorController/customers/$1";
+$route["administrator/customers"] = "administratorcontroller/customers";
+$route["administrator/customers/:any"] = "administratorcontroller/customers/$1";
 
-$route["administrator/managers"] = "administratorController/managers";
-$route["administrator/managers/:any"] = "administratorController/managers/$1";
+$route["administrator/managers"] = "administratorcontroller/managers";
+$route["administrator/managers/:any"] = "administratorcontroller/managers/$1";
 
-$route["administrator/providers"] = "administratorController/providers";
-$route["administrator/providers/:any"] = "administratorController/providers/$1";
+$route["administrator/providers"] = "administratorcontroller/providers";
+$route["administrator/providers/:any"] = "administratorcontroller/providers/$1";
 
-$route["administrator/products"] = "administratorController/products";
-$route["administrator/products/:any"] = "administratorController/products/$1";
+$route["administrator/products"] = "administratorcontroller/products";
+$route["administrator/products/:any"] = "administratorcontroller/products/$1";
 
-$route["administrator/menus"] = "administratorController/menus";
-$route["administrator/menus/:any"] = "administratorController/menus/$1";
+$route["administrator/menus"] = "administratorcontroller/menus";
+$route["administrator/menus/:any"] = "administratorcontroller/menus/$1";
 
-$route["administrator/menu_types"] = "administratorController/menuTypes";
-$route["administrator/menu_types/:any"] = "administratorController/menuTypes/$1";
+$route["administrator/menu_types"] = "administratorcontroller/menuTypes";
+$route["administrator/menu_types/:any"] = "administratorcontroller/menuTypes/$1";
 
-$route["administrator/sections"] = "administratorController/sections";
-$route["administrator/sections/:any"] = "administratorController/sections/$1";
+$route["administrator/sections"] = "administratorcontroller/sections";
+$route["administrator/sections/:any"] = "administratorcontroller/sections/$1";
 
-$route["administrator/section_types"] = "administratorController/sectionTypes";
-$route["administrator/section_types/:any"] = "administratorController/sectionTypes/$1";
+$route["administrator/section_types"] = "administratorcontroller/sectionTypes";
+$route["administrator/section_types/:any"] = "administratorcontroller/sectionTypes/$1";
 
-$route["manager/products"] = "managerController/products";
-$route["manager/products/:any"] = "managerController/products/$1";
+$route["manager/products"] = "managercontroller/products";
+$route["manager/products/:any"] = "managercontroller/products/$1";
 
-$route["menu/manage"] = "MenuOfTheDayController/manage";
-$route["menu/order"] = "MenuOfTheDayController/order";
-$route["menu/order/confirm"] = "MenuOfTheDayController/confirm";
+$route["menu/manage"] = "menuofthedaycontroller/manage";
+$route["menu/order"] = "menuofthedaycontroller/order";
+$route["menu/order/confirm"] = "menuofthedaycontroller/confirm";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

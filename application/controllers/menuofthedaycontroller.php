@@ -24,11 +24,11 @@ class MenuOfTheDayController extends MY_Controller {
     public function manage() {
         $data = array(
             'title' => 'Menu Virtual > Menú del día > Gestión',
-            'viewToLoad' => 'menu/types/menuOfTheDayManage',
+            'viewToLoad' => 'menu/types/menuofthedaymanage',
             'menuTypes' => $this->MenusOfTheDayModel->getMenuTypesInfo(),
             'sectionsByMenuType' => $this->MenusOfTheDayModel->getSectionsByMenuType(),            
         );
-        $this->load->view('comunes/mainManager', $data);
+        $this->load->view('comunes/mainmanager', $data);
     }
     
     public function order() {
@@ -39,7 +39,7 @@ class MenuOfTheDayController extends MY_Controller {
             'address' =>$this->session->userdata("address"),
             'sectionsByMenuType' => $this->MenusOfTheDayModel->getSectionsByMenuType(),            
         );
-        $view = userHasPermition(ROL_MANAGER) ? 'comunes/mainManager' : 'comunes/mainCustomer';
+        $view = userHasPermition(ROL_MANAGER) ? 'comunes/mainmanager' : 'comunes/mainCustomer';
         $this->load->view($view, $data);
     }
     

@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 /**
  * Controlador para los clientes.
- * 
+ *
  * @author Leoanrdo Quintero
  */
 class CustomerController extends MY_Controller {
@@ -26,9 +26,11 @@ class CustomerController extends MY_Controller {
      * Página por defecto del controlador.
      */
     public function index() {
-        $data['title'] = 'Menu Virtual - Inicio cliente';
-        $data['viewToLoad'] = 'customer/home';
-        $this->load->view('comunes/mainCustomer', $data);
+        $data = array(
+          'title' => 'Menu Virtual - Inicio cliente',
+          'viewToLoad' => 'customer/home',
+        );
+        $this->load->view('comunes/maincustomer', $data);
     }
 
 }
