@@ -93,8 +93,8 @@ define('ROL_CUSTOMER', 3);
   |
  */
 
-define('DOMAIN_NAME', 'localhost');
-define('DOMAIN_URL', 'http://localhost');
+define('DOMAIN_NAME', 'virtualmenu');
+define('DOMAIN_URL', 'http://virtualmenu.dev');
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
