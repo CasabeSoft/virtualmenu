@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 /**
  * Controlador para los informes del gestor.
- * 
+ *
  * @author Leoanrdo Quintero
  */
 class Reports extends MY_Controller {
@@ -28,7 +28,7 @@ class Reports extends MY_Controller {
     public function index() {
         $data['title'] = 'Menu Virtual - Reportes';
         $data['viewToLoad'] = 'reports/index';
-        $this->load->view('comunes/mainManager', $data);
+        $this->load->view('comunes/mainmanager', $data);
     }
 
     public function dayresume($date = '') {
@@ -45,7 +45,7 @@ class Reports extends MY_Controller {
         $data['title'] = 'Menu Virtual - Reportes - Resumen del día';
         $data['viewToLoad'] = 'reports/index';
         $data['report'] = 'reports/dayresume';
-        $this->load->view('comunes/mainManager', $data);
+        $this->load->view('comunes/mainmanager', $data);
     }
 
     public function weekresume() {
@@ -71,7 +71,7 @@ class Reports extends MY_Controller {
         $data['title'] = 'Menu Virtual - Reportes - Detalles del día';
         $data['viewToLoad'] = 'reports/index';
         $data['report'] = 'reports/daydetail';
-        $this->load->view('comunes/mainManager', $data);
+        $this->load->view('comunes/mainmanager', $data);
     }
 
     public function clients() {
@@ -127,7 +127,7 @@ class Reports extends MY_Controller {
         $data['title'] = 'Menu Virtual - Reportes - Detalles del día';
         $data['report'] = $R->render($format);
         $data['viewToLoad'] = 'reports/report';
-        $this->load->view('comunes/mainManager', $data);
+        $this->load->view('comunes/mainmanager', $data);
     }
 
 }

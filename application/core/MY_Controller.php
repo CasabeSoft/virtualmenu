@@ -30,7 +30,7 @@ class MY_Controller extends CI_Controller {
             $this->providerId = 0;
             $this->providerName = 'Sitio Principal';
             $this->providerWeb = 'http://virtualmenu.dev';
-            $this->theme = $url . 'themes/default';
+            $this->theme = 'themes/default';
         } else {
             if (!empty($this->providerUriName)) {
                 if ($this->ProvidersModel->isProvider($this->providerUriName)) {
@@ -38,7 +38,7 @@ class MY_Controller extends CI_Controller {
                     $this->providerId = $provider->id;
                     $this->providerName = $provider->name;
                     $this->providerWeb = $provider->web;
-                    $this->theme = $url . 'themes/' . $this->providerUriName;
+                    $this->theme = 'themes/' . $this->providerUriName;
                 } else {
                     $this->providerError = 'Proveedor desconocido';
                     //show_404();

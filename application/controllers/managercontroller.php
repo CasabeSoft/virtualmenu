@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 /**
  * Controlador para el gestor.
- * 
+ *
  * @author Leoanrdo Quintero
  */
 class ManagerController extends MY_Controller {
@@ -31,7 +31,7 @@ class ManagerController extends MY_Controller {
 
         $data['title'] = 'Menu Virtual - Inicio Gestor';
         $data['viewToLoad'] = 'manager/home';
-        $this->load->view('comunes/mainManager', $data);
+        $this->load->view('comunes/mainmanager', $data);
     }
 
     public function products() {
@@ -55,7 +55,7 @@ class ManagerController extends MY_Controller {
         $data->title = 'Menu Virtual - Productos';
         $data->titleMain = 'Productos';
         $data->viewToLoad = 'manager/main';
-        $this->load->view('comunes/mainManager', $data);
+        $this->load->view('comunes/mainmanager', $data);
     }
 
     function provider_callback($post_array) {

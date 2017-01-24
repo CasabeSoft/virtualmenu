@@ -17,7 +17,7 @@ if (!defined('BASEPATH'))
   | path to your installation.
   |
  */
-$config['base_url'] = '';
+$config['base_url'] = 'http://virtualmenu.dev:8000';
 
 /*
   |--------------------------------------------------------------------------
@@ -73,7 +73,7 @@ $config['url_suffix'] = '';
   | than english.
   |
  */
-$config['language'] = 'es'; // LQ 20120414: adicionado
+//$config['language'] = 'es'; // LQ 20120414: adicionado
 
 /*
   |--------------------------------------------------------------------------

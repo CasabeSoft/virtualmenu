@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 /**
  * Controlador principal.
- * 
+ *
  * @author Leoanrdo Quintero
  */
 class MainController extends MY_Controller {
@@ -19,10 +19,6 @@ class MainController extends MY_Controller {
      *
      * Ej. como utilizar la URL:
      * 		http://virtualmenu.dev/
-     * 	- or - 
-     * 		http://virtualmenu.dev/main
-     * 	- or -  
-     * 		http://virtualmenu.dev/main/index
      */
     public function index() {
 

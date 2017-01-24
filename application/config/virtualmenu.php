@@ -4,17 +4,17 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 /**
  * Configuración básica para Menu Virtual.
- * 
+ *
  * @author Leonardo
  */
 /**
  * Correo.
  * */
 $config['email']['protocol'] = 'smtp'; // mail, sendmail, smtp
-$config['email']['smtp_host'] = 'smtp.telefonica.net';
+$config['email']['smtp_host'] = 'smtp.google.com';
 $config['email']['smtp_port'] = '25';
-$config['email']['smtp_user'] = 'er_company@telefonica.net';
-$config['email']['smtp_pass'] = 'mig69cyn';
+$config['email']['smtp_user'] = 'user@google.com';
+$config['email']['smtp_pass'] = 'some-password';
 $config['email']['mailtype'] = 'html'; // text, html
 $config['email']['charset'] = 'utf-8'; // utf-8, iso-8859-1, ...
 $config['email']['wordwrap'] = FALSE; // TRUE, FALSE

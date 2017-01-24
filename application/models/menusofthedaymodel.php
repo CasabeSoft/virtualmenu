@@ -1,5 +1,5 @@
 <?php
-require_once 'MenuModel.php';
+require_once 'menumodel.php';
 /**
  * Description of MenusOfTheDayModel
  *
@@ -7,11 +7,11 @@ require_once 'MenuModel.php';
  */
 class MenusOfTheDayModel extends MenuModel {
     var $menuTypesId = array(1, 2);     // TODO: Leer desde la tabla en la BBDD
-    
+
     public function __construct() {
         parent::__construct();
     }
-    
+
     public function getMenuTypesInfo() {
         $menuTypesInfo = array();
         foreach ($this->menuTypesId as $menuTypeId) {
@@ -19,7 +19,7 @@ class MenusOfTheDayModel extends MenuModel {
         }
         return $menuTypesInfo;
     }
-    
+
     public function getSectionsByMenuType() {
         $sections = array();
         foreach ($this->menuTypesId as $menuTypeId) {

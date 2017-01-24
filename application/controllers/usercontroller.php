@@ -277,10 +277,10 @@ class UserController extends MY_Controller {
         $rol = $this->session->userdata('rol');
         switch ($rol) {
             case 1:
-                $template = 'comunes/mainAdministrator';
+                $template = 'comunes/mainadministrator';
                 break;
             case 2:
-                $template = 'comunes/mainManager';
+                $template = 'comunes/mainmanager';
                 break;
             case 3:
                 $template = 'comunes/mainCustomer';
@@ -301,10 +301,10 @@ class UserController extends MY_Controller {
         $rol = $this->session->userdata('rol');
         switch ($rol) {
             case 1:
-                $template = 'comunes/mainAdministrator';
+                $template = 'comunes/mainadministrator';
                 break;
             case 2:
-                $template = 'comunes/mainManager';
+                $template = 'comunes/mainmanager';
                 break;
             case 3:
                 $template = 'comunes/mainCustomer';
