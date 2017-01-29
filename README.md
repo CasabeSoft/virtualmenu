@@ -44,10 +44,15 @@ $ php -S virtualmenu.dev:8000
 
 Every contribution is welcome. Even if you don't know how to contribute but have an idea to improve or extend the functionality, the ideas are welcome too.
 
-On the other hand, if you want to contribute but don't know where to start, here is a small list of immediate needs:
+On the other hand, if you want to contribute but don't know where to start, checkout the list of [open issues](https://github.com/CasabeSoft/virtualmenu/issues).
 
-0. Upgrade [CodeIgniter](https://github.com/bcit-ci/CodeIgniter) to a recent version.
-0. Migrate [Blueprint](https://github.com/joshuaclayton/blueprint-css) to [Bootstrap](https://github.com/twbs/bootstrap) or any other modern CSS framework.
-0. Migrate [JsViews](http://github.com/BorisMoore/jsviews) to [Knockout](https://github.com/knockout/knockout), [KendoUI Core](https://github.com/telerik/kendo-ui-core) or any other modern template system (previous step to a full front-end framework migration for using [React](https://github.com/facebook/react) or [Angular](https://github.com/angular/angular).
-0. Remove the config based server name resolution.
-0. Replace the sub-domain client identification mechanism by a user associated to client mechanism.
+### Code conventions
+
+Please, be sure to check your code fallow the project code conventions, even, if you see that the _actual code_ don't.
+
+0. CodeIngiter conventions should be followed in the PHP code coupled with the CI framework.
+0. PSR-2 should be followed in any other PHP file where CodeIgniter conventions don't applies.
+0. Regarding documentation you:
+  * *must* document every public element
+  * *should* document every protected element
+  * *can* optionally document private elements which complexity seems to require it.
