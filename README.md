@@ -17,6 +17,14 @@ Now it's old, with outdated technologies, but could be improved progressively an
 0. PHP >= 5.6
 0. MySQL
 
+### Dev tools
+
+0. From the project base path run:
+```
+$ bin/composer-install.sh
+$ php composer.phar install
+```
+
 ### Host name resolution
 
 Edit the ``hosts`` file adding this line:
