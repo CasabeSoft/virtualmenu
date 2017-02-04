@@ -10,7 +10,8 @@
     "license": "MIT",
     "require": {},
     "scripts": {
-      "php-validate": "vendor/bin/phpcs --standard=PSR2 -p --colors --report=summary --ignore=*/libraries/*,*/third_party/*,*/errors/* www/application/",
-      "php-validate-full": "vendor/bin/phpcs --standard=PSR2 -p --colors --report=full --ignore=*/libraries/*,*/third_party/*,*/errors/* www/application/"
+      "php-lint": "vendor/bin/phpcs --runtime-set ignore_warnings_on_exit 1",
+      "php-lint-summary": "vendor/bin/phpcs --report=summary --runtime-set ignore_warnings_on_exit 1",
+      "php-lint-full": "vendor/bin/phpcs --report=full --runtime-set ignore_warnings_on_exit 1"
     }
 }
