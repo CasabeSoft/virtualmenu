@@ -8,10 +8,13 @@
         "squizlabs/php_codesniffer": "^2.7"
     },
     "license": "MIT",
-    "require": {},
+    "require": {
+      "php": ">=7.0.0"
+    },
     "scripts": {
-      "php-lint": "vendor/bin/phpcs --runtime-set ignore_warnings_on_exit 1",
-      "php-lint-summary": "vendor/bin/phpcs --report=summary --runtime-set ignore_warnings_on_exit 1",
-      "php-lint-full": "vendor/bin/phpcs --report=full --runtime-set ignore_warnings_on_exit 1"
+      "php-lint": "vendor/bin/phpcs --report=summary --runtime-set ignore_warnings_on_exit 1",
+      "php-lint-full": "vendor/bin/phpcs --report=full --runtime-set ignore_warnings_on_exit 1",
+      "www": "php -S virtualmenu.dev:8000 -t www/",
+      "db-init": "mysql -u root -p < db/create-db-0.1.sql"
     }
 }

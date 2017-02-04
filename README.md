@@ -19,33 +19,37 @@ Now it's old, with outdated technologies, but could be improved progressively an
 
 ### Dev tools
 
-0. From the project base path run:
+You can try doing it automatically running from the project base path:
 ```
-$ bin/composer-install.sh
-$ php composer.phar install
+$ bin/install.sh
+```
+If something goes wrong, try to install composer manually and then, from the project base path, run:
+```
+$ ./composer install
 ```
 
 ### Host name resolution
 
-Edit the ``hosts`` file adding this line:
+Edit the `hosts` file adding this line:
 ```
-127.0.0.1       virtualmenu.dev
+127.0.0.1 virtualmenu.dev
 ```
 
 ### DB config
 
 0. From the project base path run:
 ```
-$ mysql -u root -p < db/create-db-0.1.sql
+$ ./composer run-script db-init
 ```
-0. Create a MySQL user "virtualmenu" with password "virtualmenu" (which you should change, later)
-0. Grant access to "virtualmenu" user to the "virtualmenu" database, created in the first step.
+0. Setup a user access to the database by optionally:
+  - Editing the "user" and "password" config in the file _www/application/config/database.php_, or
+  - Creating the default MySQL user "virtualmenu" with password "virtualmenu" (which you should change, later) and giving access to the "virtualmenu" database, created in the first step.
 
 ### Running the server
 
 From the project base path run:
 ```
-$ php -S virtualmenu.dev:8000
+$ ./composer run-script www
 ```
 
 ## Contributions
@@ -56,11 +60,16 @@ On the other hand, if you want to contribute but don't know where to start, chec
 
 ### Code conventions
 
-Please, be sure to check your code fallow the project code conventions, even, if you see that the _actual code_ don't.
-
-0. CodeIngiter conventions should be followed in the PHP code coupled with the CI framework.
-0. PSR-2 should be followed in any other PHP file where CodeIgniter conventions don't applies.
-0. Regarding documentation you:
-  * *must* document every public element
-  * *should* document every protected element
+Please, be sure to check your code fallows the project code conventions which is, as for now, a relaxed version of [PSR-2](http://www.php-fig.org/psr/psr-2/). You have two composer script for that:
+```
+$ ./composer run-script php-lint # For a summary port
+$ ./composer run-script php-lint-full # For a full and detailed report
+```
+The objective is to have 0 errors and _ideally_ 0 warnings so, if you want to see the details of an specific file, look at the full report (see above) or specify the path to the file to analyze it along:
+```
+$ ./composer run-script php-lint-full path/to/your/file.php
+```
+Regarding documentation you:
+  * *must* document every non trivial public element
+  * *should* document every non trivial protected element
   * *can* optionally document private elements which complexity seems to require it.
