@@ -2,6 +2,7 @@
 <ruleset name="VirtualMenu">
   <description>The coding standard for VirtualMenu</description>
 
+  <file>./www/index.php</file>
   <file>./www/application/</file>
 
   <exclude-pattern>*/libraries/*</exclude-pattern>

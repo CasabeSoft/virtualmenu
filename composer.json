@@ -9,7 +9,6 @@
     },
     "license": "MIT",
     "require": {
-      "php": ">=7.0.0",
       "rogeriopradoj/codeigniter": "2.2.6"
     },
     "scripts": {
