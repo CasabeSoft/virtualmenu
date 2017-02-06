@@ -14,6 +14,7 @@
     <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine" />
     <exclude name="Generic.WhiteSpace.DisallowTabIndent" />
     <exclude name="Generic.Files.LineEndings" />
+    <exclude name="PSR1.Files.SideEffects.FoundWithSymbols" />
   </rule>
 
   <!-- FORMATING IMPROVEMENTS RULES START -->
@@ -101,9 +102,6 @@
     <type>warning</type>
   </rule>
   <rule ref="PSR2.Classes.PropertyDeclaration.ScopeMissing">
-    <type>warning</type>
-  </rule>
-  <rule ref="PSR2.Classes.PropertyDeclaration.VarUsed">
     <type>warning</type>
   </rule>
   <!-- FIXES REQUIRED RULES END -->

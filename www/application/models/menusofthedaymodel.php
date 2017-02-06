@@ -2,11 +2,9 @@
 require_once 'menumodel.php';
 /**
  * Description of MenusOfTheDayModel
- *
- * @author carlos
  */
 class MenusOfTheDayModel extends MenuModel {
-    var $menuTypesId = array(1, 2);     // TODO: Leer desde la tabla en la BBDD
+    private $menuTypesId = array(1, 2);     // TODO: Leer desde la tabla en la BBDD
 
     public function __construct() {
         parent::__construct();
