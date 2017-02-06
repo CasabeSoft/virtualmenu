@@ -10,7 +10,7 @@ if (!defined('BASEPATH'))
  */
 class CustomerController extends MY_Controller {
 
-    function __construct() {
+    public function __construct() {
         parent::__construct();
         if (!isLogged()) {
             redirect('login');

@@ -16,7 +16,7 @@ class MY_Controller extends CI_Controller {
     public $providerError;
     public $theme;
 
-    function __construct() {
+    public function __construct() {
         parent::__construct();
         $this->load->config('virtualmenu', TRUE);
 
@@ -50,7 +50,7 @@ class MY_Controller extends CI_Controller {
         }
     }
 
-    function grantAccessToRols($rols) {   // CB 20120624: Adicionado
+    public function grantAccessToRols($rols) {   // CB 20120624: Adicionado
         $userBelogsToOneOrMoreRoles = FALSE;
         if (!isLogged()) {
             redirect('login');

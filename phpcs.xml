@@ -98,11 +98,5 @@
   <rule ref="Generic.ControlStructures.InlineControlStructure.NotAllowed">
     <type>warning</type>
   </rule>
-  <rule ref="Squiz.Scope.MethodScope.Missing">
-    <type>warning</type>
-  </rule>
-  <rule ref="PSR2.Classes.PropertyDeclaration.ScopeMissing">
-    <type>warning</type>
-  </rule>
   <!-- FIXES REQUIRED RULES END -->
 </ruleset>

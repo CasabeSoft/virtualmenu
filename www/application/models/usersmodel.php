@@ -13,9 +13,9 @@ class UsersModel extends CI_Model {
 
     /**
      * Obtener todos los registros.
-     * 
+     *
      * @author Leonardo
-     * @return array 
+     * @return array
      */
     public function getAll() {
         $query = $this->db->get(USERS);
@@ -24,8 +24,8 @@ class UsersModel extends CI_Model {
 
     /**
      * Obtener un registro a partir del id.
-     * 
-     * @return object 
+     *
+     * @return object
      */
     public function getById($id) {
         $query = $this->db->limit(1)
@@ -35,9 +35,9 @@ class UsersModel extends CI_Model {
 
     /**
      * Obtener un registro a partir del Codigo.
-     * 
+     *
      * @param $code
-     * @return object 
+     * @return object
      */
     public function getUserByCode($code) {
         $query = $this->db->limit(1)
@@ -47,9 +47,9 @@ class UsersModel extends CI_Model {
 
     /**
      * Obtener un registro a partir del email.
-     * 
+     *
      * @param $email
-     * @return object 
+     * @return object
      */
     public function getUserByEmail($email) {
         $query = $this->db->limit(1)
@@ -59,11 +59,11 @@ class UsersModel extends CI_Model {
 
     /**
      * Obtener un usuario según sus datos de autenticación.
-     * 
+     *
      * @author Leonardo
      * @param $email (Correo del usuario)
      * @param $password (Contraseña del usuario)
-     * @return array  
+     * @return array
      */
     public function verifyLogin($email, $password) {
 
@@ -78,12 +78,12 @@ class UsersModel extends CI_Model {
 
     /**
      * Obtener si el usuario es un Cliente.
-     * 
+     *
      * @author Leonardo
      * @param $user_id (Id del usuario)
-     * @return bool  
+     * @return bool
      */
-    function IsUserCustomer($user_id) {
+    public function IsUserCustomer($user_id) {
 
         $query = $this->db->select_sum('id')
                 ->where('id', $user_id)
@@ -96,12 +96,12 @@ class UsersModel extends CI_Model {
 
     /**
      * Obtener si el usuario es un Gestor.
-     * 
+     *
      * @author Leonardo
      * @param $user_id (Id del usuario)
-     * @return bool  
+     * @return bool
      */
-    function IsUserManager($user_id) {
+    public function IsUserManager($user_id) {
 
         $query = $this->db->select_sum('id')
                 ->where('id', $user_id)
@@ -114,25 +114,25 @@ class UsersModel extends CI_Model {
 
     /**
      * Obtener si el usuario es un Administrador.
-     * 
+     *
      * @author Leonardo
      * @param $mail
      * @param $password
-     * @return bool  
+     * @return bool
      */
-    function IsUserAdministrator($mail, $password) {
+    public function IsUserAdministrator($mail, $password) {
 
         return (EMAIL_ADMINISTRATOR === $mail) and (PASSWORD_ADMINISTRATOR === $password) ? TRUE : FALSE;
     }
 
     /**
      * Insertar un registro en la tabla.
-     *  
+     *
      * @author Leonardo
      * @param $fields (Arreglo con los campos a insertar)
-     * @return int (Id del registro insertado)  
+     * @return int (Id del registro insertado)
      */
-    function insertRecord($fields) {
+    public function insertRecord($fields) {
         $this->db->insert(USERS, $fields);
 
         return $this->db->insert_id();
@@ -140,12 +140,12 @@ class UsersModel extends CI_Model {
 
     /**
      * Obtener un usuario cliente segun su id.
-     *  
+     *
      * @author Leonardo
      * @param $id
-     * @return  
+     * @return
      */
-    function getUserCustomerById($id) {
+    public function getUserCustomerById($id) {
 
         $result = $this->db->select(USERS . '.*, ' . CUSTOMERS . '.group')//,'. CUSTOMERS_BY_PROVIDER . '.since')
                 ->from(USERS, CUSTOMERS) //, CUSTOMERS_BY_PROVIDER)
@@ -160,12 +160,12 @@ class UsersModel extends CI_Model {
 
     /**
      * Insertar un usuario cliente en la tabla.
-     *  
+     *
      * @author Leonardo
      * @param $fields (Arreglo con los campos a insertar)
-     * @return int (Id del registro insertado)  
+     * @return int (Id del registro insertado)
      */
-    function insertUserCustomer($fields) {
+    public function insertUserCustomer($fields) {
 
         //$this->db->trans_off();
         $this->db->trans_start();
@@ -210,12 +210,12 @@ class UsersModel extends CI_Model {
 
     /**
      * Actualizar un usuario cliente en la tabla.
-     *  
+     *
      * @author Leonardo
      * @param $fields (Arreglo con los campos a insertar)
-     * @return bool  
+     * @return bool
      */
-    function updateUserCustomer($fields, $where) {
+    public function updateUserCustomer($fields, $where) {
 
         //$this->db->trans_off();
         $this->db->trans_start();
@@ -250,13 +250,13 @@ class UsersModel extends CI_Model {
 
     /**
      * Actualiza un registro en la tabla.
-     * 
+     *
      * @author Leonardo
      * @param $fields (Arreglo con los campos y valores a modificar)
      * @param $where (Filtro de los campos a modificar)
-     * @return int (Id del registro insertado)  
+     * @return int (Id del registro insertado)
      */
-    function updateRecord($fields, $where) {
+    public function updateRecord($fields, $where) {
         $this->db->update(USERS, $fields, $where);
 
         return $this->db->affected_rows();
@@ -264,11 +264,11 @@ class UsersModel extends CI_Model {
 
     /**
      * Borra un registro en la tabla.
-     * 
+     *
      * @author Leonardo
      * @param $id (Campo id de la tabla)
      */
-    function deleteRecord($id) {
+    public function deleteRecord($id) {
         $this->db->delete(USERS, array('id' => $id));
 
         return;
@@ -276,12 +276,12 @@ class UsersModel extends CI_Model {
 
     /**
      * Valida si el usuario existe.
-     * 
+     *
      * @author Leonardo
-     * @param $username 
+     * @param $username
      * @return bool  (Si existe retorna FALSE )
      */
-    function checkUser($username) {
+    public function checkUser($username) {
         $this->db->where('username', $username);
         $query = $this->db->get(USERS);
         if ($query->num_rows() > 0) {
@@ -293,12 +293,12 @@ class UsersModel extends CI_Model {
 
     /**
      * Valida si el email existe.
-     * 
+     *
      * @author Leonardo
      * @param $email (Correo del usuario)
      * @return bool  (Si existe retorna FALSE )
      */
-    function checkEmail($email) {
+    public function checkEmail($email) {
         $this->db->where('email', $email);
         $query = $this->db->get(USERS);
         if ($query->num_rows() > 0) {
@@ -310,14 +310,14 @@ class UsersModel extends CI_Model {
 
     /**
      * Cambia la contraseña del usuario.
-     * 
+     *
      * @author Leonardo
      * @param $email
      * @param $oldPassword
      * @param $newPassword
      * @return bool
      */
-    function changePassword($email, $oldPassword, $newPassword) {
+    public function changePassword($email, $oldPassword, $newPassword) {
 
         $query = $this->db->select('password')
                 ->where('email', $email)
@@ -345,7 +345,7 @@ class UsersModel extends CI_Model {
      * @author Leonardo
      * @return string
      * */
-    function hashPassword($password, $salt = false) {
+    public function hashPassword($password, $salt = false) {
         if (empty($password)) {
             return FALSE;
         }
@@ -364,7 +364,7 @@ class UsersModel extends CI_Model {
      * @author Leonardo
      * @return string
      * */
-    function salt() {
+    public function salt() {
         return substr(md5(uniqid(rand(), true)), 0, 10);
     }
 
@@ -375,7 +375,7 @@ class UsersModel extends CI_Model {
      * @param $email
      * @return bool
      * */
-    function resetPassword($email = '') {
+    public function resetPassword($email = '') {
         if (empty($email)) {
             return FALSE;
         }
@@ -399,7 +399,7 @@ class UsersModel extends CI_Model {
      * @param $salt
      * @return string
      * */
-    function resetPasswordComplete($code) {
+    public function resetPasswordComplete($code) {
         if (empty($code)) {
             return FALSE;
         }

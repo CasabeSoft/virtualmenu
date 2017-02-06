@@ -5,12 +5,10 @@ if (!defined('BASEPATH'))
 
 /**
  * Description of MenuOfTheDayController
- *
- * @author Carlos Bello
  */
 class MenuOfTheDayController extends MY_Controller {
 
-    function __construct() {
+    public function __construct() {
         parent::__construct();
         $this->load->model('MenusOfTheDayModel');
         $this->load->model('BillModel');
@@ -20,34 +18,34 @@ class MenuOfTheDayController extends MY_Controller {
     public function index() {
         $this->manage();
     }
-    
+
     public function manage() {
         $data = array(
             'title' => 'Menu Virtual > Menú del día > Gestión',
             'viewToLoad' => 'menu/types/menuofthedaymanage',
             'menuTypes' => $this->MenusOfTheDayModel->getMenuTypesInfo(),
-            'sectionsByMenuType' => $this->MenusOfTheDayModel->getSectionsByMenuType(),            
+            'sectionsByMenuType' => $this->MenusOfTheDayModel->getSectionsByMenuType(),
         );
         $this->load->view('comunes/mainmanager', $data);
     }
-    
+
     public function order() {
         $data = array(
             'title' => 'Menu Virtual > Menú del día > Pedidos',
             'viewToLoad' => 'menu/types/menuOfTheDayOrder',
             'menuTypes' => $this->MenusOfTheDayModel->getMenuTypesInfo(),
             'address' =>$this->session->userdata("address"),
-            'sectionsByMenuType' => $this->MenusOfTheDayModel->getSectionsByMenuType(),            
+            'sectionsByMenuType' => $this->MenusOfTheDayModel->getSectionsByMenuType(),
         );
         $view = userHasPermition(ROL_MANAGER) ? 'comunes/mainmanager' : 'comunes/mainCustomer';
         $this->load->view($view, $data);
     }
-    
+
     public function rol() {
         echo userHasPermition(ROL_MANAGER);
         echo $this->session->userdata('rol');
     }
-    
+
     public function getSections() {
         echo json_encode($this->MenusOfTheDayModel->getSectionsByMenuType());
     }
@@ -55,31 +53,31 @@ class MenuOfTheDayController extends MY_Controller {
     public function getProducts() {
         echo json_encode($this->MenusOfTheDayModel->getProductsLike($_GET["term"], "id, name AS label, base_price"));
     }
-    
+
     public function getMenusForDate($date) {
         $menus = $this->MenusOfTheDayModel->getMenusForDate($date);
         echo json_encode(array("date" => $date, "menus" => $menus));
     }
-    
+
     public function getMenuContent($id) {
         echo json_encode($this->MenusOfTheDayModel->getMenuContent($id));
     }
-    
+
     public function saveMenuForDate($date) {
         $menu = $this->input->post("menu");
         $menu["id_provider"] = $this->session->userdata("providerId");
         $id = $this->MenusOfTheDayModel->setMenuForDate($date, $menu);
         echo json_encode($id);
     }
-    
+
     public function removeMenu($id) {
         $this->MenusOfTheDayModel->removeMenu($id);
     }
-    
+
     public function getMenusAndBillsForDate($date) {
         $menus = $this->MenusOfTheDayModel->getMenusForDate($date);
-        $bills = $this->BillModel->getBillsForDate($date, 
-                $this->session->userdata("providerId"), 
+        $bills = $this->BillModel->getBillsForDate($date,
+                $this->session->userdata("providerId"),
                 $this->session->userdata("id"));
         echo json_encode(array(
             "date" => $date,
@@ -87,7 +85,7 @@ class MenuOfTheDayController extends MY_Controller {
             "bills" => $bills
         ));
     }
-    
+
     public function confirmOrder() {
         $bill = $this->input->post("bill");
         $bill["id_user"] = $this->session->userdata("id");
@@ -95,7 +93,7 @@ class MenuOfTheDayController extends MY_Controller {
         $id = $this->BillModel->setConfirmedOrder($bill);
         echo json_encode($id);
     }
-    
+
     public function removeBill($id) {
         echo json_encode($this->BillModel->remove($id));
     }

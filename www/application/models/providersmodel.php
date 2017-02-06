@@ -4,7 +4,7 @@
  * Controlador de proveedores
  *
  * @author Leonardo
- */
+*/
 class ProvidersModel extends CI_Model {
 
     public function __construct() {
@@ -13,8 +13,8 @@ class ProvidersModel extends CI_Model {
 
     /**
      * Obtener todos los registros.
-     * 
-     * @return array 
+     *
+     * @return array
      */
     public function getAll() {
         $query = $this->db->get(PROVIDERS);
@@ -23,8 +23,8 @@ class ProvidersModel extends CI_Model {
 
     /**
      * Obtener un registro a partir del id.
-     * 
-     * @return array 
+     *
+     * @return array
      */
     public function getById($id) {
         $query = $this->db->limit(1)
@@ -34,9 +34,9 @@ class ProvidersModel extends CI_Model {
 
     /**
      * Obtener un registro a partir del nombre de la url.
-     * 
-     * @param $nameUri  
-     * @return int  
+     *
+     * @param $nameUri
+     * @return int
      */
     public function getByUriName($nameUri) {
         $query = $this->db->limit(1)
@@ -53,9 +53,9 @@ class ProvidersModel extends CI_Model {
 
     /**
      * Valida si es un proveedor.
-     * 
-     * @param $nameUri 
-     * @return array 
+     *
+     * @param $nameUri
+     * @return array
      */
     public function isProvider($nameUri) {
         $query = $this->db->select('id')
@@ -68,12 +68,12 @@ class ProvidersModel extends CI_Model {
 
     /**
      * Insertar un registro en la tabla.
-     *  
+     *
      * @author Leonardo
      * @param $fields (Arreglo con los campos a insertar)
-     * @return int (Id del registro insertado)  
+     * @return int (Id del registro insertado)
      */
-    function insertRecord($fields) {
+    public function insertRecord($fields) {
         $this->db->insert(PROVIDERS, $fields);
 
         return $this->db->insert_id();
@@ -81,13 +81,13 @@ class ProvidersModel extends CI_Model {
 
     /**
      * Actualiza un registro en la tabla.
-     * 
+     *
      * @author Leonardo
      * @param $fields (Arreglo con los campos y valores a modificar)
      * @param $where (Filtro de los campos a modificar)
-     * @return int (Id del registro insertado)  
+     * @return int (Id del registro insertado)
      */
-    function updateRecord($fields, $where) {
+    public function updateRecord($fields, $where) {
         $this->db->update(PROVIDERS, $fields, $where);
 
         return $this->db->affected_rows();
@@ -95,11 +95,11 @@ class ProvidersModel extends CI_Model {
 
     /**
      * Borra un registro en la tabla.
-     * 
+     *
      * @author Leonardo
      * @param $id (Campo id de la tabla)
      */
-    function deleteRecord($id) {
+    public function deleteRecord($id) {
         $this->db->delete(PROVIDERS, array('id' => $id));
 
         return;

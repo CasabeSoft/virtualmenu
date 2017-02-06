@@ -10,7 +10,7 @@ if (!defined('BASEPATH'))
  */
 class AdministratorController extends MY_Controller {
 
-    function __construct() {
+    public function __construct() {
         parent::__construct();
         if (!isLogged()) {
             redirect('login');
@@ -69,7 +69,7 @@ class AdministratorController extends MY_Controller {
         $this->load->view('comunes/mainadministrator', $data);
     }
 
-    function encrypt_password_callback($post_array) {
+    public function encrypt_password_callback($post_array) {
         $post_array['password'] = md5($post_array['password']);
 
         return $post_array;

@@ -10,7 +10,7 @@ if (!defined('BASEPATH'))
  */
 class Reports extends MY_Controller {
 
-    function __construct() {
+    public function __construct() {
         parent::__construct();
         if (!isLogged()) {
             redirect('login');
@@ -78,7 +78,7 @@ class Reports extends MY_Controller {
         $this->index();
     }
 
-    function report($date = '', $format = '') {
+    public function report($date = '', $format = '') {
         $this->load->library('PHPReport');
 
         $this->load->model('OrdersModel');

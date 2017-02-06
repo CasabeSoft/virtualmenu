@@ -10,7 +10,7 @@ if (!defined('BASEPATH'))
  */
 class ManagerController extends MY_Controller {
 
-    function __construct() {
+    public function __construct() {
         parent::__construct();
         if (!isLogged()) {
             redirect('login');
@@ -58,7 +58,7 @@ class ManagerController extends MY_Controller {
         $this->load->view('comunes/mainmanager', $data);
     }
 
-    function provider_callback($post_array) {
+    public function provider_callback($post_array) {
         $post_array['id_provider'] = $this->providerId;
 
         return $post_array;

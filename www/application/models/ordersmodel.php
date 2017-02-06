@@ -13,10 +13,10 @@ class OrdersModel extends CI_Model {
 
     /**
      * Obtener todos los registros.
-     * 
+     *
      * @author Leonardo
-     * @return array 
-     */
+     * @return array
+    */
     public function getAll() {
         $query = $this->db
                 ->select("id as value, name as label")
@@ -26,9 +26,9 @@ class OrdersModel extends CI_Model {
 
     /**
      * Obtener un registro a partir del id.
-     * 
+     *
      * @author Leonardo
-     * @return array 
+     * @return array
      */
     public function getById($id) {
         $query = $this->db->limit(1)
@@ -38,12 +38,12 @@ class OrdersModel extends CI_Model {
 
     /**
      * Insertar un registro en la tabla.
-     *  
+     *
      * @author Leonardo
      * @param $fields (Arreglo con los campos a insertar)
-     * @return int (Id del registro insertado)  
+     * @return int (Id del registro insertado)
      */
-    function insertRecord($fields) {
+    public function insertRecord($fields) {
         $this->db->insert(ORDERS, $fields);
 
         return $this->db->insert_id();
@@ -51,13 +51,13 @@ class OrdersModel extends CI_Model {
 
     /**
      * Actualiza un registro en la tabla.
-     * 
+     *
      * @author Leonardo
      * @param $fields (Arreglo con los campos y valores a modificar)
      * @param $where (Filtro de los campos a modificar)
-     * @return int (Id del registro insertado)  
+     * @return int (Id del registro insertado)
      */
-    function updateRecord($fields, $where) {
+    public function updateRecord($fields, $where) {
         $this->db->update(ORDERS, $fields, $where);
 
         return $this->db->affected_rows();
@@ -65,11 +65,11 @@ class OrdersModel extends CI_Model {
 
     /**
      * Borra un registro en la tabla.
-     * 
+     *
      * @author Leonardo
      * @param $id (Campo id de la tabla)
      */
-    function deleteRecord($id) {
+    public function deleteRecord($id) {
         $this->db->delete(ORDERS, array('id' => $id));
 
         return;
@@ -77,12 +77,12 @@ class OrdersModel extends CI_Model {
 
     /**
      * Obtener los productos ordenados por un rango de fechas.
-     * 
+     *
      * @author Leonardo
-     * @return array 
+     * @return array
      */
     public function productOrderdByDate($id_provider, $first_date, $last_date) {
-       
+
         $qProducts = <<<EOD
 SELECT po.id_product, p.`name`, count(po.id_product) as cuantity
 FROM products_by_order po INNER JOIN products p on po.id_product = p.id
@@ -101,13 +101,13 @@ EOD;
 
     /**
      * Detalles de pedidos para un rango de fechas.
-     * 
+     *
      * @author Leonardo
-     * @return array 
+     * @return array
      */
     public function detailsOfOrdersByDate($id_provider, $first_date, $last_date) {
         $qProducts = <<<EOD
-SELECT o.id id_order, o.comments order_comments, m.`name` menu_name, p.`name` product_name, 
+SELECT o.id id_order, o.comments order_comments, m.`name` menu_name, p.`name` product_name,
     u.`name` user_name, u.phone, u.address
 FROM bills b INNER JOIN orders o ON b.id = o.id_bill
     INNER JOIN menus m ON o.id_menu = m.id

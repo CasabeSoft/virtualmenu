@@ -13,9 +13,9 @@ class GroupsModel extends CI_Model {
 
     /**
      * Obtener todos los registros.
-     * 
+     *
      * @author Leonardo
-     * @return array 
+     * @return array
      */
     public function getAll() {
         $query = $this->db
@@ -26,9 +26,9 @@ class GroupsModel extends CI_Model {
 
     /**
      * Obtener un registro a partir del id.
-     * 
+     *
      * @author Leonardo
-     * @return array 
+     * @return array
      */
     public function getById($id) {
         $query = $this->db->limit(1)
@@ -38,12 +38,12 @@ class GroupsModel extends CI_Model {
 
     /**
      * Insertar un registro en la tabla.
-     *  
+     *
      * @author Leonardo
      * @param $fields (Arreglo con los campos a insertar)
-     * @return int (Id del registro insertado)  
+     * @return int (Id del registro insertado)
      */
-    function insertRecord($fields) {
+    public function insertRecord($fields) {
         $this->db->insert(GROUPS, $fields);
 
         return $this->db->insert_id();
@@ -51,13 +51,13 @@ class GroupsModel extends CI_Model {
 
     /**
      * Actualiza un registro en la tabla.
-     * 
+     *
      * @author Leonardo
      * @param $fields (Arreglo con los campos y valores a modificar)
      * @param $where (Filtro de los campos a modificar)
-     * @return int (Id del registro insertado)  
+     * @return int (Id del registro insertado)
      */
-    function updateRecord($fields, $where) {
+    public function updateRecord($fields, $where) {
         $this->db->update(GROUPS, $fields, $where);
 
         return $this->db->affected_rows();
@@ -65,11 +65,11 @@ class GroupsModel extends CI_Model {
 
     /**
      * Borra un registro en la tabla.
-     * 
+     *
      * @author Leonardo
      * @param $id (Campo id de la tabla)
      */
-    function deleteRecord($id) {
+    public function deleteRecord($id) {
         $this->db->delete(GROUPS, array('id' => $id));
 
         return;

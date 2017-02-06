@@ -13,27 +13,27 @@ class CustomerModel extends CI_Model {
 
     /**
      * Obtener todos los registros.
-     * 
+     *
      * @author Leonardo
-     * @return array 
+     * @return array
      */
     public function getAll() {
         $query = $this->db->get(CUSTOMERS);
         return $query->result_array();
     }
-    
+
     /**
      * Obtener un registro a partir del id.
-     * 
+     *
      * @author Leonardo
-     * @return array 
+     * @return array
      */
     public function getById($id) {
         $query = $this->db->limit(1)
                 ->get_where(CUSTOMERS, array('id' => $id));
         return $query->row();
     }
-    
+
     /* SELECT *
       FROM `customers_by_provider` , `providers`
       WHERE `customers_by_provider`.`id_provider` = `providers`.`id`
@@ -43,11 +43,11 @@ class CustomerModel extends CI_Model {
 
     /**
      * Obtener si el usuario es un cliente del proveedor
-     * 
+     *
      * @author Leonardo
      * @param $customerId
      * @param $providerName
-     * @return bool  
+     * @return bool
      */
     public function isCustomerOfProvider($customerId, $providerName) {
 
@@ -64,12 +64,12 @@ class CustomerModel extends CI_Model {
 
     /**
      * Insertar un registro en la tabla.
-     *  
+     *
      * @author Leonardo
      * @param $fields (Arreglo con los campos a insertar)
-     * @return int (Id del registro insertado)  
+     * @return int (Id del registro insertado)
      */
-    function insertRecord($fields) {
+    public function insertRecord($fields) {
         $this->db->insert(CUSTOMERS, $fields);
 
         return $this->db->insert_id();
@@ -77,13 +77,13 @@ class CustomerModel extends CI_Model {
 
     /**
      * Actualiza un registro en la tabla.
-     * 
+     *
      * @author Leonardo
      * @param $fields (Arreglo con los campos y valores a modificar)
      * @param $where (Filtro de los campos a modificar)
-     * @return int (Id del registro insertado)  
+     * @return int (Id del registro insertado)
      */
-    function updateRecord($fields, $where) {
+    public function updateRecord($fields, $where) {
         $this->db->update(CUSTOMERS, $fields, $where);
 
         return $this->db->affected_rows();
@@ -91,11 +91,11 @@ class CustomerModel extends CI_Model {
 
     /**
      * Borra un registro en la tabla.
-     * 
+     *
      * @author Leonardo
      * @param $id (Campo id de la tabla)
      */
-    function deleteRecord($id) {
+    public function deleteRecord($id) {
         $this->db->delete(CUSTOMERS, array('id' => $id));
 
         return;

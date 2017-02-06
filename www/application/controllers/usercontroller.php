@@ -5,12 +5,12 @@ if (!defined('BASEPATH'))
 
 /**
  * Controlador para la gestión de usuarios.
- * 
+ *
  * @author Leoanrdo Quintero
  */
 class UserController extends MY_Controller {
 
-    function __construct() {
+    public function __construct() {
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('UsersModel');
@@ -44,7 +44,7 @@ class UserController extends MY_Controller {
     /**
      *  Formulario para validar el acceso de un usuario.
      */
-    function login() {
+    public function login() {
 
         //$this->form_validation->set_rules('username', 'Usuario', 'trim|required');
         $this->form_validation->set_rules('email', 'Correo', 'trim|required');
@@ -130,7 +130,7 @@ class UserController extends MY_Controller {
     /**
      *  Cerrar session del usuario.
      */
-    function close() {
+    public function close() {
         $this->session->sess_destroy();
         redirect('home');
     }
@@ -138,16 +138,16 @@ class UserController extends MY_Controller {
     /**
      *  Mostrar al usuario página de acceso denegado.
      */
-    function denied() {
+    public function denied() {
         $data['title'] = 'Menu Virtual - Acceso denegado';
         $data['viewToLoad'] = 'user/denied';
         $this->load->view('comunes/main', $data);
     }
 
     /**
-     * Formulario para registrar un usuario nuevo. 
+     * Formulario para registrar un usuario nuevo.
      */
-    function register() {
+    public function register() {
 
         $result = $this->GroupsModel->getAll();
 
@@ -233,23 +233,23 @@ class UserController extends MY_Controller {
     }
 
     /**
-     * Valida si el usuario está registrado en la bd. 
+     * Valida si el usuario está registrado en la bd.
      */
-    function _checkUser($username) {
+    public function _checkUser($username) {
         return $this->UsersModel->checkUser($username);
     }
 
     /**
-     * Valida si el correo está registrado en la bd. 
+     * Valida si el correo está registrado en la bd.
      */
-    function _checkEmail($email) {
+    public function _checkEmail($email) {
         return $this->UsersModel->checkEmail($email);
     }
 
     /**
-     * Cambiar contraseña del usuario. 
+     * Cambiar contraseña del usuario.
      */
-    function changePassword() {
+    public function changePassword() {
         if (!isLogged()) {
             redirect('login');
             exit;
@@ -295,9 +295,9 @@ class UserController extends MY_Controller {
         $this->load->view($template, $data);
     }
 
-    function profile() {
+    public function profile() {
 
-        $id = $this->session->userdata('id');       
+        $id = $this->session->userdata('id');
         $rol = $this->session->userdata('rol');
         switch ($rol) {
             case 1:
@@ -368,7 +368,7 @@ class UserController extends MY_Controller {
         }
 
         $user = $this->UsersModel->getUserCustomerById($id);
-        if ($rol == ROL_CUSTOMER) {            
+        if ($rol == ROL_CUSTOMER) {
             $group = $this->GroupsModel->getById($user->group);
 
             $data['groupName'] = $group->name;
@@ -386,7 +386,7 @@ class UserController extends MY_Controller {
     /**
      * Para que el cliente envie correo para contactar con el gestor.
      */
-    function contact() {
+    public function contact() {
 
         //$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         //$this->form_validation->set_rules('email', 'Correo', 'required');
@@ -438,7 +438,7 @@ class UserController extends MY_Controller {
     /**
      * Recordar al usuario su contraseña.
      */
-    function rememberPassword() {
+    public function rememberPassword() {
 
         $this->form_validation->set_rules('email', 'Correo', 'required');
 
@@ -499,12 +499,12 @@ class UserController extends MY_Controller {
 
     /**
      * Restablecer la contraseña del usuario.
-     * 
+     *
      * @author Leonardo
      * @param $code
      * @return void
      */
-    function resetPassword() {
+    public function resetPassword() {
 
         $code = $this->uri->segment(2);
         //echo 'code: ' . $code . $this->uri->segment(2);
@@ -521,7 +521,7 @@ class UserController extends MY_Controller {
     }
 
     /**
-     * Enviar correo con el codogo para restablecer la contraseña 
+     * Enviar correo con el codogo para restablecer la contraseña
      *
      * @author Leonardo
      * @param $code
