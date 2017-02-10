@@ -1,4 +1,4 @@
-# VirtualMenu - Catering menu managment
+# VirtualMenu - Catering menu managment ![Build status](https://travis-ci.org/CasabeSoft/virtualmenu.svg?branch=master)
 
 ![VirtualMenu menu managment](docs/img/VirtualMenu_Menu_Manage_demo00.png)
 
