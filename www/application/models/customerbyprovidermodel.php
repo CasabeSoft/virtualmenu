@@ -58,9 +58,8 @@ class CustomerByProviderModel extends CI_Model {
                 ->where(PROVIDERS . '.name', $providerName)
                 ->limit(1)
                 ->get();
-        if ($query->num_rows() > 0)
-            return TRUE;
-        return FALSE;
+
+        return $query->num_rows() > 0;
     }
 
     /**

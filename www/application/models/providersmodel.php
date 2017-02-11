@@ -61,9 +61,7 @@ class ProvidersModel extends CI_Model {
         $query = $this->db->select('id')
                 ->get_where(PROVIDERS, array('name_uri' => $nameUri));
 
-        if ($query->num_rows() > 0)
-            return TRUE;
-        return FALSE;
+         return $query->num_rows() > 0;
     }
 
     /**

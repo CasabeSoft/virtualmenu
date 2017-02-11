@@ -82,15 +82,16 @@ class UsersModel extends CI_Model {
      * @author Leonardo
      * @param $user_id (Id del usuario)
      * @return bool
-     */
+     */models/usersmodel
     public function IsUserCustomer($user_id) {
 
         $query = $this->db->select_sum('id')
                 ->where('id', $user_id)
                 ->get(CUSTOMERS);
 
-        if ($query->num_rows() > 0)
+        if ($query->num_rows() > 0) {
             return ($query->row()->id != 0) ? TRUE : FALSE;
+        }
         return FALSE;
     }
 
@@ -107,8 +108,9 @@ class UsersModel extends CI_Model {
                 ->where('id', $user_id)
                 ->get(MANAGERS);
 
-        if ($query->num_rows() > 0)
+        if ($query->num_rows() > 0) {
             return ($query->row()->id != 0) ? TRUE : FALSE;
+        }
         return FALSE;
     }
 

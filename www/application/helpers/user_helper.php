@@ -126,8 +126,9 @@ if (!function_exists('userHasPermition')) {
         if ($CI->session->userdata('rol')) {
             $rol = $CI->session->userdata('rol');
             unset($CI);
-            if (@in_array($rol, $permisos[$permiso - 1]))
+            if (@in_array($rol, $permisos[$permiso - 1])) {
                 return TRUE;
+            }
         }
 
         return FALSE;
@@ -141,11 +142,12 @@ if (!function_exists('optionsCombobox')) {
     function optionsCombobox($array, $selected, $fieldId, $fieldName) {
 
         $result = "";
-        if (count($array) > 0)
+        if (count($array) > 0) {
             foreach ($array as $value) {
                 $optionSelected = $value[$fieldId] == $selected ? " selected" : "";
                 $result .= "<option value='" . $value[$fieldId] . "' $optionSelected>" . $value[$fieldName] . "</option>\n";
             }
+        }
         return $result;
     }
 

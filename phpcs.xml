@@ -92,11 +92,4 @@
     <type>warning</type>
   </rule>
   <!-- REFACTOR REQUIRED RULES END -->
-
-  <!-- FIXES REQUIRED RULES START -->
-  <!-- TODO: Fix ASAP tto restore the error level for this rules -->
-  <rule ref="Generic.ControlStructures.InlineControlStructure.NotAllowed">
-    <type>warning</type>
-  </rule>
-  <!-- FIXES REQUIRED RULES END -->
 </ruleset>
