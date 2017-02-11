@@ -15,12 +15,6 @@
     <exclude name="Generic.WhiteSpace.DisallowTabIndent" />
     <exclude name="Generic.Files.LineEndings" />
     <exclude name="PSR1.Files.SideEffects.FoundWithSymbols" />
+    <exclude name="PSR1.Classes.ClassDeclaration.MissingNamespace" />
   </rule>
-
-  <!-- REFACTOR REQUIRED RULES START -->
-  <!-- TODO: Refactor code to restore the error level for this rules -->
-  <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
-    <type>warning</type>
-  </rule>
-  <!-- REFACTOR REQUIRED RULES END -->
 </ruleset>
