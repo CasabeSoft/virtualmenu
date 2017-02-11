@@ -90,7 +90,7 @@ FROM products_by_order po INNER JOIN products p on po.id_product = p.id
     INNER JOIN orders o on po.id_order = o.id
     INNER JOIN menus m on o.id_menu = m.id
     INNER JOIN products_by_menu pm on o.id_menu = pm.id_menu and po.id_product = pm.id_product
-WHERE id_order = {$orders[$i]["id"]};   
+WHERE id_order = {$orders[$i]["id"]};
 EOD;
             $orders[$i]["products"] = $this->db->query($qProducts)
                     ->result_array();
@@ -100,8 +100,8 @@ EOD;
 
     public function getBillsForDate($date, $idProvider, $idUser) {
         $qBills = <<<EOD
-SELECT id, generated, paid, amount, comments, payment 
-FROM bills 
+SELECT id, generated, paid, amount, comments, payment
+FROM bills
 WHERE date(generated) = '$date'
     AND id_provider = $idProvider
     AND id_user = $idUser;
@@ -115,7 +115,6 @@ EOD;
 
         return $bills;
     }
-
 }
 
 /* End of file BillModel.php */

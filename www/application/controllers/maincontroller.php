@@ -32,7 +32,6 @@ class MainController extends MY_Controller {
         $data['viewToLoad'] = 'home';
         $this->load->view('comunes/main', $data);
     }
-
 }
 
 /* End of file main.php */

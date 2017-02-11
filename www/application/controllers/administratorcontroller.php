@@ -291,7 +291,6 @@ class AdministratorController extends MY_Controller {
         $data->viewToLoad = 'administrator/main';
         $this->load->view('comunes/mainadministrator', $data);
     }
-
 }
 
 /* End of file main.php */

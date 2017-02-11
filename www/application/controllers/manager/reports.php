@@ -130,7 +130,6 @@ class Reports extends MY_Controller {
         $data['viewToLoad'] = 'reports/report';
         $this->load->view('comunes/mainmanager', $data);
     }
-
 }
 
 /* End of file report.php */

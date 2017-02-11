@@ -124,7 +124,6 @@ EOD;
         return $query->result_array();
         //cast(horae as date)
     }
-
 }
 
 ?>

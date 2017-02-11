@@ -33,7 +33,6 @@ class CustomerController extends MY_Controller {
         );
         $this->load->view('comunes/maincustomer', $data);
     }
-
 }
 
 /* End of file main.php */

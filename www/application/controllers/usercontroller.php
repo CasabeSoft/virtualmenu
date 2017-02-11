@@ -564,15 +564,10 @@ class UserController extends MY_Controller {
 
             //echo $this->email->print_debugger();
 
-            if ($this->email->send()) {
-                return TRUE;
-            } else {
-                return FALSE;
-            }
+            return $this->email->send();
         }
         return FALSE;
     }
-
 }
 
 /* End of file user.php */

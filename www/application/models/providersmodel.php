@@ -102,7 +102,6 @@ class ProvidersModel extends CI_Model {
 
         return;
     }
-
 }
 
 ?>

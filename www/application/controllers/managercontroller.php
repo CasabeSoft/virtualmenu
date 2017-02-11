@@ -64,7 +64,6 @@ class ManagerController extends MY_Controller {
 
         return $post_array;
     }
-
 }
 
 /* End of file main.php */
