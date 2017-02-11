@@ -120,8 +120,7 @@ class Reports extends MY_Controller
                 )*/
             ),
             'data' => $datadb
-                )
-        );
+        ));
 
         //echo $R->render('excel');
         //exit();

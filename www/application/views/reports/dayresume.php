@@ -69,7 +69,7 @@ if (!$this->uri->segment(4)) {
                 Cantidad
             </th>
         </tr>
-        <?php foreach ($products as $product): ?>
+        <?php foreach ($products as $product) { ?>
             <tr>
                 <td width="100px">
                     <?php echo $product['id_product'] ?>
@@ -81,6 +81,6 @@ if (!$this->uri->segment(4)) {
                     <?php echo $product['cuantity'] ?>
                 </td>
             </tr>
-        <?php endforeach ?>
+        <?php } ?>
     </table>
 </div>

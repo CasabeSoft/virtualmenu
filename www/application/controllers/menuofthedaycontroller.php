@@ -77,9 +77,11 @@ class MenuOfTheDayController extends MY_Controller
 
     public function getMenusAndBillsForDate($date) {
         $menus = $this->MenusOfTheDayModel->getMenusForDate($date);
-        $bills = $this->BillModel->getBillsForDate($date,
-                $this->session->userdata("providerId"),
-                $this->session->userdata("id"));
+        $bills = $this->BillModel->getBillsForDate(
+            $date,
+            $this->session->userdata("providerId"),
+            $this->session->userdata("id")
+        );
         echo json_encode(array(
             "date" => $date,
             "menus" => $menus,

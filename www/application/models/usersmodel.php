@@ -314,7 +314,6 @@ class UsersModel extends CI_Model
         $db_password = $result->password;
 
         if ($db_password === $oldPassword) {
-
             $this->db->where('email', $email)
                     ->update(USERS, array('password' => $newPassword));
 

@@ -17,36 +17,6 @@
     <exclude name="PSR1.Files.SideEffects.FoundWithSymbols" />
   </rule>
 
-  <!-- FORMATING IMPROVEMENTS RULES START -->
-  <rule ref="PSR2.Methods.FunctionCallSignature.ContentAfterOpenBracket">
-    <type>warning</type>
-  </rule>
-  <rule ref="PSR2.Methods.FunctionCallSignature.Indent">
-    <type>warning</type>
-  </rule>
-  <rule ref="PSR2.Methods.FunctionCallSignature.CloseBracketLine">
-    <type>warning</type>
-  </rule>
-  <rule ref="PSR2.Methods.FunctionCallSignature.SpaceBeforeCloseBracket">
-    <type>warning</type>
-  </rule>
-  <rule ref="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseParenthesis">
-    <type>warning</type>
-  </rule>
-  <rule ref="Generic.WhiteSpace.ScopeIndent.IncorrectExact">
-    <type>warning</type>
-  </rule>
-  <rule ref="PSR2.Files.EndFileNewline.NoneFound">
-    <type>warning</type>
-  </rule>
-  <rule ref="PSR2.ControlStructures.ControlStructureSpacing.SpacingAfterOpenBracket">
-    <type>warning</type>
-  </rule>
-  <rule ref="Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpen">
-    <type>warning</type>
-  </rule>
-  <!-- FORMATING IMPROVEMENTS RULES START -->
-
   <!-- REFACTOR REQUIRED RULES START -->
   <!-- TODO: Refactor code to restore the error level for this rules -->
   <rule ref="PSR1.Methods.CamelCapsMethodName.NotCamelCaps">
