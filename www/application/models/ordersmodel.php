@@ -5,7 +5,8 @@
  *
  * @author Leonardo
  */
-class OrdersModel extends CI_Model {
+class OrdersModel extends CI_Model
+{
 
     public function __construct() {
         parent::__construct();

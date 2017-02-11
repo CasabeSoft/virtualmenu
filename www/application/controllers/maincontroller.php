@@ -9,8 +9,8 @@ if (!defined('BASEPATH')) {
  *
  * @author Leoanrdo Quintero
  */
-class MainController extends MY_Controller {
-
+class MainController extends MY_Controller
+{
     public function __construct() {
         parent::__construct();
     }

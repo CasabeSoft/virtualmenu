@@ -18,9 +18,6 @@
   </rule>
 
   <!-- FORMATING IMPROVEMENTS RULES START -->
-  <rule ref="PSR2.Classes.ClassDeclaration.OpenBraceNewLine">
-    <type>warning</type>
-  </rule>
   <rule ref="PSR2.Methods.FunctionCallSignature.ContentAfterOpenBracket">
     <type>warning</type>
   </rule>
@@ -42,9 +39,6 @@
   <rule ref="PSR2.Files.EndFileNewline.NoneFound">
     <type>warning</type>
   </rule>
-  <rule ref="PSR2.ControlStructures.ControlStructureSpacing.SpacingAfterOpenBrace">
-    <type>warning</type>
-  </rule>
   <rule ref="PSR2.ControlStructures.ControlStructureSpacing.SpacingAfterOpenBracket">
     <type>warning</type>
   </rule>
@@ -54,19 +48,7 @@
   <rule ref="Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpen">
     <type>warning</type>
   </rule>
-  <rule ref="Squiz.WhiteSpace.ScopeClosingBrace.Indent">
-    <type>warning</type>
-  </rule>
-  <rule ref="Squiz.Functions.MultiLineFunctionDeclaration.ContentAfterBrace">
-    <type>warning</type>
-  </rule>
   <!-- FORMATING IMPROVEMENTS RULES START -->
-
-  <!-- NAMING CONVENTION RULES START -->
-  <rule ref="Squiz.Classes.ValidClassName.NotCamelCaps">
-    <type>warning</type>
-  </rule>
-  <!-- NAMING CONVENTION RULES END -->
 
   <!-- REFACTOR REQUIRED RULES START -->
   <!-- TODO: Refactor code to restore the error level for this rules -->

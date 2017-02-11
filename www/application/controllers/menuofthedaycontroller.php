@@ -7,8 +7,8 @@ if (!defined('BASEPATH')) {
 /**
  * Description of MenuOfTheDayController
  */
-class MenuOfTheDayController extends MY_Controller {
-
+class MenuOfTheDayController extends MY_Controller
+{
     public function __construct() {
         parent::__construct();
         $this->load->model('MenusOfTheDayModel');

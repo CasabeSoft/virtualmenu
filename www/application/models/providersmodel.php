@@ -5,7 +5,8 @@
  *
  * @author Leonardo
 */
-class ProvidersModel extends CI_Model {
+class ProvidersModel extends CI_Model
+{
 
     public function __construct() {
         parent::__construct();

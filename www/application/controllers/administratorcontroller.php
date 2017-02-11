@@ -9,8 +9,8 @@ if (!defined('BASEPATH')) {
  *
  * @author Leoanrdo Quintero
  */
-class AdministratorController extends MY_Controller {
-
+class AdministratorController extends MY_Controller
+{
     public function __construct() {
         parent::__construct();
         if (!isLogged()) {

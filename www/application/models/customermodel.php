@@ -5,7 +5,8 @@
  *
  * @author Leonardo
  */
-class CustomerModel extends CI_Model {
+class CustomerModel extends CI_Model
+{
 
     public function __construct() {
         parent::__construct();

@@ -111,7 +111,7 @@ class grocery_CRUD_Model  extends CI_Model  {
     
     function set_basic_table($table_name = null)
     {
-    	if( !($this->db->table_exists($table_name)) )
+    	if(!($this->db->table_exists($table_name)) )
     		return false;
     	
     	$this->table_name = $table_name;

@@ -6,10 +6,9 @@ if (!defined('BASEPATH')) {
 
 /**
  * Extendiendo la clase Controller para validar el proveedor.
- *
  */
-class MY_Controller extends CI_Controller {
-
+class MY_Controller extends CI_Controller // @codingStandardsIgnoreLine
+{
     public $providerId;
     public $providerName;
     public $providerWeb;
@@ -51,7 +50,7 @@ class MY_Controller extends CI_Controller {
         }
     }
 
-    public function grantAccessToRols($rols) {   // CB 20120624: Adicionado
+    public function grantAccessToRols($rols) {
         $userBelogsToOneOrMoreRoles = false;
         if (!isLogged()) {
             redirect('login');

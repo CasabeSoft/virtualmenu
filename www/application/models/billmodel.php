@@ -10,7 +10,8 @@
  *
  * @author Carlos Bello
  */
-class BillModel extends CI_Model {
+class BillModel extends CI_Model
+{
 
     public $id = 0;
     public $generated = null;

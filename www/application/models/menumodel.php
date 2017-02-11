@@ -3,7 +3,8 @@
 /**
  * Description of MenuModel
  */
-class MenuModel extends CI_Model {
+class MenuModel extends CI_Model
+{
 
     public function __construct() {
         parent::__construct();
