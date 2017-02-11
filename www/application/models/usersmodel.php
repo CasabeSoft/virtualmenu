@@ -81,7 +81,7 @@ class UsersModel extends CI_Model
      * @author Leonardo
      * @param $user_id (Id del usuario)
      * @return bool
-     */models/usersmodel
+     */
     public function IsUserCustomer($user_id) {
 
         $query = $this->db->select_sum('id')
