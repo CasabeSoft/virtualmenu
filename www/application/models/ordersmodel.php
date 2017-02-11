@@ -123,6 +123,5 @@ EOD;
         $query = $this->db->query($qProducts);
 
         return $query->result_array();
-        //cast(horae as date)
     }
 }

@@ -46,8 +46,6 @@ class UserController extends MY_Controller
      *  Formulario para validar el acceso de un usuario.
      */
     public function login() {
-
-        //$this->form_validation->set_rules('username', 'Usuario', 'trim|required');
         $this->form_validation->set_rules('email', 'Correo', 'trim|required');
         $this->form_validation->set_rules('password', 'Contreseña', 'required|md5');
 
@@ -93,11 +91,6 @@ class UserController extends MY_Controller
                 //..lo guardamos en sesion
                 $this->session->set_userdata($user);
 
-                //Ahora, comprobamos si existio alguna pagina a donde se quiso entrar
-                /* if ($this->session->userdata('lastPageVisited')) {
-                  redirect($this->session->userdata('lastPageVisited'));
-                  } else { */
-
                 //Según el rol del usuario lo enviamos a su página index
                 switch ($user['rol']) {
                     case 1:
@@ -112,7 +105,6 @@ class UserController extends MY_Controller
                     default:
                         break;
                 }
-                //}
             } else {
                 // Si no existe el usuario envio el mensaje de error.
                 $data['error'] = 'Revise los campos por favor. El nombre de usuario o contraseña no son correctos.';
@@ -157,7 +149,6 @@ class UserController extends MY_Controller
         $this->form_validation->set_rules('address', 'Dirección', 'trim');
         $this->form_validation->set_rules('group', 'Grupo', 'trim');
         $this->form_validation->set_rules('groupName', 'Grupo', 'trim');
-        //$this->form_validation->set_rules('username', 'Usuario', 'trim|required|callback__checkUser');
         $this->form_validation->set_rules('email', 'Correo', 'trim|required|valid_email|callback__checkEmail');
         $this->form_validation->set_rules('password', 'Contreseña', 'required|min_length[2]|max_length[20]|md5');
         $this->form_validation->set_rules('re_password', 'Confirmar contraseña', 'required|matches[password]');
@@ -180,31 +171,6 @@ class UserController extends MY_Controller
             );
 
             $idUser = $this->UsersModel->insertUserCustomer($fields);
-
-            /*
-              $fields = array(
-              'name' => $this->input->post('name'),
-              'phone' => $this->input->post('phone'),
-              //'username' => $this->input->post('username'),
-              'email' => $this->input->post('email'),
-              'password' => $this->input->post('password')
-              //$activation_code = md5(microtime());
-              );
-              $idUser = $this->UsersModel->insertRecord($fields);
-              $fieldsCustomer = array(
-              'id' => $idUser,
-              'address' => $this->input->post('address'),
-              'group' => $this->input->post('group')
-              );
-              $idCustomer = $this->CustomerModel->insertRecord($fieldsCustomer);
-
-              $fieldsCustomerProvider = array(
-              'id_customer' => $idUser,
-              'id_provider' => $this->providerId,
-              'since' => date('Y-m-d')
-              );
-              $idCustomerProvider = $this->CustomerByProviderModel->insertRecord($fieldsCustomerProvider);
-             */
 
             if ($idUser) {
                 $user = array(
@@ -253,8 +219,6 @@ class UserController extends MY_Controller
             exit;
         }
 
-        //$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-
         $this->form_validation->set_rules('old_password', 'Contreseña actual', 'required|min_length[2]|max_length[20]|md5');
         $this->form_validation->set_rules('new_password', 'Nueva contreseña', 'required|min_length[2]|max_length[20]|md5');
         $this->form_validation->set_rules('new_confirm', 'Confirmar nueva contraseña', 'required|matches[new_password]');
@@ -293,7 +257,6 @@ class UserController extends MY_Controller
     }
 
     public function profile() {
-
         $id = $this->session->userdata('id');
         $rol = $this->session->userdata('rol');
         switch ($rol) {
@@ -319,7 +282,6 @@ class UserController extends MY_Controller
             $this->form_validation->set_rules('group', 'Grupo', 'trim');
             $this->form_validation->set_rules('groupName', 'Grupo', 'trim');
         }
-        //$this->form_validation->set_rules('username', 'Usuario', 'trim|required|callback__checkUser');
 
         if ($this->form_validation->run()) {
             if ($rol == ROL_CUSTOMER) {
@@ -328,13 +290,8 @@ class UserController extends MY_Controller
                     'name' => $this->input->post('name'),
                     'phone' => $this->input->post('phone'),
                     'address' => $this->input->post('address'),
-                    //'email' => $this->input->post('email'),
-                    //'password' => $this->input->post('password'),
                     // Campos del la tabla CUSTOMERS
                     'group' => $this->input->post('group'),
-                        // Campos de la tabla CUSTOMERS_BY_PROVIDER
-                        //'id_provider' => $this->providerId,
-                        //'since' => date('Y-m-d')
                 );
 
                 $change = $this->UsersModel->updateUserCustomer($fields, array('id' => $id));
@@ -368,7 +325,7 @@ class UserController extends MY_Controller
 
             $data['groupName'] = $group->name;
             $data['groups'] = json_encode($result);
-        } else {    // CB 20120615: Adicionado para evitar error en perfil de Manager
+        } else {
             $data['groupName'] = '';
             $data['groups'] = array();
         }
@@ -382,9 +339,6 @@ class UserController extends MY_Controller
      * Para que el cliente envie correo para contactar con el gestor.
      */
     public function contact() {
-
-        //$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-        //$this->form_validation->set_rules('email', 'Correo', 'required');
         $this->form_validation->set_rules('message', 'Mensaje', 'required');
 
         if ($this->form_validation->run()) {
@@ -408,7 +362,6 @@ class UserController extends MY_Controller
                 'userMessage' => $this->input->post('message')
             );
             $message = $this->load->view('email/contactToManeger', $data, true);
-            //$message = $this->input->post('message');
 
             $this->email->from($emailFrom, $nameFrom);
             $this->email->to($emailTo);
@@ -420,8 +373,6 @@ class UserController extends MY_Controller
             } else {
                 $data['error'] = 'No se ha podido enviar el correo.';
             }
-
-            //echo $this->email->print_debugger();
         }
 
         $data['title'] = 'Menu Virtual - Contactar';
@@ -442,7 +393,6 @@ class UserController extends MY_Controller
             $user = $this->UsersModel->getUserByEmail($emailTo);
 
             if (!is_object($user)) {
-                //$this->set_error('password_change_unsuccessful');
                 return false;
             }
 
@@ -476,8 +426,6 @@ class UserController extends MY_Controller
                 } else {
                     $data['error'] = 'No se ha podido enviar el correo.';
                 }
-
-                //echo $this->email->print_debugger();
             }
         }
         if ($this->session->flashdata('error')) {
@@ -499,8 +447,6 @@ class UserController extends MY_Controller
     public function resetPassword() {
 
         $code = $this->uri->segment(2);
-        //echo 'code: ' . $code . $this->uri->segment(2);
-        //exit();
         $reset = $this->resetPasswordComplete($code);
 
         if ($reset) {
@@ -551,8 +497,6 @@ class UserController extends MY_Controller
             $this->email->to($user->email);
             $this->email->subject(site_url() . ' - Nueva contraseña');
             $this->email->message($message);
-
-            //echo $this->email->print_debugger();
 
             return $this->email->send();
         }

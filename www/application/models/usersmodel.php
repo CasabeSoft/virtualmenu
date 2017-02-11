@@ -151,7 +151,6 @@ class UsersModel extends CI_Model
         $result = $this->db->select(USERS . '.*, ' . CUSTOMERS . '.group')//,'. CUSTOMERS_BY_PROVIDER . '.since')
                 ->from(USERS, CUSTOMERS) //, CUSTOMERS_BY_PROVIDER)
                 ->join(CUSTOMERS, USERS . '.id = ' . CUSTOMERS . '.id', 'LEFT')
-                //->join(CUSTOMERS_BY_PROVIDER, USERS . '.id = ' . CUSTOMERS_BY_PROVIDER . '.id_customer')
                 ->where(USERS . '.id', $id)
                 ->limit(1)
                 ->get()
@@ -167,8 +166,6 @@ class UsersModel extends CI_Model
      * @return int (Id del registro insertado)
      */
     public function insertUserCustomer($fields) {
-
-        //$this->db->trans_off();
         $this->db->trans_start();
 
         try {
@@ -213,8 +210,6 @@ class UsersModel extends CI_Model
      * @return bool
      */
     public function updateUserCustomer($fields, $where) {
-
-        //$this->db->trans_off();
         $this->db->trans_start();
 
         try {
@@ -222,8 +217,6 @@ class UsersModel extends CI_Model
                 'name' => $fields['name'],
                 'phone' => $fields['phone'],
                 'address' => $fields['address'],
-                    //'email' => $fields['email'],
-                    //'password' => $fields['password']
             );
             $this->db->update(USERS, $fieldsUser, $where);
 
@@ -263,8 +256,6 @@ class UsersModel extends CI_Model
      */
     public function deleteRecord($id) {
         $this->db->delete(USERS, array('id' => $id));
-
-        return;
     }
 
     /**

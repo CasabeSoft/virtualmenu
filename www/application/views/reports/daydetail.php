@@ -35,7 +35,7 @@ if (!$this->uri->segment(4)) {
         }
     }
 </script>
-<h3>Detalles de pedidos del día <?php //echo date("d-m-Y\n"); ?> <input type="text" id="datepicker" value="<?php echo $datepickernow ?>"><button class="button" id="btnShow" onclick="showByDate();">Mostrar</button></h3>
+<h3>Detalles de pedidos del día <input type="text" id="datepicker" value="<?php echo $datepickernow ?>"><button class="button" id="btnShow" onclick="showByDate();">Mostrar</button></h3>
 <input type="hidden" id="actualDate" value="<?php echo $datenow ?>">
 
 <div>

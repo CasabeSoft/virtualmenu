@@ -45,11 +45,6 @@ class ProvidersModel extends CI_Model
                 ->row();
 
         return $query;
-        /*
-          if ($query->num_rows() > 0)
-          return $query->row()->id;
-
-          return false; */
     }
 
     /**
@@ -100,7 +95,5 @@ class ProvidersModel extends CI_Model
      */
     public function deleteRecord($id) {
         $this->db->delete(PROVIDERS, array('id' => $id));
-
-        return;
     }
 }

@@ -97,7 +97,5 @@ class CustomerModel extends CI_Model
      */
     public function deleteRecord($id) {
         $this->db->delete(CUSTOMERS, array('id' => $id));
-
-        return;
     }
 }

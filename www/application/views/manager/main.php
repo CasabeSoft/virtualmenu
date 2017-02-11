@@ -3,7 +3,6 @@
  * Página principal del administrador.
  *
  * @author Leoanrdo Quintero
- * @author Carlos Bello [CB]
  */
 ?>
 

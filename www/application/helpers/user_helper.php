@@ -17,10 +17,8 @@
 if (!function_exists('isLogged')) {
 
     function isLogged() {
-
         $CI = &get_instance();
 
-        //if ($CI->session->userdata('usuario')->email && $CI->session->userdata('usuario')->email !== '') {
         if ($CI->session->userdata('email') && $CI->session->userdata('email') !== '') {
             unset($CI);
 
@@ -42,7 +40,6 @@ if (!function_exists('isLogged')) {
 if (!function_exists('isAdministrator')) {
 
     function isAdministrator() {
-
         $CI = &get_instance();
 
         if ($CI->session->userdata('rol') && $CI->session->userdata('rol') === '1') {
@@ -66,7 +63,6 @@ if (!function_exists('isAdministrator')) {
 if (!function_exists('isManager')) {
 
     function isManager() {
-
         $CI = &get_instance();
 
         if ($CI->session->userdata('rol') && $CI->session->userdata('rol') === '2') {
@@ -90,7 +86,6 @@ if (!function_exists('isManager')) {
 if (!function_exists('isCustomer')) {
 
     function isCustomer() {
-
         $CI = &get_instance();
 
         if ($CI->session->userdata('rol') && $CI->session->userdata('rol') === '3') {
@@ -114,7 +109,6 @@ if (!function_exists('isCustomer')) {
 if (!function_exists('userHasPermition')) {
 
     function userHasPermition($permiso) {
-
         $CI = &get_instance();
 
         $permisos = array(
@@ -140,7 +134,6 @@ if (!function_exists('userHasPermition')) {
 if (!function_exists('optionsCombobox')) {
 
     function optionsCombobox($array, $selected, $fieldId, $fieldName) {
-
         $result = "";
         if (count($array) > 0) {
             foreach ($array as $value) {
@@ -163,7 +156,6 @@ if (!function_exists('optionsCombobox')) {
 if (!function_exists('providerName')) {
 
     function providerName() {
-
         $CI = &get_instance();
         $providerName = '';
 

@@ -44,10 +44,8 @@ class AdministratorController extends MY_Controller
     }
 
     public function users() {
-
         $crud = new grocery_CRUD();
 
-        //$crud->set_language("french");
         $crud->set_theme($this->config->item('grocery_crud_theme', 'virtualmenu'));
         $crud->set_table(USERS);
         $crud->set_subject('Usuario');
@@ -194,7 +192,6 @@ class AdministratorController extends MY_Controller
                 ->display_as('id_provider', 'Proveedor');
         $crud->set_subject('Producto');
         $crud->set_relation('id_provider', PROVIDERS, 'name');
-        //$crud->set_relation_n_n('menu', PRODUCTS_BY_MENU, MENUS, 'id_product', 'id_menu', 'name');
         $crud->required_fields('name', 'id_provider');
         $data = $crud->render();
 

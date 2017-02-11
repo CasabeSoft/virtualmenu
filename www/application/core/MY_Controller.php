@@ -41,11 +41,9 @@ class MY_Controller extends CI_Controller // @codingStandardsIgnoreLine
                     $this->theme = 'themes/' . $this->providerUriName;
                 } else {
                     $this->providerError = 'Proveedor desconocido';
-                    //show_404();
                 }
             } else {
                 $this->providerError = 'Sin Proveedor';
-                //show_404();
             }
         }
     }

@@ -1,18 +1,10 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of BillModel
- *
- * @author Carlos Bello
  */
 class BillModel extends CI_Model
 {
-
     public $id = 0;
     public $generated = null;
     public $paid = null;
