@@ -10,7 +10,7 @@
     <div class="span-23 last">
         <?php
         if (isset($report)) {
-            $this->load->view($report)
+            $this->load->view($report);
         }
         ?>
     </div>
