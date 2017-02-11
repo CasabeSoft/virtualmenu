@@ -1,7 +1,7 @@
 <?php
 /**
  * Listado de usuarios.
- * 
+ *
  * @author Leoanrdo Quintero
  */
 ?>

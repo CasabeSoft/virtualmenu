@@ -1,8 +1,8 @@
 <?php
 /**
  * Plantilla principal para el Administrador de la Web.
- * 
- * @author Leonardo Quintero 
+ *
+ * @author Leonardo Quintero
  */
 ?>
 <!DOCTYPE html>

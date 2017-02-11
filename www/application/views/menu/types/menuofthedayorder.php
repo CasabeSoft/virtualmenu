@@ -3,7 +3,7 @@
      * Vista de construcción de un menú del día, utilizada por los gestores
      * de los proveedores.
      * @author: Carlos Bello
-     * @since 2012-06-10 
+     * @since 2012-06-10
      */
 ?>
 <script src="<?php echo base_url(); ?>js/jsrender.js" type="text/javascript"></script>

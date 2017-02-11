@@ -1,9 +1,9 @@
 <?php
 /**
  * Plantilla principal para el Gestor.
- * 
- * @author Leonardo Quintero 
- * @author Carlos Bello 
+ *
+ * @author Leonardo Quintero
+ * @author Carlos Bello
  */
 //1.8.18
 ?>

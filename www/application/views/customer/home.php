@@ -1,7 +1,7 @@
 <?php
 /**
  * Pagina de inico para los clientes.
- * 
+ *
  * @author Leoanrdo Quintero
  */
 ?>

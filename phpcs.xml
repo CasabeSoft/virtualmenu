@@ -42,9 +42,6 @@
   <rule ref="PSR2.ControlStructures.ControlStructureSpacing.SpacingAfterOpenBracket">
     <type>warning</type>
   </rule>
-  <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine">
-    <type>warning</type>
-  </rule>
   <rule ref="Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpen">
     <type>warning</type>
   </rule>
