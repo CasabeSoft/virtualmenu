@@ -13,11 +13,11 @@
 class BillModel extends CI_Model {
 
     public $id = 0;
-    public $generated = NULL;
-    public $paid = NULL;
+    public $generated = null;
+    public $paid = null;
     public $amount = 0;
-    public $comments = NULL;
-    public $payment = NULL;
+    public $comments = null;
+    public $payment = null;
 
     public function __construct() {
         parent::__construct();

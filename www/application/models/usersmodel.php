@@ -90,9 +90,9 @@ class UsersModel extends CI_Model {
                 ->get(CUSTOMERS);
 
         if ($query->num_rows() > 0) {
-            return ($query->row()->id != 0) ? TRUE : FALSE;
+            return ($query->row()->id != 0);
         }
-        return FALSE;
+        return false;
     }
 
     /**
@@ -109,9 +109,9 @@ class UsersModel extends CI_Model {
                 ->get(MANAGERS);
 
         if ($query->num_rows() > 0) {
-            return ($query->row()->id != 0) ? TRUE : FALSE;
+            return ($query->row()->id != 0);
         }
-        return FALSE;
+        return false;
     }
 
     /**
@@ -124,7 +124,7 @@ class UsersModel extends CI_Model {
      */
     public function IsUserAdministrator($mail, $password) {
 
-        return (EMAIL_ADMINISTRATOR === $mail) and (PASSWORD_ADMINISTRATOR === $password) ? TRUE : FALSE;
+        return (EMAIL_ADMINISTRATOR === $mail) and (PASSWORD_ADMINISTRATOR === $password);
     }
 
     /**
@@ -203,11 +203,7 @@ class UsersModel extends CI_Model {
 
         $this->db->trans_complete();
 
-        if ($this->db->trans_status() === FALSE) {
-            return FALSE;
-        } else {
-            return $idUser;
-        }
+        return $this->db->trans_status() ? $idUser : false;
     }
 
     /**
@@ -243,11 +239,7 @@ class UsersModel extends CI_Model {
 
         $this->db->trans_complete();
 
-        if ($this->db->trans_status() === FALSE) {
-            return FALSE;
-        } else {
-            return TRUE;
-        }
+        return $this->db->trans_status();
     }
 
     /**
@@ -281,16 +273,12 @@ class UsersModel extends CI_Model {
      *
      * @author Leonardo
      * @param $username
-     * @return bool  (Si existe retorna FALSE )
+     * @return bool  (Si existe retorna false )
      */
     public function checkUser($username) {
         $this->db->where('username', $username);
         $query = $this->db->get(USERS);
-        if ($query->num_rows() > 0) {
-            return FALSE;
-        } else {
-            return TRUE;
-        }
+        return !($query->num_rows() > 0);
     }
 
     /**
@@ -298,16 +286,12 @@ class UsersModel extends CI_Model {
      *
      * @author Leonardo
      * @param $email (Correo del usuario)
-     * @return bool  (Si existe retorna FALSE )
+     * @return bool  (Si existe retorna false )
      */
     public function checkEmail($email) {
         $this->db->where('email', $email);
         $query = $this->db->get(USERS);
-        if ($query->num_rows() > 0) {
-            return FALSE;
-        } else {
-            return TRUE;
-        }
+        return !($query->num_rows() > 0);
     }
 
     /**
@@ -338,7 +322,7 @@ class UsersModel extends CI_Model {
             return $this->db->affected_rows() == 1;
         }
 
-        return FALSE;
+        return false;
     }
 
     /**
@@ -349,7 +333,7 @@ class UsersModel extends CI_Model {
      * */
     public function hashPassword($password, $salt = false) {
         if (empty($password)) {
-            return FALSE;
+            return false;
         }
 
         if ($salt) {
@@ -379,7 +363,7 @@ class UsersModel extends CI_Model {
      * */
     public function resetPassword($email = '') {
         if (empty($email)) {
-            return FALSE;
+            return false;
         }
 
         $code = $this->hashPassword(microtime() . $email);
@@ -390,7 +374,7 @@ class UsersModel extends CI_Model {
             return $code;
         }
 
-        return FALSE;
+        return false;
     }
 
     /**
@@ -403,7 +387,7 @@ class UsersModel extends CI_Model {
      * */
     public function resetPasswordComplete($code) {
         if (empty($code)) {
-            return FALSE;
+            return false;
         }
 
         $this->db->where('password_code', $code);
@@ -426,6 +410,6 @@ class UsersModel extends CI_Model {
             }
         }
 
-        return FALSE;
+        return false;
     }
 }

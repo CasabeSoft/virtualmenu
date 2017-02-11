@@ -51,7 +51,7 @@ class UserController extends MY_Controller {
         $this->form_validation->set_rules('email', 'Correo', 'trim|required');
         $this->form_validation->set_rules('password', 'Contreseña', 'required|md5');
 
-        if ($this->form_validation->run() == TRUE) {
+        if ($this->form_validation->run()) {
 
             $email = $_POST['email'];
             $password = $_POST['password'];
@@ -166,7 +166,7 @@ class UserController extends MY_Controller {
 
         $this->form_validation->set_message('_checkEmail', 'El %s ya existe.');
 
-        if ($this->form_validation->run() == TRUE) {
+        if ($this->form_validation->run()) {
 
             $fields = array(
                 // Campos de la tabla USERS
@@ -262,7 +262,7 @@ class UserController extends MY_Controller {
         $this->form_validation->set_rules('new_password', 'Nueva contreseña', 'required|min_length[2]|max_length[20]|md5');
         $this->form_validation->set_rules('new_confirm', 'Confirmar nueva contraseña', 'required|matches[new_password]');
 
-        if ($this->form_validation->run() == TRUE) {
+        if ($this->form_validation->run()) {
 
             $email = $this->session->userdata('email');
 
@@ -325,7 +325,7 @@ class UserController extends MY_Controller {
         }
         //$this->form_validation->set_rules('username', 'Usuario', 'trim|required|callback__checkUser');
 
-        if ($this->form_validation->run() == TRUE) {
+        if ($this->form_validation->run()) {
 
             if ($rol == ROL_CUSTOMER) {
 
@@ -393,7 +393,7 @@ class UserController extends MY_Controller {
         //$this->form_validation->set_rules('email', 'Correo', 'required');
         $this->form_validation->set_rules('message', 'Mensaje', 'required');
 
-        if ($this->form_validation->run() == TRUE) {
+        if ($this->form_validation->run()) {
 
             $this->load->library('email');
 
@@ -443,7 +443,7 @@ class UserController extends MY_Controller {
 
         $this->form_validation->set_rules('email', 'Correo', 'required');
 
-        if ($this->form_validation->run() == TRUE) {
+        if ($this->form_validation->run()) {
 
             $emailTo = $this->input->post('email');
 
@@ -451,7 +451,7 @@ class UserController extends MY_Controller {
 
             if (!is_object($user)) {
                 //$this->set_error('password_change_unsuccessful');
-                return FALSE;
+                return false;
             }
 
             $newCode = $this->UsersModel->resetPassword($user->email);
@@ -533,7 +533,7 @@ class UserController extends MY_Controller {
         $user = $this->UsersModel->getUserByCode($code);
 
         if (!is_object($user)) {
-            return FALSE;
+            return false;
         }
 
         $newPassword = $this->UsersModel->resetPasswordComplete($code);
@@ -566,7 +566,7 @@ class UserController extends MY_Controller {
 
             return $this->email->send();
         }
-        return FALSE;
+        return false;
     }
 }
 

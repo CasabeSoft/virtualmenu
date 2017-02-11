@@ -76,9 +76,6 @@
   <rule ref="PSR1.Methods.CamelCapsMethodName.NotCamelCaps">
     <type>warning</type>
   </rule>
-  <rule ref="Generic.PHP.LowerCaseConstant.Found">
-    <type>warning</type>
-  </rule>
   <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
     <type>warning</type>
   </rule>

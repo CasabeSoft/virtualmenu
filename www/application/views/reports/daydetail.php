@@ -2,7 +2,7 @@
 /**
  * Página principal del administrador.
  */
-if ($this->uri->segment(4) === FALSE) {
+if (!$this->uri->segment(4)) {
     $datenow = date("Y-m-d");
     $datepickernow = date("d/m/Y");
 } else {

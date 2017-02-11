@@ -18,7 +18,7 @@ $config['email']['smtp_user'] = 'user@google.com';
 $config['email']['smtp_pass'] = 'some-password';
 $config['email']['mailtype'] = 'html'; // text, html
 $config['email']['charset'] = 'utf-8'; // utf-8, iso-8859-1, ...
-$config['email']['wordwrap'] = FALSE; // TRUE, FALSE
+$config['email']['wordwrap'] = false; // true, false
 
 /**
  * Temas para el grocery crud

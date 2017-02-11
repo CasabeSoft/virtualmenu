@@ -140,7 +140,7 @@ if (defined('ENVIRONMENT'))
 		chdir(dirname(__FILE__));
 	}
 
-	if (realpath($system_path) !== FALSE)
+	if (realpath($system_path) !== false)
 	{
 		$system_path = realpath($system_path).'/';
 	}

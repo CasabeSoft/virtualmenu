@@ -12,7 +12,7 @@
  *
  * Valida si un usuario está autenticado.
  *
- * @return  bool	TRUE si autenticado, FALSE si no.
+ * @return  bool	true si autenticado, false si no.
  */
 if (!function_exists('isLogged')) {
 
@@ -24,10 +24,10 @@ if (!function_exists('isLogged')) {
         if ($CI->session->userdata('email') && $CI->session->userdata('email') !== '') {
             unset($CI);
 
-            return TRUE;
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 
 }
@@ -37,7 +37,7 @@ if (!function_exists('isLogged')) {
  *
  * Valida si es el usuario Administrador.
  *
- * @return  bool	TRUE si es el administrador, FALSE si no.
+ * @return  bool	true si es el administrador, false si no.
  */
 if (!function_exists('isAdministrator')) {
 
@@ -48,10 +48,10 @@ if (!function_exists('isAdministrator')) {
         if ($CI->session->userdata('rol') && $CI->session->userdata('rol') === '1') {
             unset($CI);
 
-            return TRUE;
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 
 }
@@ -61,7 +61,7 @@ if (!function_exists('isAdministrator')) {
  *
  * Valida si es el usuario Gestor.
  *
- * @return  bool	TRUE si es el Gestor, FALSE si no.
+ * @return  bool	true si es el Gestor, false si no.
  */
 if (!function_exists('isManager')) {
 
@@ -72,10 +72,10 @@ if (!function_exists('isManager')) {
         if ($CI->session->userdata('rol') && $CI->session->userdata('rol') === '2') {
             unset($CI);
 
-            return TRUE;
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 
 }
@@ -85,7 +85,7 @@ if (!function_exists('isManager')) {
  *
  * Valida si es el usuario Cliente.
  *
- * @return  bool	TRUE si es el Cliente, FALSE si no.
+ * @return  bool	true si es el Cliente, false si no.
  */
 if (!function_exists('isCustomer')) {
 
@@ -96,10 +96,10 @@ if (!function_exists('isCustomer')) {
         if ($CI->session->userdata('rol') && $CI->session->userdata('rol') === '3') {
             unset($CI);
 
-            return TRUE;
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 
 }
@@ -109,7 +109,7 @@ if (!function_exists('isCustomer')) {
  *
  * Valida si es el usuario Cliente.
  *
- * @return  bool	TRUE si es el Cliente, FALSE si no.
+ * @return  bool	true si es el Cliente, false si no.
  */
 if (!function_exists('userHasPermition')) {
 
@@ -127,11 +127,11 @@ if (!function_exists('userHasPermition')) {
             $rol = $CI->session->userdata('rol');
             unset($CI);
             if (@in_array($rol, $permisos[$permiso - 1])) {
-                return TRUE;
+                return true;
             }
         }
 
-        return FALSE;
+        return false;
     }
 
 }

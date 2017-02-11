@@ -19,7 +19,7 @@ class MY_Controller extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->config('virtualmenu', TRUE);
+        $this->load->config('virtualmenu', true);
 
         $this->load->model('ProvidersModel');
 
@@ -52,7 +52,7 @@ class MY_Controller extends CI_Controller {
     }
 
     public function grantAccessToRols($rols) {   // CB 20120624: Adicionado
-        $userBelogsToOneOrMoreRoles = FALSE;
+        $userBelogsToOneOrMoreRoles = false;
         if (!isLogged()) {
             redirect('login');
         } else {
