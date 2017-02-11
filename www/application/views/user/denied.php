@@ -1,7 +1,7 @@
 <?php
 /**
  * Pagiana de acceso denegado usuarios.
- * 
+ *
  * @author Leoanrdo Quintero
  */
 ?>

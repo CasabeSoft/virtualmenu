@@ -1,7 +1,7 @@
 <?php
 /**
  * Página de inicio del gestor.
- * 
+ *
  * @author Leoanrdo Quintero
  */
 ?>

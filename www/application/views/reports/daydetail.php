@@ -1,10 +1,8 @@
 <?php
 /**
  * Página principal del administrador.
- * 
- * @author Carlos Bello
  */
-if ($this->uri->segment(4) === FALSE) {
+if (!$this->uri->segment(4)) {
     $datenow = date("Y-m-d");
     $datepickernow = date("d/m/Y");
 } else {
@@ -27,15 +25,15 @@ if ($this->uri->segment(4) === FALSE) {
             dateFormat: "dd/mm/yy"
         });
     });
-    
+
     function showByDate(){
         var date = $("#actualDate").val();
         if (date != '') {
             location.href='../manager/reports/daydetail/'+date;
         } else {
-            alert('Debes seleccionar una fecha'); 
+            alert('Debes seleccionar una fecha');
         }
-    }      
+    }
 </script>
 <h3>Detalles de pedidos del día <?php //echo date("d-m-Y\n"); ?> <input type="text" id="datepicker" value="<?php echo $datepickernow ?>"><button class="button" id="btnShow" onclick="showByDate();">Mostrar</button></h3>
 <input type="hidden" id="actualDate" value="<?php echo $datenow ?>">
@@ -55,19 +53,21 @@ if ($this->uri->segment(4) === FALSE) {
             </div>
                 <?php
             }
-            ?>          
-            <div class="span-10 <?php echo $count % 2 == 0 ? 'last' : 'colborder' ?>"> 
+            ?>
+            <div class="span-10 <?php echo $count % 2 == 0 ? 'last' : 'colborder' ?>">
                 <strong># <?php echo $detail['id_order']; ?>
                     <?php echo $detail['user_name'] ?>
                 </strong> <br>
                 <address><?php echo $detail['address']." (Tlf: ".$detail['phone'].")" ?> </address><br>
-                <cite><?php echo $detail['order_comments'] ?></cite> 
+                <cite><?php echo $detail['order_comments'] ?></cite>
             <?php
         }
-        ?> 
+        ?>
             <?php echo $detail['product_name'].', ' ?>
-    <?php 
+    <?php
         $count++;
     } ?>
-    <?php if ($count > 1) echo '</div>'; ?>
+    <?php if ($count > 1) { ?>
+        </div>
+    <?php } ?>
 </div>

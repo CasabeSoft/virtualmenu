@@ -1,10 +1,8 @@
 <?php
-    /**
-     * Vista de construcción de un menú del día, utilizada por los gestores
-     * de los proveedores.
-     * @author: Carlos Bello
-     * @since 2012-04-28 
-     */
+/**
+ * Vista de construcción de un menú del día, utilizada por los gestores
+ * de los proveedores.
+ */
 ?>
 <script src="<?php echo base_url(); ?>js/jsrender.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>js/jquery.observable.js" type="text/javascript"></script>
@@ -23,7 +21,7 @@
     var menus = [];
     var selectedMenuIndex = 0;
     var currentMenu = Menu.EMPTY();
-    
+
     function removeProduct(button, productId) {
         var productIdPrefixLen = "productId".length;
         var sectionIdPrefixLen = "sectionId".length;
@@ -35,7 +33,7 @@
         for(j=0; j < section.products.length && section.products[j].id != productId; j++);
         $.observable(section.products).remove(j, 1);
     }
-    
+
     function higlightSelection(input) {
         var li = $(input).parent();
         if ($(input).attr("type") === "radio") {
@@ -45,12 +43,12 @@
             $(li).toggleClass("selected");
         }
     }
-    
+
     function today() {
         var today = new Date();
         return new Date(today.getFullYear(), today.getMonth(), today.getDate());
     }
-    
+
     function changeEditMenuState(readOnly) {
         readOnlyMenu = readOnly;
 
@@ -63,7 +61,7 @@
             $("#currentMenu input, #sMenuType").each(function (index, item) { $(item).removeAttr("disabled") });
         }
     }
-    
+
     function showMenuContent(data) {
         $.each(currentMenu.sections, function(sIndex, section) {
             $.each(data, function (index, product) {
@@ -80,7 +78,7 @@
             });
             $.link.sectionProductsTemplate(section.products, "#sectionId" + section.id + " ul.products");
             $.link.previewProductsTemplate(section.products, "#preview_sectionId" + section.id + " ul.products");
-            $("#sectionId" + section.id + " button.removeItem").button({ 
+            $("#sectionId" + section.id + " button.removeItem").button({
                 icons: {primary: 'ui-icon-minus'},
                 text: false,
                 disabled: readOnlyMenu
@@ -91,21 +89,21 @@
             else
                 $(".addZone input").removeAttr("disabled");
         });
-        $("#menuContent .products").sortable({ 
-            placeholder: "ui-state-highlight", 
+        $("#menuContent .products").sortable({
+            placeholder: "ui-state-highlight",
             forcePlaceholderSize: true,
             update: function(event, ui) {
                 alert(ui.item);
             }
         });
     }
-    
+
     function menuId_click(input) {
         var index = 0;
         var menuIdPrefixLen = "menuId".length;
         var id = $(input).attr("id").substr(menuIdPrefixLen);
         higlightSelection(input);
-        for(; index < menus.length && menus[index].id != id; index++); 
+        for(; index < menus.length && menus[index].id != id; index++);
         selectedMenuIndex = index;
         initMenu(menus[index]);
         $.ajax({
@@ -117,8 +115,8 @@
             error: errorRetreavingAjax
         });
     }
-    
-    function showMenus(newMenus) { 
+
+    function showMenus(newMenus) {
         menus = newMenus;
         $.link.menuListTemplate(menus, "#lMenus");
         if (menus.length > 0) {
@@ -126,27 +124,27 @@
         } else
             initMenu(Menu.EMPTY());
     }
-    
+
     function errorRetreavingAjax(e, xhr, exception) {
         alert("error: " + exception);
     }
-    
+
     function getMenusForDate(date) {
         changeEditMenuState(new Date(date) < today());
         $.ajax({
             url: BASE_URL + "MenuOfTheDayController/getMenusForDate/" + date,
             dataType: 'json',
-            success: function (data) { 
-                showMenus(data.menus);                  
+            success: function (data) {
+                showMenus(data.menus);
             },
             error: errorRetreavingAjax   // TODO: Procesar errores
-        });      
+        });
     }
-    
+
     function getSelectedDate() {
         return $.datepicker.formatDate($.datepicker.ATOM, $("#calendar").datepicker("getDate"));
     }
-    
+
     function addProduct_click(button) {
         var sectionIdPrefixLen = "sectionId".length;
         var section = $(button).parent().parent();
@@ -159,27 +157,27 @@
         var newProductName = $(section).find('.newProductName');
         var price = $(section).find('.newProductPrice');
         var productName = $(newProductName).val();
-        var productPrice = ($(price).css("visibility") == "hidden") 
+        var productPrice = ($(price).css("visibility") == "hidden")
             ? 0
-            : isFinite(parseFloat($(price).val())) 
-                ? parseFloat($(price).val()) 
+            : isFinite(parseFloat($(price).val()))
+                ? parseFloat($(price).val())
                 : 0;
         for(i=0; i < currentMenu.sections.length && currentMenu.sections[i].id != sectionId; i++);
-        var newProduct = new Product(productId, productName, 
+        var newProduct = new Product(productId, productName,
             currentMenu.sections[i].products.length , productPrice, sectionId);
         newProduct.input_type = sectionConfig[currentMenu.sections[i].id_type].inputType;
         $.observable(currentMenu.sections[i].products).insert(newProduct.order, newProduct);
         $(newProductId).val("");
         $(newProductName).val("");
         $(price).val("");
-        $("#sectionId" + sectionId + " button.removeItem").button({ 
+        $("#sectionId" + sectionId + " button.removeItem").button({
                 icons: {primary: 'ui-icon-minus'},
                 text: false,
                 disabled: readOnlyMenu
         });
         $(newProductName).focus();
     }
-    
+
     function initMenu(menu) {
         $.observable(currentMenu).setProperty({
             "id": menu.id,
@@ -187,9 +185,9 @@
             "name": menu.name,
             "base_price": menu.base_price,
             "description": menu.description
-        });       
+        });
         $("#sMenuType option[value|=" + currentMenu.id_type + "]").attr("selected", "selected");
-        
+
         currentMenu.sections = [];
         if (currentMenu.id_type != null)
             $.each(sectionsByMenuType[currentMenu.id_type], function (index, section) {
@@ -197,7 +195,7 @@
             });
         $("#menuSections").html($.templates.menuSectionsTemplate.render(currentMenu.sections));
         $("#previewSections").html($.templates.previewSectionsTemplate.render(currentMenu.sections));
-        $(".buttonAdd").button({ 
+        $(".buttonAdd").button({
             icons: {primary: 'ui-icon-plus'},
             text: false
         });
@@ -218,15 +216,15 @@
             }
         });
     }
-    
+
     function btnNew_click() {
         $("#sMenuType").removeAttr("disabled");
-        changeEditMenuState(false); 
+        changeEditMenuState(false);
         $.observable(currentMenu).setProperty("id", 0);
         sMenuType_change();
         selectOption("lMenus", -1);
     }
-    
+
     function selectOption(optionListId, index) {
         if (index >= 0) {
         $("#" + optionListId + " li:nth-child(" + (index + 1) + ")")
@@ -237,17 +235,17 @@
             $("#lMenus input").removeAttr("checked");
         }
     }
-    
+
     function btnSave_click() {
         if (!currentMenu.id_type) return;
-        
+
         var date = getSelectedDate();
         $.ajax({
             type: 'POST',
             url: BASE_URL + "MenuOfTheDayController/saveMenuForDate/" + date,
             dataType: 'json',
             data: {"menu": eval("(" + JSON.stringify(currentMenu) + ")")},  // HACK! En Firefox falla si se pasa currentMenu, tal cual; entonces, garantizamos con esto que el objeto pueda ser un json correctamente formado.
-            success: function (data) { 
+            success: function (data) {
                 if (data == 0)
                     alert("Ha ocurrido un error guardando los cambios");
                 else {
@@ -265,14 +263,14 @@
             error: errorRetreavingAjax
         });
     }
-    
+
     function btnDelete_click() {
         if (!currentMenu.id_type || currentMenu.id == 0) return;
-        
+
         if (confirm("¿Quiere eliminar el menú actual?"))
             $.ajax({
             url: BASE_URL + "MenuOfTheDayController/removeMenu/" + currentMenu.id,
-            success: function (data) { 
+            success: function (data) {
                 $.observable(menus).remove(selectedMenuIndex);
                 selectedMenuIndex = menus.length > 0 && selectedMenuIndex == 0
                     ? 0 : selectedMenuIndex - 1;
@@ -281,23 +279,23 @@
             error: errorRetreavingAjax   // TODO: Procesar errores
         });
     }
-    
+
     function sMenuType_change() {
         var current = document.getElementById("sMenuType").selectedIndex;
         var baseMenuInfo =  menuTypes[current];
-        var menu = new Menu(currentMenu.id, baseMenuInfo.id, baseMenuInfo.name, "0.00", 
+        var menu = new Menu(currentMenu.id, baseMenuInfo.id, baseMenuInfo.name, "0.00",
             baseMenuInfo.description, []);
         initMenu(menu);
         showMenuContent([]);
     }
-    
+
     $(function () {
-        $("#calendar").datepicker({ 
-            onSelect: function(dateText, inst) { 
-                getMenusForDate(dateText); 
-            }        
+        $("#calendar").datepicker({
+            onSelect: function(dateText, inst) {
+                getMenusForDate(dateText);
+            }
         });
-        $(".buttonRemove").button({ 
+        $(".buttonRemove").button({
             icons: {primary: 'ui-icon-minus'},
             text: false
         });
@@ -360,9 +358,9 @@
         </script>
         <div id="currentMenu">
             <select id="sMenuType" title="Tipo de menú" onchange="sMenuType_change()">
-            <?php foreach ($menuTypes as $menuType): ?>
+            <?php foreach ($menuTypes as $menuType) { ?>
                 <option value="<?php echo $menuType->id ?>"><?php echo $menuType->name ?></option>
-            <?php endforeach ?>
+            <?php } ?>
             </select>
             <input id="iMenuId" type="hidden" data-link="id"/>
             <input id="iMenuName" title="Nombre del menú" data-link="name"/>
@@ -414,5 +412,3 @@
     </div>
 <div style="clear">
 </div>
-
-    

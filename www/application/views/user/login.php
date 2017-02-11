@@ -1,7 +1,7 @@
 <?php
 /**
  * Formulario para autenticar usuarios.
- * 
+ *
  * @author Leoanrdo Quintero
  */
 ?>

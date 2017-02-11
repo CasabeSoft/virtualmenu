@@ -1,10 +1,8 @@
 <?php
 /**
  * Página principal del administrador.
- * 
- * @author Carlos Bello
  */
-if ($this->uri->segment(4) === FALSE) {
+if (!$this->uri->segment(4)) {
     $datenow = date("Y-m-d");
     $datepickernow = date("d/m/Y");
 } else {
@@ -28,22 +26,22 @@ if ($this->uri->segment(4) === FALSE) {
             dateFormat: "dd/mm/yy"
         });
     });
-    
+
     function showByDate(){
         var date = $("#actualDate").val();
         if (date != '') {
             location.href='../manager/reports/dayresume/'+date;
         } else {
-            alert('Debes seleccionar una fecha'); 
+            alert('Debes seleccionar una fecha');
         }
     }
-    
+
     function showReport(format){
         var date = $("#actualDate").val();
         if (date != '') {
             location.href='../manager/reports/report/'+date+'/'+format;
         } else {
-            alert('Debes seleccionar una fecha'); 
+            alert('Debes seleccionar una fecha');
         }
     }
 </script>
@@ -71,7 +69,7 @@ if ($this->uri->segment(4) === FALSE) {
                 Cantidad
             </th>
         </tr>
-        <?php foreach ($products as $product): ?>
+        <?php foreach ($products as $product) { ?>
             <tr>
                 <td width="100px">
                     <?php echo $product['id_product'] ?>
@@ -83,6 +81,6 @@ if ($this->uri->segment(4) === FALSE) {
                     <?php echo $product['cuantity'] ?>
                 </td>
             </tr>
-        <?php endforeach ?>
+        <?php } ?>
     </table>
 </div>

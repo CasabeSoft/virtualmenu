@@ -1,8 +1,8 @@
 <?php
 /**
  * Plantilla principal para el Administrador de la Web.
- * 
- * @author Leonardo Quintero 
+ *
+ * @author Leonardo Quintero
  */
 ?>
 <!DOCTYPE html>
@@ -18,17 +18,17 @@
         <link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print">
         <!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
         <!-- Import fancy-type plugin for the sample page. -->
-        <link rel="stylesheet" href="css/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">        
+        <link rel="stylesheet" href="css/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
         <!-- End Framework CSS -->
         <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" />
         <link rel="shortcut icon" href="<?php echo $this->theme ?>/images/favicon.ico" type="image/x-icon" />
         <?php
         if (isset($css_files)) {
-            foreach ($css_files as $file):
+            foreach ($css_files as $file) {
                 ?>
                 <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
                 <?php
-            endforeach;
+            };
         }
         ?>
         <link href="css/main.css" rel="stylesheet" type="text/css" />
@@ -37,28 +37,28 @@
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
         <?php
         if (isset($js_files)) {
-            foreach ($js_files as $file):
+            foreach ($js_files as $file) {
                 ?>
                 <script src="<?php echo $file; ?>"></script>
                 <?php
-            endforeach;
+            };
         }
         ?>
         <script type="text/javascript" src="js/virtualmenu.js"></script>
-        <script type="text/javascript" >        
+        <script type="text/javascript" >
             $(function() {
                 $(".button").button();
-            }); 
+            });
         </script>
     </head>
     <body>
         <div class="container">
             <div id="header" class="clearfix">
                 <div class="prepend-0_1 span-3">
-                    <a href="<?php echo $this->providerWeb; ?>" target="_blank"><img alt="Logo" src="<?php echo $this->theme; ?>/images/logo.png" /></a>    
+                    <a href="<?php echo $this->providerWeb; ?>" target="_blank"><img alt="Logo" src="<?php echo $this->theme; ?>/images/logo.png" /></a>
                 </div>
-                <h1 class="span-20 last"><?php echo $this->providerName; ?></h1> 
-                <h2 class="span-7">Menú Virtual</h2> 
+                <h1 class="span-20 last"><?php echo $this->providerName; ?></h1>
+                <h2 class="span-7">Menú Virtual</h2>
                 <div class="span-13 last">
                     <div class="bar nav">
                         <div class="nav-outer">

@@ -1,7 +1,7 @@
 <?php
 /**
  * Formulario para registrar un usuario nuevo.
- * 
+ *
  * @author Leoanrdo Quintero
  */
 ?>

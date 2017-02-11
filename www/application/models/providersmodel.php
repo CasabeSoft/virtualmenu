@@ -5,7 +5,8 @@
  *
  * @author Leonardo
 */
-class ProvidersModel extends CI_Model {
+class ProvidersModel extends CI_Model
+{
 
     public function __construct() {
         parent::__construct();
@@ -48,7 +49,7 @@ class ProvidersModel extends CI_Model {
           if ($query->num_rows() > 0)
           return $query->row()->id;
 
-          return FALSE; */
+          return false; */
     }
 
     /**
@@ -61,9 +62,7 @@ class ProvidersModel extends CI_Model {
         $query = $this->db->select('id')
                 ->get_where(PROVIDERS, array('name_uri' => $nameUri));
 
-        if ($query->num_rows() > 0)
-            return TRUE;
-        return FALSE;
+         return $query->num_rows() > 0;
     }
 
     /**
@@ -104,7 +103,4 @@ class ProvidersModel extends CI_Model {
 
         return;
     }
-
 }
-
-?>

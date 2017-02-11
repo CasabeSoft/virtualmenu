@@ -1,7 +1,7 @@
 <?php
 /**
  * Perfir del usuario.
- * 
+ *
  * @author Leoanrdo Quintero
  * @author Carlos Bello [CB]
  */

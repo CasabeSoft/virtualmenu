@@ -1,15 +1,16 @@
 <?php
 
-if (!defined('BASEPATH'))
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
+}
 
 /**
  * Controlador para la gestión de usuarios.
  *
  * @author Leoanrdo Quintero
  */
-class UserController extends MY_Controller {
-
+class UserController extends MY_Controller
+{
     public function __construct() {
         parent::__construct();
         $this->load->library('form_validation');
@@ -50,8 +51,7 @@ class UserController extends MY_Controller {
         $this->form_validation->set_rules('email', 'Correo', 'trim|required');
         $this->form_validation->set_rules('password', 'Contreseña', 'required|md5');
 
-        if ($this->form_validation->run() == TRUE) {
-
+        if ($this->form_validation->run()) {
             $email = $_POST['email'];
             $password = $_POST['password'];
             //Validamos si es un usuario Administrador
@@ -61,7 +61,6 @@ class UserController extends MY_Controller {
 
             //Si el usuario es el administrador o existe en la db..
             if (!empty($result) || $isAdmin) {
-
                 if ($isAdmin) {
                     $user = array(
                         'id' => 0,
@@ -165,8 +164,7 @@ class UserController extends MY_Controller {
 
         $this->form_validation->set_message('_checkEmail', 'El %s ya existe.');
 
-        if ($this->form_validation->run() == TRUE) {
-
+        if ($this->form_validation->run()) {
             $fields = array(
                 // Campos de la tabla USERS
                 'name' => $this->input->post('name'),
@@ -261,8 +259,7 @@ class UserController extends MY_Controller {
         $this->form_validation->set_rules('new_password', 'Nueva contreseña', 'required|min_length[2]|max_length[20]|md5');
         $this->form_validation->set_rules('new_confirm', 'Confirmar nueva contraseña', 'required|matches[new_password]');
 
-        if ($this->form_validation->run() == TRUE) {
-
+        if ($this->form_validation->run()) {
             $email = $this->session->userdata('email');
 
             $change = $this->UsersModel->changePassword($email, $this->input->post('old_password'), $this->input->post('new_password'));
@@ -324,10 +321,8 @@ class UserController extends MY_Controller {
         }
         //$this->form_validation->set_rules('username', 'Usuario', 'trim|required|callback__checkUser');
 
-        if ($this->form_validation->run() == TRUE) {
-
+        if ($this->form_validation->run()) {
             if ($rol == ROL_CUSTOMER) {
-
                 $fields = array(
                     // Campos de la tabla USERS
                     'name' => $this->input->post('name'),
@@ -392,8 +387,7 @@ class UserController extends MY_Controller {
         //$this->form_validation->set_rules('email', 'Correo', 'required');
         $this->form_validation->set_rules('message', 'Mensaje', 'required');
 
-        if ($this->form_validation->run() == TRUE) {
-
+        if ($this->form_validation->run()) {
             $this->load->library('email');
 
             $config = $this->config->item('email', 'virtualmenu');
@@ -442,21 +436,19 @@ class UserController extends MY_Controller {
 
         $this->form_validation->set_rules('email', 'Correo', 'required');
 
-        if ($this->form_validation->run() == TRUE) {
-
+        if ($this->form_validation->run()) {
             $emailTo = $this->input->post('email');
 
             $user = $this->UsersModel->getUserByEmail($emailTo);
 
             if (!is_object($user)) {
                 //$this->set_error('password_change_unsuccessful');
-                return FALSE;
+                return false;
             }
 
             $newCode = $this->UsersModel->resetPassword($user->email);
 
             if ($newCode) {
-
                 $this->load->library('email');
 
                 $config = $this->config->item('email', 'virtualmenu');
@@ -532,13 +524,12 @@ class UserController extends MY_Controller {
         $user = $this->UsersModel->getUserByCode($code);
 
         if (!is_object($user)) {
-            return FALSE;
+            return false;
         }
 
         $newPassword = $this->UsersModel->resetPasswordComplete($code);
 
         if ($newPassword) {
-
             $this->load->library('email');
 
             $providerId = $this->providerId;
@@ -563,15 +554,10 @@ class UserController extends MY_Controller {
 
             //echo $this->email->print_debugger();
 
-            if ($this->email->send()) {
-                return TRUE;
-            } else {
-                return FALSE;
-            }
+            return $this->email->send();
         }
-        return FALSE;
+        return false;
     }
-
 }
 
 /* End of file user.php */

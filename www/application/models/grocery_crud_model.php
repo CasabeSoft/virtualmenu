@@ -78,12 +78,12 @@ class grocery_CRUD_Model  extends CI_Model  {
     	$this->db->order_by( $order_by , $direction );
     }
     
-    function where($key, $value = NULL, $escape = TRUE)
+    function where($key, $value = NULL, $escape = true)
     {
     	$this->db->where( $key, $value, $escape);
     }
     
-    function or_where($key, $value = NULL, $escape = TRUE)
+    function or_where($key, $value = NULL, $escape = true)
     {
     	$this->db->or_where( $key, $value, $escape);
     }    
@@ -111,7 +111,7 @@ class grocery_CRUD_Model  extends CI_Model  {
     
     function set_basic_table($table_name = null)
     {
-    	if( !($this->db->table_exists($table_name)) )
+    	if(!($this->db->table_exists($table_name)) )
     		return false;
     	
     	$this->table_name = $table_name;

@@ -3,7 +3,8 @@ require_once 'menumodel.php';
 /**
  * Description of MenusOfTheDayModel
  */
-class MenusOfTheDayModel extends MenuModel {
+class MenusOfTheDayModel extends MenuModel
+{
     private $menuTypesId = array(1, 2);     // TODO: Leer desde la tabla en la BBDD
 
     public function __construct() {

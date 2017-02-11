@@ -5,7 +5,8 @@
  *
  * @author Leonardo
  */
-class OrdersModel extends CI_Model {
+class OrdersModel extends CI_Model
+{
 
     public function __construct() {
         parent::__construct();
@@ -124,7 +125,4 @@ EOD;
         return $query->result_array();
         //cast(horae as date)
     }
-
 }
-
-?>

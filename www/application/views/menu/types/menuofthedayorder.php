@@ -3,7 +3,7 @@
      * Vista de construcción de un menú del día, utilizada por los gestores
      * de los proveedores.
      * @author: Carlos Bello
-     * @since 2012-06-10 
+     * @since 2012-06-10
      */
 ?>
 <script src="<?php echo base_url(); ?>js/jsrender.js" type="text/javascript"></script>
@@ -48,9 +48,9 @@
         </script>
         <div id="currentMenu">
             <select id="sMenuType" title="Tipo de menú" disabled>
-            <?php foreach ($menuTypes as $menuType): ?>
+            <?php foreach ($menuTypes as $menuType) { ?>
                 <option value="<?php echo $menuType->id ?>" disabled><?php echo $menuType->name ?></option>
-            <?php endforeach ?>
+            <?php } ?>
             </select>
             <input id="iMenuId" type="hidden" data-link="id" />
             <input id="iMenuName" title="Nombre del menú" data-link="name" readonly />
@@ -128,7 +128,7 @@
     </div>
 </div>
 <div style="clear: both"></div>
-<div id="dlgOrderDetails" title="Detalles del pedido">    
+<div id="dlgOrderDetails" title="Detalles del pedido">
     <div id="orderContent">
     </div>
 </div>
@@ -143,7 +143,7 @@
        </p>
        {{if comments.length > 0}}
        <blockquote><strong>Comentarios:</strong> {{:comments}}</blockquote>
-       {{/if}}       
+       {{/if}}
 </script>
 
 <div id="dlgConfirmOrder" title="Confirmación de pedido">
@@ -174,7 +174,7 @@
         <div class="clearfix"></div>
         <div class="span-3">
                     <input type="radio" name="payMode" id="pmCard" onclick="payMode_click(this)" value="2" />
-                    <label for="pmCard">Targeta</label></li> 
+                    <label for="pmCard">Targeta</label></li>
         </div>
         <div class="span-10">
             <img src="<?php echo base_url(); ?>img/cards.gif" alt="Tarjetas: Visa, MasterCard, Visa Electron" />
@@ -202,7 +202,7 @@
             {{/for}}<br>
             {{if comments.length > 0}}
             <em>{{:comments}}</em>
-            {{/if}}       
+            {{/if}}
         </td>
         <td class="text-right"><span data-link="{:~formatCurrency(getFinalPrice())}"></span></td>
     </tr>
@@ -233,7 +233,7 @@
 <form id="frmOrder" method="post" action="<?php echo base_url(); ?>menu/order/confirm" >
     <input type="hidden" name="bill" id="bill" />
 </form>
-   
+
 <script type="text/javascript">
     var BASE_URL = "<?php echo base_url(); ?>";
     var readOnlyMenu = true;
@@ -251,7 +251,7 @@
     var currentMenu = Menu.EMPTY();
     var currentOrder = Order.EMPTY();
     var currentBill = Bill.EMPTY();
-    
+
     function higlightSelection(input) {
         var li = $(input).parent();
         if ($(input).attr("type") === "radio") {
@@ -261,17 +261,17 @@
             $(li).toggleClass("selected");
         }
     }
-    
+
     function today() {
         var today = new Date();
         return new Date(today.getFullYear(), today.getMonth(), today.getDate());
     }
-    
+
     function changeMenuActionsState(readOnly) {
         readOnlyMenu = readOnly;
         $("#btnConfirm, #btnAddOrder").button({disabled: readOnlyMenu});
     }
-    
+
     function showMenuContent(data) {
         $.each(currentMenu.sections, function(sIndex, section) {
             $.each(data, function (index, product) {
@@ -288,7 +288,7 @@
             });
             $.link.sectionProductsTemplate(section.products, "#sectionId" + section.id + " ul.products");
             $.link.previewProductsTemplate(section.products, "#preview_sectionId" + section.id + " ul.products");
-            $("#sectionId" + section.id + " button.btnRemoveProduct").button({ 
+            $("#sectionId" + section.id + " button.btnRemoveProduct").button({
                 icons: {primary: 'ui-icon-minus'},
                 text: false,
                 disabled: readOnlyMenu
@@ -299,21 +299,21 @@
             else
                 $(".addZone input").removeAttr("disabled");
         });
-        $("#menuContent .products").sortable({ 
-            placeholder: "ui-state-highlight", 
+        $("#menuContent .products").sortable({
+            placeholder: "ui-state-highlight",
             forcePlaceholderSize: true,
             update: function(event, ui) {
                 alert(ui.item);
             }
         });
     }
-    
+
     function menuId_click(input) {
         var index = 0;
         var menuIdPrefixLen = "menuId".length;
         var id = $(input).attr("id").substr(menuIdPrefixLen);
         higlightSelection(input);
-        for(; index < menus.length && menus[index].id != id; index++); 
+        for(; index < menus.length && menus[index].id != id; index++);
         selectedMenuIndex = index;
         initMenu(menus[index]);
         $.ajax({
@@ -325,8 +325,8 @@
             error: errorRetreavingAjax
         });
     }
-    
-    function showMenus(newMenus) { 
+
+    function showMenus(newMenus) {
         menus = newMenus;
         $.link.menuListTemplate(menus, "#lMenus");
         $.observable(orders).refresh([]);
@@ -339,24 +339,24 @@
             $("#sNoMenuMessage").show();
         }
     }
-    
+
     function errorRetreavingAjax(e, xhr, exception) {
         alert("error: " + exception);
     }
-    
+
     function getMenusAndBillsForDate(date) {
         changeMenuActionsState(new Date(date) < today());
         $.ajax({
             url: BASE_URL + "MenuOfTheDayController/getMenusAndBillsForDate/" + date,
             dataType: 'json',
-            success: function (data) { 
+            success: function (data) {
                 showMenus(data.menus);
                 var newBills = [];
                 $.each(data.bills, function (index, bill) {
                     newBills.push(Bill.buildFrom(bill));
                 });
                 $.observable(bills).refresh(newBills);
-                $(".buttonRemove").button({ 
+                $(".buttonRemove").button({
                     icons: {primary: 'ui-icon-minus'},
                     text: false
                 });
@@ -364,11 +364,11 @@
             error: errorRetreavingAjax   // TODO: Procesar errores
         });
     }
-    
+
     function getSelectedDate() {
         return $.datepicker.formatDate($.datepicker.ATOM, $("#calendar").datepicker("getDate"));
     }
-    
+
     function addProduct_click(button) {
         var sectionIdPrefixLen = "sectionId".length;
         var section = $(button).parent().parent();
@@ -381,27 +381,27 @@
         var newProductName = $(section).find('.newProductName');
         var price = $(section).find('.newProductPrice');
         var productName = $(newProductName).val();
-        var productPrice = ($(price).css("visibility") == "hidden") 
+        var productPrice = ($(price).css("visibility") == "hidden")
             ? 0
-            : isFinite(parseFloat($(price).val())) 
-                ? parseFloat($(price).val()) 
+            : isFinite(parseFloat($(price).val()))
+                ? parseFloat($(price).val())
                 : 0;
         for(i=0; i < currentMenu.sections.length && currentMenu.sections[i].id != sectionId; i++);
-        var newProduct = new Product(productId, productName, 
+        var newProduct = new Product(productId, productName,
             currentMenu.sections[i].products.length , productPrice, sectionId);
         newProduct.input_type = sectionConfig[currentMenu.sections[i].id_type].inputType;
         $.observable(currentMenu.sections[i].products).insert(newProduct.order, newProduct);
         $(newProductId).val("");
         $(newProductName).val("");
         $(price).val("");
-        $("#sectionId" + sectionId + " button.btnRemoveProduct").button({ 
+        $("#sectionId" + sectionId + " button.btnRemoveProduct").button({
                 icons: {primary: 'ui-icon-minus'},
                 text: false,
                 disabled: readOnlyMenu
         });
         $(newProductName).focus();
     }
-    
+
     function initMenu(menu) {
         $.observable(currentMenu).setProperty({
             "id": menu.id,
@@ -409,7 +409,7 @@
             "name": menu.name,
             "base_price": eval(menu.base_price),
             "description": menu.description
-        });       
+        });
         $("#sMenuType option[value|=" + currentMenu.id_type + "]").attr("selected", "selected");
         $("#tComments").val("");
         currentMenu.sections = [];
@@ -419,7 +419,7 @@
             });
         $("#menuSections").html($.templates.menuSectionsTemplate.render(currentMenu.sections));
         $("#previewSections").html($.templates.previewSectionsTemplate.render(currentMenu.sections));
-        $(".buttonAdd").button({ 
+        $(".buttonAdd").button({
             icons: {primary: 'ui-icon-plus'},
             text: false
         });
@@ -440,15 +440,15 @@
             }
         });
     }
-    
+
     function btnNew_click() {
         $("#sMenuType").removeAttr("disabled");
-        changeMenuActionsState(false); 
+        changeMenuActionsState(false);
         $.observable(currentMenu).setProperty("id", 0);
         sMenuType_change();
         selectOption("lMenus", -1);
     }
-    
+
     function selectOption(optionListId, index) {
         if (index >= 0) {
         $("#" + optionListId + " li:nth-child(" + (index + 1) + ")")
@@ -459,17 +459,17 @@
             $("#lMenus input").removeAttr("checked");
         }
     }
-    
+
     function btnSave_click() {
         if (!currentMenu.id_type) return;
-        
+
         var date = getSelectedDate();
         $.ajax({
             type: 'POST',
             url: BASE_URL + "MenuOfTheDayController/saveMenuForDate/" + date,
             dataType: 'json',
             data: {"menu": eval("(" + JSON.stringify(currentMenu) + ")")},  // HACK! En Firefox falla si se pasa currentMenu, tal cual; entonces, garantizamos con esto que el objeto pueda ser un json correctamente formado.
-            success: function (data) { 
+            success: function (data) {
                 if (data == 0)
                     alert("Ha ocurrido un error guardando los cambios");
                 else {
@@ -487,14 +487,14 @@
             error: errorRetreavingAjax   // TODO: Procesar errores
         });
     }
-    
+
     function btnDelete_click() {
         if (!currentMenu.id_type || currentMenu.id == 0) return;
-        
+
         if (confirm("¿Quiere eliminar el menú actual?"))
             $.ajax({
             url: BASE_URL + "MenuOfTheDayController/removeMenu/" + currentMenu.id,
-            success: function (data) { 
+            success: function (data) {
                 $.observable(menus).remove(selectedMenuIndex);
                 selectedMenuIndex = menus.length > 0 && selectedMenuIndex == 0
                     ? 0 : selectedMenuIndex - 1;
@@ -503,16 +503,16 @@
             error: errorRetreavingAjax   // TODO: Procesar errores
         });
     }
-    
+
     function sMenuType_change() {
         var current = document.getElementById("sMenuType").selectedIndex;
         var baseMenuInfo =  menuTypes[current];
-        var menu = new Menu(currentMenu.id, baseMenuInfo.id, baseMenuInfo.name, "0.00", 
+        var menu = new Menu(currentMenu.id, baseMenuInfo.id, baseMenuInfo.name, "0.00",
             baseMenuInfo.description, []);
         initMenu(menu);
         showMenuContent([]);
     }
-    
+
     function orderMenu() {
         var newOrder = new Order(0, currentMenu.clone(), $("#tComments").val(), []);
         $("li.selected").each(function(index, item) {
@@ -521,25 +521,25 @@
                     $(item).attr("data-id"), $(item).attr("data-name"), 0, eval($(item).attr("data-price"))));
         });
         $.observable(orders).insert(orders.length, newOrder);
-        $(".buttonRemove").button({ 
+        $(".buttonRemove").button({
             icons: {primary: 'ui-icon-minus'},
             text: false
         });
     }
-    
+
     function assert(condition, message) {
         if (!condition)
             alert(message);
         return condition;
     }
-    
+
     function confirmOrderRequest() {
-        if (!assert(orders.length > 0, "Antes de confirmar, debe añadir a su pedido al menos un menú.")) 
+        if (!assert(orders.length > 0, "Antes de confirmar, debe añadir a su pedido al menos un menú."))
             return;
         $("#totalPrice").text($.views.helpers["formatCurrency"](Bill.calcAmount(orders)));
         $("#dlgConfirmOrder").dialog("open");
     }
-    
+
     function needChange_click(sender) {
         if (sender.id == "nchNo") {
             $("#cachAmount").val("");
@@ -547,7 +547,7 @@
         } else
             $("#cachAmount").css("visibility", "visible");
     }
-    
+
     function payMode_click(sender) {
         switch (sender.id) {
             case "pmCach":
@@ -557,19 +557,19 @@
             case "pmPayPal":
                 pmCachParamsInit();
                 $("<div title='Alerta'><strong>¡En breve!</strong><br/>Estamos trabajando para incluir nuevas formas de pago pero, de momento, solo está disponible el pago en efectivo.</div>")
-                    .dialog({autoOpen: true, modal: true, 
+                    .dialog({autoOpen: true, modal: true,
                         buttons: {"Aceptar": function() { $(this).dialog("close"); } },
-                        close: function () { $("#pmCach").click(); } 
+                        close: function () { $("#pmCach").click(); }
                     });
                 break;
         }
     }
-    
+
     function confirmOrder() {
         if (!(assert($("input[name|=payMode]:checked").length > 0, "Debe seleccionar un método de pago, para confirmar su orden.")
             && assert($("input[name|=payMode]:checked").attr("id") == "pmCach" && ($("#nchNo").prop("checked") || $.isNumeric($("#cach").val())),
                       "Si indicó que necesita cambio, debe indicar para qué cantidad lo necesita")
-           )) 
+           ))
             return;
         var comments = $("input[name|=payMode]:checked").attr("id") == "pmCach" && $("#nchYes").prop("checked")
                 ? $("#cach").val() : null;
@@ -580,14 +580,14 @@
             url: BASE_URL + "MenuOfTheDayController/confirmOrder",
             dataType: 'json',
             data: {"bill": eval("(" + JSON.stringify(newBill) + ")")},  // HACK! En Firefox falla si se pasa newBill, tal cual; entonces, garantizamos con esto que el objeto pueda ser un json correctamente formado.
-            success: function (data) { 
+            success: function (data) {
                 if (data == 0)
                     alert("Ha ocurrido un error guardando los cambios");
                 else {
                     newBill.id = data;
                     $.observable(bills).insert(bills.length, newBill);
                     $.observable(orders).refresh([]);
-                    $(".buttonRemove").button({ 
+                    $(".buttonRemove").button({
                         icons: {primary: 'ui-icon-minus'},
                         text: false
                     });
@@ -596,17 +596,17 @@
             error: errorRetreavingAjax
         });
     }
-    
+
     function pmCachParamsInit() {
         $("#nchNo").click();
         $("#pmCachParams input").prop('disabled', true);
     }
-    
+
     $(function () {
-        $("#calendar").datepicker({ 
-            onSelect: function(dateText, inst) { 
-                getMenusAndBillsForDate(dateText); 
-            }        
+        $("#calendar").datepicker({
+            onSelect: function(dateText, inst) {
+                getMenusAndBillsForDate(dateText);
+            }
         });
         $("#dlgOrderDetails").dialog({
             autoOpen: false,
@@ -618,13 +618,13 @@
             width: 800,
             buttons: {
                 "Confirmar" : confirmOrder,
-                "Cancelar" : function () { $(this).dialog("close"); }               
+                "Cancelar" : function () { $(this).dialog("close"); }
             }
         });
         $("#dlgBillDetails").dialog({
             autoOpen: false,
             modal: true,
-            width: 800            
+            width: 800
         });
         $("#menuContent .products" ).disableSelection();
         $("#btnNew").button({icons: {primary: 'ui-icon-document'}});
@@ -652,7 +652,7 @@
         $.link.billsListTemplate(bills, "#billList");
         $.link(currentBill, "#billDetailsContent");
         $.link.billDetailsOrdersContentTemplate(currentBill.orders, "#billDetailsOrdersContent");
-        $("#menuActions button").button();        
+        $("#menuActions button").button();
         $("#orderList" ).on("click", "tr", function() {
             currentOrder = orders[$.view(this).index];
             $("#orderContent").html($.render.orderContentTemplate(currentOrder));
@@ -663,8 +663,8 @@
         });
         $("#billList").on("click", "tr", function() {
             var newCurrentBill = bills[$.view(this).index];
-            $.observable(currentBill).setProperty({ 
-                id: newCurrentBill.id,  
+            $.observable(currentBill).setProperty({
+                id: newCurrentBill.id,
                 comments: newCurrentBill.comments,
                 payment: newCurrentBill.payment,
                 amount: newCurrentBill.amount
@@ -676,7 +676,7 @@
             $.ajax({
                 url: BASE_URL + "MenuOfTheDayController/removeBill/" + bills[index].id,
                 dataType: 'json',
-                success: function (successfulyRemoved) { 
+                success: function (successfulyRemoved) {
                     if (successfulyRemoved)
                         $.observable(bills).remove(index, 1);
                     else {
@@ -701,4 +701,3 @@
         pmCachParamsInit();
     });
 </script>
-    

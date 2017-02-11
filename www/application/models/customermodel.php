@@ -5,7 +5,8 @@
  *
  * @author Leonardo
  */
-class CustomerModel extends CI_Model {
+class CustomerModel extends CI_Model
+{
 
     public function __construct() {
         parent::__construct();
@@ -57,13 +58,12 @@ class CustomerModel extends CI_Model {
                 ->where(PROVIDERS . '.name', $providerName)
                 ->limit(1)
                 ->get();
-        if ($query->num_rows() > 0)
-            return TRUE;
-        return FALSE;
+
+        return $query->num_rows() > 0;
     }
 
     /**
-     * Insertar un registro en la tabla.
+     * Insertar un models/customermodelregistro en la tabla.
      *
      * @author Leonardo
      * @param $fields (Arreglo con los campos a insertar)
@@ -100,7 +100,4 @@ class CustomerModel extends CI_Model {
 
         return;
     }
-
 }
-
-?>

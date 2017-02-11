@@ -1,15 +1,16 @@
 <?php
 
-if (!defined('BASEPATH'))
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
+}
 
 /**
  * Controlador principal.
  *
  * @author Leoanrdo Quintero
  */
-class MainController extends MY_Controller {
-
+class MainController extends MY_Controller
+{
     public function __construct() {
         parent::__construct();
     }
@@ -31,7 +32,6 @@ class MainController extends MY_Controller {
         $data['viewToLoad'] = 'home';
         $this->load->view('comunes/main', $data);
     }
-
 }
 
 /* End of file main.php */

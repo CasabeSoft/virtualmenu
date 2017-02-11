@@ -5,7 +5,8 @@
  *
  * @author Leonardo
  */
-class GroupsModel extends CI_Model {
+class GroupsModel extends CI_Model
+{
 
     public function __construct() {
         parent::__construct();
@@ -74,7 +75,4 @@ class GroupsModel extends CI_Model {
 
         return;
     }
-
 }
-
-?>

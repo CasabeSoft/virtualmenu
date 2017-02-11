@@ -1,15 +1,16 @@
 <?php
 
-if (!defined('BASEPATH'))
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
+}
 
 /**
  * Controlador para el gestor.
  *
  * @author Leoanrdo Quintero
  */
-class ManagerController extends MY_Controller {
-
+class ManagerController extends MY_Controller
+{
     public function __construct() {
         parent::__construct();
         if (!isLogged()) {
@@ -63,7 +64,6 @@ class ManagerController extends MY_Controller {
 
         return $post_array;
     }
-
 }
 
 /* End of file main.php */

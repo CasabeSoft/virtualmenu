@@ -1,15 +1,16 @@
 <?php
 
-if (!defined('BASEPATH'))
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
+}
 
 /**
  * Controlador para el administrador.
  *
  * @author Leoanrdo Quintero
  */
-class AdministratorController extends MY_Controller {
-
+class AdministratorController extends MY_Controller
+{
     public function __construct() {
         parent::__construct();
         if (!isLogged()) {
@@ -290,7 +291,6 @@ class AdministratorController extends MY_Controller {
         $data->viewToLoad = 'administrator/main';
         $this->load->view('comunes/mainadministrator', $data);
     }
-
 }
 
 /* End of file main.php */

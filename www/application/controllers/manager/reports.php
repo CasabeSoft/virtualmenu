@@ -1,15 +1,16 @@
 <?php
 
-if (!defined('BASEPATH'))
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
+}
 
 /**
  * Controlador para los informes del gestor.
  *
  * @author Leoanrdo Quintero
  */
-class Reports extends MY_Controller {
-
+class Reports extends MY_Controller
+{
     public function __construct() {
         parent::__construct();
         if (!isLogged()) {
@@ -119,8 +120,7 @@ class Reports extends MY_Controller {
                 )*/
             ),
             'data' => $datadb
-                )
-        );
+        ));
 
         //echo $R->render('excel');
         //exit();
@@ -129,7 +129,6 @@ class Reports extends MY_Controller {
         $data['viewToLoad'] = 'reports/report';
         $this->load->view('comunes/mainmanager', $data);
     }
-
 }
 
 /* End of file report.php */

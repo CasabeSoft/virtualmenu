@@ -1,15 +1,16 @@
 <?php
 
-if (!defined('BASEPATH'))
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
+}
 
 /**
  * Controlador para los clientes.
  *
  * @author Leoanrdo Quintero
  */
-class CustomerController extends MY_Controller {
-
+class CustomerController extends MY_Controller
+{
     public function __construct() {
         parent::__construct();
         if (!isLogged()) {
@@ -32,7 +33,6 @@ class CustomerController extends MY_Controller {
         );
         $this->load->view('comunes/maincustomer', $data);
     }
-
 }
 
 /* End of file main.php */
