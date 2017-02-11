@@ -55,7 +55,7 @@ class UserController extends MY_Controller
             $email = $_POST['email'];
             $password = $_POST['password'];
             //Validamos si es un usuario Administrador
-            $isAdmin = $this->UsersModel->IsUserAdministrator($email, $password);
+            $isAdmin = $this->UsersModel->isUserAdministrator($email, $password);
             //Chequemos los datos ingresados en la db
             $result = $this->UsersModel->verifyLogin($email, $password);
 
@@ -83,9 +83,9 @@ class UserController extends MY_Controller
                     );
 
                     // Validamos si es un usuario Cliente o Gestor para asignar el rol
-                    if ($this->UsersModel->IsUserCustomer($result->id)) {
+                    if ($this->UsersModel->isUserCustomer($result->id)) {
                         $user['rol'] = '3';
-                    } elseif ($this->UsersModel->IsUserManager($result->id)) {
+                    } elseif ($this->UsersModel->isUserManager($result->id)) {
                         $user['rol'] = '2';
                     }
                 }

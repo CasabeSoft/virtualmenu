@@ -82,7 +82,7 @@ class UsersModel extends CI_Model
      * @param $user_id (Id del usuario)
      * @return bool
      */
-    public function IsUserCustomer($user_id) {
+    public function isUserCustomer($user_id) {
 
         $query = $this->db->select_sum('id')
                 ->where('id', $user_id)
@@ -101,7 +101,7 @@ class UsersModel extends CI_Model
      * @param $user_id (Id del usuario)
      * @return bool
      */
-    public function IsUserManager($user_id) {
+    public function isUserManager($user_id) {
 
         $query = $this->db->select_sum('id')
                 ->where('id', $user_id)
@@ -121,7 +121,7 @@ class UsersModel extends CI_Model
      * @param $password
      * @return bool
      */
-    public function IsUserAdministrator($mail, $password) {
+    public function isUserAdministrator($mail, $password) {
 
         return (EMAIL_ADMINISTRATOR === $mail) and (PASSWORD_ADMINISTRATOR === $password);
     }

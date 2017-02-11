@@ -49,7 +49,7 @@ class ManagerController extends MY_Controller
         $crud->set_subject('Producto');
         $crud->fields('name', 'base_price', 'id_provider');
         $crud->change_field_type('id_provider', 'invisible');
-        $crud->callback_before_insert(array($this, 'provider_callback'));
+        $crud->callback_before_insert(array($this, 'providerCallback'));
         $crud->required_fields('name');
         $data = $crud->render();
 
@@ -59,7 +59,7 @@ class ManagerController extends MY_Controller
         $this->load->view('comunes/mainmanager', $data);
     }
 
-    public function provider_callback($post_array) {
+    public function providerCallback($post_array) {
         $post_array['id_provider'] = $this->providerId;
 
         return $post_array;

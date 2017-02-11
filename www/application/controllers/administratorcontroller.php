@@ -58,7 +58,7 @@ class AdministratorController extends MY_Controller
                 ->display_as('address', 'Dirección')
                 ->display_as('password', 'Contraseña');
         $crud->change_field_type('password', 'password');
-        $crud->callback_before_insert(array($this, 'encrypt_password_callback'));
+        $crud->callback_before_insert(array($this, 'encryptPasswordCallback'));
         $crud->add_fields('name', 'phone', 'email', 'password', 'address');
         $crud->edit_fields('name', 'phone', 'email', 'address');
         $crud->required_fields('name', 'email', 'password', 'address');
@@ -70,7 +70,7 @@ class AdministratorController extends MY_Controller
         $this->load->view('comunes/mainadministrator', $data);
     }
 
-    public function encrypt_password_callback($post_array) {
+    public function encryptPasswordCallback($post_array) {
         $post_array['password'] = md5($post_array['password']);
 
         return $post_array;
