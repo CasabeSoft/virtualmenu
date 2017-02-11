@@ -21,9 +21,6 @@
   <rule ref="PSR2.Classes.ClassDeclaration.OpenBraceNewLine">
     <type>warning</type>
   </rule>
-  <rule ref="PSR2.Files.ClosingTag.NotAllowed">
-    <type>warning</type>
-  </rule>
   <rule ref="PSR2.Methods.FunctionCallSignature.ContentAfterOpenBracket">
     <type>warning</type>
   </rule>

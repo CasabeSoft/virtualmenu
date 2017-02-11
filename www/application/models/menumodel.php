@@ -101,5 +101,3 @@ class MenuModel extends CI_Model {
                 ->delete();
     }
 }
-
-?>

@@ -101,5 +101,3 @@ class CustomerByProviderModel extends CI_Model {
         return;
     }
 }
-
-?>

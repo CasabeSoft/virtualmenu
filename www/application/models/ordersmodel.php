@@ -125,5 +125,3 @@ EOD;
         //cast(horae as date)
     }
 }
-
-?>

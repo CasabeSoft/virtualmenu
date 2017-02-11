@@ -175,4 +175,3 @@ if (!function_exists('providerName')) {
     }
 
 }
-?>

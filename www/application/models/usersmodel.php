@@ -429,5 +429,3 @@ class UsersModel extends CI_Model {
         return FALSE;
     }
 }
-
-?>
