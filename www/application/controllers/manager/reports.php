@@ -94,16 +94,12 @@ class Reports extends MY_Controller
 
         $datadb = $this->OrdersModel->productOrderdByDate($this->providerId, $first_date, $last_date);
 
-
         $R = new PHPReport();
         $R->load(array(
             'id' => 'Productos',
             'header' => array(
                 'id_product' => 'Código', 'name' => 'Nombre', 'cuantity' => 'Cantidad'
             ),
-            /*'footer' => array(
-                'id_product' => '', 'name' => '', 'cuantity' => 10
-            ),*/
             'config' => array(
                 'header' => array(
                     'id_product' => array('width' => 80, 'align' => 'center'),
@@ -115,15 +111,10 @@ class Reports extends MY_Controller
                     'name' => array('align' => 'left'),
                     'cuantity' => array('align' => 'right')
                 ),
-                /*'footer' => array(
-                    'cuantity' => array('align' => 'right')
-                )*/
             ),
             'data' => $datadb
         ));
 
-        //echo $R->render('excel');
-        //exit();
         $data['title'] = 'Menu Virtual - Reportes - Detalles del día';
         $data['report'] = $R->render($format);
         $data['viewToLoad'] = 'reports/report';

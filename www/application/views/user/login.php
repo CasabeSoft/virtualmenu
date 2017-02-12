@@ -9,7 +9,7 @@
                 <script>
                     $(function() {
                         $(".button").button();
-                    });   
+                    });
                 </script>
 
                 <h1 class="formTitle">Iniciar sesión</h1>
@@ -17,9 +17,9 @@
                 <div class="form">
                     <?php
                     if (isset($error)) {
-                        ?>   
+                        ?>
                         <div class="formError">
-                            <?php echo $error; ?>            
+                            <?php echo $error; ?>
                         </div>
                         <div class="formClear">&nbsp;</div>
                         <?php
@@ -27,7 +27,7 @@
                     ?>
                     <?php
                     if (isset($message)) {
-                        ?>   
+                        ?>
                         <div class="formMessagge">
                             <?php echo $message; ?>
                         </div>
@@ -36,25 +36,18 @@
                     }
                     ?>
                     <form action="<?php echo site_url('login') ?>" method="post" accept-charset="utf-8" class="formLogin" id="formLogin">
-                        <!--div class="formLabel"><label for="username">Usuario:</label></div>
-                        <div class="formData">                 
-                            <input type="text" name="username" value="<?php //echo set_value('username');      ?>" id="username" maxlength="50" style="width:50%"  />
-                        </div>
-                        <div class="formError"><?php //echo form_error('username');      ?></div>
-                        <div class="formClear">&nbsp;</div-->
-
                         <div class="formLabel"><label for="email">Correo:</label></div>
-                        <div class="formData">                 
+                        <div class="formData">
                             <input type="text" name="email" value="<?php echo set_value('email'); ?>" id="email" maxlength="255" style="width:50%"  />
                         </div>
                         <div class="formError"><?php echo form_error('email'); ?></div>
                         <div class="formClear">&nbsp;</div>
 
                         <div class="formLabel"><label for="password">Contraseña:</label></div>
-                        <div class="formData">                 
+                        <div class="formData">
                             <input type="password" name="password" value="" id="password" maxlength="32" style="width:50%"  />
-                        </div> 
-                        <div class="formError"><?php echo form_error('password'); ?></div>  
+                        </div>
+                        <div class="formError"><?php echo form_error('password'); ?></div>
                         <div class="formClear">&nbsp;</div>
 
                         <div class="formButton">

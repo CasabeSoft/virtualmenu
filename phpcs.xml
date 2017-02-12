@@ -8,13 +8,15 @@
   <exclude-pattern>*/libraries/*</exclude-pattern>
   <exclude-pattern>*/third_party/*</exclude-pattern>
   <exclude-pattern>*/errors/*</exclude-pattern>
-  <exclude-pattern>./www/application/models/grocery_crud_model.php</exclude-pattern>
+  <exclude-pattern>*/models/grocery_crud_model.php</exclude-pattern>
 
   <rule ref="PSR2">
-    <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine" />
     <exclude name="Generic.WhiteSpace.DisallowTabIndent" />
     <exclude name="Generic.Files.LineEndings" />
-    <exclude name="PSR1.Files.SideEffects.FoundWithSymbols" />
     <exclude name="PSR1.Classes.ClassDeclaration.MissingNamespace" />
+  </rule>
+
+  <rule ref="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine">
+    <type>warning</type>
   </rule>
 </ruleset>

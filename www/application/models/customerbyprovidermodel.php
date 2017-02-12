@@ -36,13 +36,6 @@ class CustomerByProviderModel extends CI_Model
         return $query;
     }
 
-    /* SELECT *
-      FROM `customers_by_provider` , `providers`
-      WHERE `customers_by_provider`.`id_provider` = `providers`.`id`
-      AND `customers_by_provider`.`id_customer` =20
-      AND `providers`.`name` = 'banana'
-      LIMIT 0 , 30 */
-
     /**
      * Obtener si el usuario es un cliente del proveedor
      *
@@ -98,7 +91,5 @@ class CustomerByProviderModel extends CI_Model
      */
     public function deleteRecord($id) {
         $this->db->delete(CUSTOMERS_BY_PROVIDERS, array('id' => $id));
-
-        return;
     }
 }

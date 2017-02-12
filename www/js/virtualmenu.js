@@ -1,11 +1,10 @@
 /**
- * @fileOverview Extensiones a jQuery y funciones de uso general en la aplicación 
+ * @fileOverview Extensiones a jQuery y funciones de uso general en la aplicación
  */
 
 /**
- *
  * @description  Inicializa todos los datepicker con los textos en español.
- */ 
+ */
 $.datepicker.setDefaults({
         dateFormat: "yy-mm-dd",
         dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
@@ -18,14 +17,14 @@ $.datepicker.setDefaults({
 });
 
 $(function(){
-    $("ul.dropdown li").hover(function(){    
+    $("ul.dropdown li").hover(function(){
         $(this).addClass("hover");
         $('ul:first',this).css('visibility', 'visible');
-    
-    }, function(){    
+
+    }, function(){
         $(this).removeClass("hover");
-        $('ul:first',this).css('visibility', 'hidden');    
-    });    
+        $('ul:first',this).css('visibility', 'hidden');
+    });
     $("ul.dropdown li ul li:has(ul)").find("a:first").append(" &raquo; ");
 });
 
@@ -52,7 +51,7 @@ function Menu(id, idType, name, basePrice, description, sections) {
     this.base_price = basePrice;
     this.description = description;
     this.sections = sections;
-    
+
     this.clone = function (deep) {
         deep = deep || false;
         return $.extend(deep, {}, this)
@@ -60,7 +59,7 @@ function Menu(id, idType, name, basePrice, description, sections) {
 }
 
 Menu.EMPTY = function () {
-    return new Menu(0, null, "", "", "", []);    
+    return new Menu(0, null, "", "", "", []);
 }
 
 Bill.cloneOrders = function (orders) {
@@ -95,14 +94,14 @@ function Bill(id, orders, comments, payment, amount, generated, paid) {
         this.amount = Bill.calcAmount(orders);
         return this.amount;
     }
-    
+
     this.id = id;
     this.comments = comments;
     this.orders = Bill.cloneOrders(orders);
     this.payment = payment;
     this.amount = amount ? amount : this.updateAmount();
     this.generated = generated;
-    this.paid = paid;    
+    this.paid = paid;
 }
 
 Bill.buildFrom = function (data) {
@@ -133,9 +132,9 @@ function Order(id, menu, comments, products, bill) {
         $.each(products, function (index, item) {
             extras += item.price;
         });
-        return menu.base_price + extras;      
+        return menu.base_price + extras;
     };
-    
+
     this.clone = function (deep) {
         deep = deep || false;
         return $.extend(deep, {}, this)
@@ -155,4 +154,3 @@ Order.buildFrom = function (data) {
         data.bill
     );
 }
-

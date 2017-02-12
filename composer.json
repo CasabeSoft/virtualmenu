@@ -5,7 +5,8 @@
     "require-dev": {
         "phpdocumentor/phpdocumentor": "^2.9",
         "phpunit/phpunit": "^5.7",
-        "squizlabs/php_codesniffer": "^2.7"
+        "squizlabs/php_codesniffer": "^2.7",
+        "phpmd/phpmd": "^2.6"
     },
     "license": "MIT",
     "require": {
@@ -15,6 +16,7 @@
       "php-lint": "vendor/bin/phpcs --report=summary --runtime-set ignore_warnings_on_exit 1",
       "php-lint-full": "vendor/bin/phpcs --report=full --runtime-set ignore_warnings_on_exit 1",
       "www": "php -S virtualmenu.dev:8000 -t www/",
-      "db-init": "mysql -u root -p < db/create-db-0.1.sql"
+      "db-init": "mysql -u root -p < db/create-db-0.1.sql",
+      "php-analize": "vendor/bin/phpmd ./www/application/ text unusedcode,codesize --exclude */libraries/*,*/third_party/*,*/errors/*,*/logs/*,*/models/grocery_crud_model.php"
     }
 }

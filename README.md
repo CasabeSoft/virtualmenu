@@ -58,7 +58,7 @@ Every contribution is welcome. Even if you don't know how to contribute but have
 
 On the other hand, if you want to contribute but don't know where to start, checkout the list of [open issues](https://github.com/CasabeSoft/virtualmenu/issues).
 
-> Note: Right now we have a *strong need* to normalize the code base, cleaning dead code, commented fragments and change what is needed to reduce the amount of errors and warnings. See issue [#11](https://github.com/CasabeSoft/virtualmenu/issues/11).
+> Note: Right now we have a *strong need* to automatize the project setup tasks like automatic database creation (see issed [#14](https://github.com/CasabeSoft/virtualmenu/issues/11)) or containerization of the dev environmet with PHP and MySQL.
 
 ### Code conventions
 

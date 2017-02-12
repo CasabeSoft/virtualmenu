@@ -3,7 +3,6 @@
  * Plantilla principal.
  *
  * @author Leonardo Quintero
- * @author Carlos Bello
  */
 ?>
 <!DOCTYPE html>

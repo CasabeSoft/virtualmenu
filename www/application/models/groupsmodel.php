@@ -72,7 +72,5 @@ class GroupsModel extends CI_Model
      */
     public function deleteRecord($id) {
         $this->db->delete(GROUPS, array('id' => $id));
-
-        return;
     }
 }

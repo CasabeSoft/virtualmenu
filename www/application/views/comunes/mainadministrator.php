@@ -78,20 +78,6 @@
                                             <ul>
                                                 <li>
                                                     <a href="<?php echo site_url('administrator/users') ?>" <?php echo ($this->uri->segment(2) == "users") ? 'class="active"' : '' ?>>Usuarios</a>
-                                                    <!--ul>
-                                                        <li>
-                                                            <a href="#">Menú Subitem 1.1</a>
-
-                                                        </li>
-                                                                        <li>
-                                                            <a href="#">Menú Subitem 1.2</a>
-
-                                                        </li>
-                                                                        <li>
-                                                            <a href="#">Menú Subitem 1.3</a>
-
-                                                        </li>
-                                                    </ul-->
                                                 </li>
                                                 <li>
                                                     <a href="<?php echo site_url('administrator/group_types') ?>" <?php echo ($this->uri->segment(2) == "group_types") ? 'class="active"' : '' ?>>Tipos de grupos</a>
