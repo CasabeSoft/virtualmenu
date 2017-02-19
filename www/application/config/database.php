@@ -49,7 +49,7 @@ if (! defined('BASEPATH')) {
 */
 
 $active_group = 'default';
-$active_record = true;
+$query_builder = true;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'virtualmenu';

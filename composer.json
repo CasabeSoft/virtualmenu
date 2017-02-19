@@ -10,7 +10,7 @@
     },
     "license": "MIT",
     "require": {
-      "rogeriopradoj/codeigniter": "2.2.6"
+      "codeigniter/framework": "3.1.2"
     },
     "scripts": {
       "php-lint": "vendor/bin/phpcs --report=summary --runtime-set ignore_warnings_on_exit 1",

@@ -1,5 +1,5 @@
 <?php
-require_once 'menumodel.php';
+require_once 'MenuModel.php';
 /**
  * Description of MenusOfTheDayModel
  */
