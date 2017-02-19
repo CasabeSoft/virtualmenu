@@ -248,15 +248,13 @@ $config['encryption_key'] = 'sytaJgg5vsH1CKRG5wj63Qo4Vk80RkTN'; // LQ 200120421:
   | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
   |
  */
+$config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
-$config['sess_expiration'] = 7200;
-$config['sess_expire_on_close'] = false;
-$config['sess_encrypt_cookie'] = false;
-$config['sess_use_database'] = false;
-$config['sess_table_name'] = 'ci_sessions';
+$config['sess_expiration'] = 0;
+$config['sess_save_path'] = null;
 $config['sess_match_ip'] = false;
-$config['sess_match_useragent'] = true;
 $config['sess_time_to_update'] = 300;
+$config['sess_regenerate_destroy'] = false;
 
 /*
   |--------------------------------------------------------------------------

@@ -8,6 +8,8 @@
   <exclude-pattern>*/libraries/*</exclude-pattern>
   <exclude-pattern>*/third_party/*</exclude-pattern>
   <exclude-pattern>*/errors/*</exclude-pattern>
+  <exclude-pattern>./www/index.php</exclude-pattern>
+  <exclude-pattern>*/config/mimes.php</exclude-pattern>
   <exclude-pattern>*/models/grocery_crud_model.php</exclude-pattern>
 
   <rule ref="PSR2">
