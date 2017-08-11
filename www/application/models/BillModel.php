@@ -93,9 +93,9 @@ EOD;
 
     public function getBillsForDate($date, $idProvider, $idUser) {
         $qBills = <<<EOD
-SELECT id, generated, paid, amount, comments, payment
+SELECT id, `generated`, paid, amount, comments, payment
 FROM bills
-WHERE date(generated) = '$date'
+WHERE date(`generated`) = '$date'
     AND id_provider = $idProvider
     AND id_user = $idUser;
 EOD;

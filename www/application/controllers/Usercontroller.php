@@ -244,7 +244,7 @@ class UserController extends MY_Controller
                 $template = 'comunes/mainmanager';
                 break;
             case 3:
-                $template = 'comunes/mainCustomer';
+                $template = 'comunes/maincustomer';
                 break;
             default:
                 $template = 'comunes/main';
@@ -267,7 +267,7 @@ class UserController extends MY_Controller
                 $template = 'comunes/mainmanager';
                 break;
             case 3:
-                $template = 'comunes/mainCustomer';
+                $template = 'comunes/maincustomer';
                 $result = $this->GroupsModel->getAll();
                 break;
             default:
@@ -361,7 +361,7 @@ class UserController extends MY_Controller
                 'userPhone' => $this->session->userdata('phone'),
                 'userMessage' => $this->input->post('message')
             );
-            $message = $this->load->view('email/contactToManeger', $data, true);
+            $message = $this->load->view('email/contacttomaneger', $data, true);
 
             $this->email->from($emailFrom, $nameFrom);
             $this->email->to($emailTo);
@@ -377,7 +377,7 @@ class UserController extends MY_Controller
 
         $data['title'] = 'Menu Virtual - Contactar';
         $data['viewToLoad'] = 'user/contact';
-        $this->load->view('comunes/mainCustomer', $data);
+        $this->load->view('comunes/maincustomer', $data);
     }
 
     /**
@@ -411,7 +411,7 @@ class UserController extends MY_Controller
                     'passwordCode' => $newCode
                 );
 
-                $message = $this->load->view('email/rememberPassword', $data, true);
+                $message = $this->load->view('email/rememberpassword', $data, true);
 
                 $this->email->clear();
                 $this->email->initialize($config);
@@ -433,7 +433,7 @@ class UserController extends MY_Controller
         }
 
         $data['title'] = 'Menu Virtual - Recordar contraseña';
-        $data['viewToLoad'] = 'user/rememberPassword';
+        $data['viewToLoad'] = 'user/rememberpassword';
         $this->load->view('comunes/main', $data);
     }
 
@@ -486,7 +486,7 @@ class UserController extends MY_Controller
                 'newPassword' => $newPassword
             );
 
-            $message = $this->load->view('email/newPassword', $data, true);
+            $message = $this->load->view('email/newpassword', $data, true);
 
             $config = $this->config->item('email', 'virtualmenu');
 

@@ -21,24 +21,39 @@ class MenuOfTheDayController extends MY_Controller
     }
 
     public function manage() {
+        $providerId = $this->session->userdata("providerId");
         $data = array(
             'title' => 'Menu Virtual > Menú del día > Gestión',
             'viewToLoad' => 'menu/types/menuofthedaymanage',
-            'menuTypes' => $this->MenusOfTheDayModel->getMenuTypesInfo(),
-            'sectionsByMenuType' => $this->MenusOfTheDayModel->getSectionsByMenuType(),
+            'menuTypes' => $this->MenusOfTheDayModel->getMenuTypesInfo($providerId),
+            'sectionsByMenuType' => $this->MenusOfTheDayModel->getSectionsByMenuType($providerId),
+            'js_files' => [
+                'js/jsrender.js',
+                'js/jquery.observable.js',
+                'js/jquery.views.js',
+                'js/menu/types/menuofthedaymanage.js',
+            ],
         );
         $this->load->view('comunes/mainmanager', $data);
     }
 
     public function order() {
+        $providerId = $this->session->userdata("providerId");
         $data = array(
             'title' => 'Menu Virtual > Menú del día > Pedidos',
-            'viewToLoad' => 'menu/types/menuOfTheDayOrder',
-            'menuTypes' => $this->MenusOfTheDayModel->getMenuTypesInfo(),
+            'viewToLoad' => 'menu/types/menuofthedayorder',
+            'menuTypes' => $this->MenusOfTheDayModel->getMenuTypesInfo($providerId),
             'address' =>$this->session->userdata("address"),
-            'sectionsByMenuType' => $this->MenusOfTheDayModel->getSectionsByMenuType(),
+            'sectionsByMenuType' => $this->MenusOfTheDayModel->getSectionsByMenuType($providerId),
+            'js_files' => [
+                'js/jsrender.js',
+                'js/jquery.observable.js',
+                'js/jquery.views.js',
+                'js/accounting.min.js',
+                'js/menu/types/menuofthedayorder.js',
+            ],
         );
-        $view = userHasPermition(ROL_MANAGER) ? 'comunes/mainmanager' : 'comunes/mainCustomer';
+        $view = userHasPermition(ROL_MANAGER) ? 'comunes/mainmanager' : 'comunes/maincustomer';
         $this->load->view($view, $data);
     }
 

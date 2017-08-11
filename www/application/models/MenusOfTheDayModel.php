@@ -5,23 +5,23 @@ require_once 'MenuModel.php';
  */
 class MenusOfTheDayModel extends MenuModel
 {
-    private $menuTypesId = array(1, 2);     // TODO: Leer desde la tabla en la BBDD
-
     public function __construct() {
         parent::__construct();
     }
 
-    public function getMenuTypesInfo() {
+    public function getMenuTypesInfo($providerId) {
         $menuTypesInfo = array();
-        foreach ($this->menuTypesId as $menuTypeId) {
+        $menuTypesId = array_values($this->getMenuTypesForProvider($providerId));
+        foreach ($menuTypesId as $menuTypeId) {
             $menuTypesInfo[] = $this->getMenuTypeInfo($menuTypeId);
         }
         return $menuTypesInfo;
     }
 
-    public function getSectionsByMenuType() {
+    public function getSectionsByMenuType($providerId) {
         $sections = array();
-        foreach ($this->menuTypesId as $menuTypeId) {
+        $menuTypesId = array_values($this->getMenuTypesForProvider($providerId));
+        foreach ($menuTypesId as $menuTypeId) {
             $sections[$menuTypeId] = $this->getSectionsForMenuType($menuTypeId);
             for ($i = 0; $i < count($sections[$menuTypeId]); $i++) {
                 $sections[$menuTypeId][$i]['products'] = array();

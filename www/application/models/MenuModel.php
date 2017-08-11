@@ -10,6 +10,14 @@ class MenuModel extends CI_Model
         parent::__construct();
     }
 
+    public function getMenuTypesForProvider($providerId)
+    {
+        $query = $this->db
+                ->where("id_provider", $providerId)
+                ->get('menu_types_by_provider');
+        return $query->result_array();
+    }
+
     public function getMenuTypeInfo($menuType) {
         $query = $this->db
                 ->where("id", $menuType)
