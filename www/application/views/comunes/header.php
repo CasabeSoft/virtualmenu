@@ -10,10 +10,10 @@
                         ?>
                         <?php if ($page != 'login') { ?>
                             <a class="button" href="<?php echo site_url('login') ?>">Iniciar sesión</a>
-                        <?php } ?>
                         <?php } elseif ($page != 'register') {
                         ?>
-                        <a class="button" href="<?php echo site_url('register') ?>">Crear cuenta</a> <?php
+                        <a class="button" href="<?php echo site_url('register') ?>">Crear cuenta</a>
+                        <?php }
                     }
                     ?>
                 </li>
