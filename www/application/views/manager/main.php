@@ -6,9 +6,9 @@
  */
 ?>
 
-                <div class="prepend-0_1 prepend-top">
+                <div>
                     <h1> <?php echo $titleMain; ?></h1>
-                    <div class="span-23">
+                    <div>
                         <?php echo $output; ?>
                     </div>
                 </div>

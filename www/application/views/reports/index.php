@@ -4,10 +4,10 @@
  */
 ?>
 
-<div class="prepend-0_1 prepend-top">
+<div>
     <h1>Informes</h1>
-    <hr class="span-23 last">
-    <div class="span-23 last">
+    <hr>
+    <div>
         <?php
         if (isset($report)) {
             $this->load->view($report);
