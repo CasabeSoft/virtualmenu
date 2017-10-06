@@ -28,14 +28,22 @@ if (!$this->uri->segment(4)) {
 
     function showByDate(){
         var date = $("#actualDate").val();
-        if (date != '') {
+        if (date !== '') {
             location.href='../manager/reports/daydetail/'+date;
         } else {
             alert('Debes seleccionar una fecha');
         }
     }
 </script>
-<h3>Detalles de pedidos del día <input type="text" id="datepicker" value="<?php echo $datepickernow ?>"><button class="button" id="btnShow" onclick="showByDate();">Mostrar</button></h3>
+<h3 class="row">
+    <div class="col-sm-6">Detalles de pedidos del día</div>
+    <div class="col-sm-3">
+        <input type="text" id="datepicker" value="<?php echo $datepickernow ?>" class="form-control">
+    </div>
+    <div class="col-sm-3">
+        <button class="btn btn-primary form-control" id="btnShow" onclick="showByDate();">Mostrar</button>
+    </div>
+</h3>
 <input type="hidden" id="actualDate" value="<?php echo $datenow ?>">
 
 <div>
@@ -54,7 +62,7 @@ if (!$this->uri->segment(4)) {
                 <?php
             }
             ?>
-            <div class="span-10 <?php echo $count % 2 == 0 ? 'last' : 'colborder' ?>">
+            <div class="col-sm-6 <?php echo $count % 2 == 0 ? 'last' : 'colborder' ?>">
                 <strong># <?php echo $detail['id_order']; ?>
                     <?php echo $detail['user_name'] ?>
                 </strong> <br>

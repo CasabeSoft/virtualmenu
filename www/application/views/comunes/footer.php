@@ -1,10 +1,5 @@
-<?php
-
-/*
- * Pie de la plantilla principal.
- * 
- * @author Leoanrdo Quintero
- */
-?>
-           
-<p class="alt prepend-1 prepend-top" >&copy;2012 Vertul Menu.</p>                        
+<div class="container">       
+    <div class="row">       
+        <div class="col-md-12">&copy; 201 VirtualMenu</div>
+    </div>
+</div>

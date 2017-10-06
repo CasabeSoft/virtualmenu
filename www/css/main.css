@@ -1,109 +1,20 @@
 /* 
-    Document   : main
-    Created on : 14-abr-2012, 22:20:35
-    Author     : Leonardo, Carlos Bello [CB]
     Description:
         Definir estilos de la plantilla Principal (main)
 */
 
-body { /*font-size: 62.5% */}
-#header h1 { font-weight: bold; }
-
-.error{
-    color: red;
-    font-size: 12px;
+header {
+    margin-bottom: 0;
+    border-bottom: 0;
 }
 
-.form {
-    margin:0;
-    width:920px;
-    height:auto;	
+footer {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 100px;
+    color: #99979c;
 }
 
-.formTitle {
-    padding-top: 10px;
-    padding-left: 200px;
-    color: #666;
-}
-
-.formLabel {
-    float:left;
-    margin:0 0 0 0;
-    padding:2px 0 0 0;
-    width:190px;
-    height:auto;
-    color:#555;
-    text-align:right;
-    font-size: 1.2em;
-    font-weight:bold;
-    overflow:hidden;
-    /*border: 2px solid black;*/
-}
-
-.formData {
-    float:left;
-    margin:0 0 0 10px;
-    padding:0;
-    width:700px;
-    height:auto;
-    font-size: 1.2em;
-    font-weight:normal;
-    color:#555;
-    overflow:hidden;
-}
-
-.formError {
-    float:left;
-    margin:0 0 0 0;
-    padding-left: 200px;
-    width:350px;
-    height:auto;
-    color: red;
-    text-align:left;
-    font-size: 1.2em;
-    font-weight:bold;
-    overflow:hidden;
-    /*border: 2px solid black;*/
-}
-
-.formMessagge {
-    float:left;
-    margin:0 0 0 0;
-    padding-left: 200px;
-    width:350px;
-    height:auto;
-    color: green;
-    text-align:left;
-    font-size: 1.2em;
-    font-weight:bold;
-    overflow:hidden;
-    /*border: 2px solid black;*/
-}
-
-.formButton {
-    float:left;
-    margin:0 0 0 10px;
-    padding-left: 190px;
-    width:700px;
-    height:auto;
-    overflow:hidden;
-}
-
-.formClear {
-    clear:both;
-    display:block;
-    margin:0 0 0 0;
-    padding:0;
-    width:700px;
-    height:20px;
-    line-height:10px;
-    overflow:hidden;
-}
-
-/* CB 20120614 CSS HACKS!*/
+/* CSS HACKS!*/
 .ui-datepicker-calendar th { background-color: transparent; }
 .ui-widget { font-size: 1em; }
-.prepend-0_1 { padding-left: 20px;}
-
-/* CB 20120624: Extensiones a Blueprint*/
-.highlight-content-rows tbody tr:hover td { background-color: lightgray; }
